@@ -10,6 +10,7 @@
  + **CI** with (AppVeyor)[http://www.appveyor.com/] or something else
  + **documentation** (who am i kidding :D)
  + occasionally run **stylecop** and fix warnings
+ + **repository** pattern
 
 ## Planned functionality(client-side):
  + **chatting**
