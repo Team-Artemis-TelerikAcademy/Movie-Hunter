@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieHunter.Models", "MovieHunter.Models\MovieHunter.Models.csproj", "{DA702F70-50E5-4A8C-8A8D-8EC1ECF54706}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieHunter.Data", "MovieHunter.Data\MovieHunter.Data.csproj", "{02EAEE4A-BFBE-4E8B-A352-2567128A9CEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieHunter.ConsoleClient(Test)", "MovieHunter.ConsoleClient(Test)\MovieHunter.ConsoleClient(Test).csproj", "{FFAF69B7-7236-4B58-AE8F-BB8BE6D27BAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA702F70-50E5-4A8C-8A8D-8EC1ECF54706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA702F70-50E5-4A8C-8A8D-8EC1ECF54706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA702F70-50E5-4A8C-8A8D-8EC1ECF54706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA702F70-50E5-4A8C-8A8D-8EC1ECF54706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02EAEE4A-BFBE-4E8B-A352-2567128A9CEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02EAEE4A-BFBE-4E8B-A352-2567128A9CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02EAEE4A-BFBE-4E8B-A352-2567128A9CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02EAEE4A-BFBE-4E8B-A352-2567128A9CEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFAF69B7-7236-4B58-AE8F-BB8BE6D27BAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFAF69B7-7236-4B58-AE8F-BB8BE6D27BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFAF69B7-7236-4B58-AE8F-BB8BE6D27BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFAF69B7-7236-4B58-AE8F-BB8BE6D27BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
