@@ -8,10 +8,12 @@
     public class Movie
     {
         private ICollection<Genre> genres;
+        private ICollection<Actor> actors;
 
         public Movie()
         {
             this.Genres = new HashSet<Genre>();
+            this.Actors = new HashSet<Actor>();
         }
 
         public int Id { get; set; }
@@ -47,6 +49,19 @@
             set
             {
                 this.genres = value;
+            }
+        }
+
+        public virtual ICollection<Actor> Actors
+        {
+            get
+            {
+                return this.actors;
+            }
+
+            set
+            {
+                this.actors = value;
             }
         }
     }
