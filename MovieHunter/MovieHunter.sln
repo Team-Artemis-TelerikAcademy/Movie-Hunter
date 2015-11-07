@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieHunter.Data", "MovieHu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieHunter.ConsoleClient(Test)", "MovieHunter.ConsoleClient(Test)\MovieHunter.ConsoleClient(Test).csproj", "{FFAF69B7-7236-4B58-AE8F-BB8BE6D27BAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieHunter.UI", "MovieHunter.UI\MovieHunter.UI.csproj", "{D643B2D2-A476-402F-97F1-D1971485EE03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FFAF69B7-7236-4B58-AE8F-BB8BE6D27BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFAF69B7-7236-4B58-AE8F-BB8BE6D27BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFAF69B7-7236-4B58-AE8F-BB8BE6D27BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D643B2D2-A476-402F-97F1-D1971485EE03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D643B2D2-A476-402F-97F1-D1971485EE03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D643B2D2-A476-402F-97F1-D1971485EE03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D643B2D2-A476-402F-97F1-D1971485EE03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
