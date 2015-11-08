@@ -6,11 +6,11 @@
 
     public class User
     {
-        private ICollection<Movie> movies;
+        private ICollection<UserMovies> userMovies;
 
         public User()
         {
-            this.Movies = new HashSet<Movie>();
+            this.UserMovies = new HashSet<UserMovies>();
         }
 
         // TODO: Web API ClaimsIdentity for authentication
@@ -25,6 +25,6 @@
 
         public bool IsAdmin { get; set; }
 
-        public virtual ICollection<Movie> Movies { get; set; }
+        public virtual ICollection<UserMovies> UserMovies { get; set; }
     }
 }
