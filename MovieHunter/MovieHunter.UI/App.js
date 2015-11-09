@@ -4,6 +4,7 @@
         this.get('#/', function () {
             this.redirect('#/home');
         });
+
         this.get('#/home', homeController.all);
     });
 
