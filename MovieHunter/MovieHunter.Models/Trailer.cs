@@ -15,6 +15,11 @@ namespace MovieHunter.Models
         [MinLength(7)]
         public string Url { get; set; }
 
+        public DateTime ReleaseDate { get; set; }
+
         public int MovieId { get; set; }
+
+        public virtual Movie Movie { get; set; }
+        
     }
 }

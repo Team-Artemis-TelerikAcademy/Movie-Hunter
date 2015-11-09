@@ -29,7 +29,7 @@ namespace MovieHunter.Api.Controllers
         }
 
         public IHttpActionResult GetAll(int page)
-        {
+        {   
             return this.Ok(this.service.GetAllMovies()
                 .Skip((page-1)*PageSize)
                 .Take(PageSize)
