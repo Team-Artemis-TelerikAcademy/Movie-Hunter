@@ -8,7 +8,7 @@ namespace MovieHunter.Api.Models
 {
     public class MovieDetailViewModel : MovieViewModel
     {
-        public static Expression<Func<Movie, MovieDetailViewModel>> FromMovie
+        public static new Expression<Func<Movie, MovieDetailViewModel>> FromMovie
         {
             get
             {

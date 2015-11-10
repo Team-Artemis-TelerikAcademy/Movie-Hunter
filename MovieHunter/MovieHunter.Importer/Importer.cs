@@ -67,10 +67,11 @@
                     Title = currentMovie.title,
                     ImageUrl = currentMovie.urlPoster,
                     Rating = result,
-                    ReleaseDate = currentMovie.releaseDate.ToDateTime(),
+                    ReleaseDate = currentMovie.releaseDate.ToDateTime().Sqlize(),
                     Restriction = RestrictionMapping.ContainsKey(currentMovie.rated.ToLower()) ? RestrictionMapping[currentMovie.rated.ToLower()] : Restrictions.NotRestricted,
                     Duration = currentMovie.runtime == null || currentMovie.runtime.Length == 0 ? 90 : int.Parse(currentMovie.runtime[0].Split(' ')[0])
                 };
+                Console.WriteLine("Movie added");
 
                 this.db.Movies.Add(movieToAdd);
 

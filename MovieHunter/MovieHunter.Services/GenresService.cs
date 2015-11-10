@@ -16,7 +16,7 @@ namespace MovieHunter.Services
 
         public IQueryable<Genre> GetAllGenres()
         {
-            throw new System.NotImplementedException();
+            return genres.All();
         }
 
         public Genre GetGenreById(int id)

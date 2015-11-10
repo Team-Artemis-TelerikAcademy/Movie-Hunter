@@ -26,5 +26,12 @@
 
             return DateTime.Now;
         }
+
+        private static readonly DateTime SqlDateTimeMinValue = DateTime.Parse("1753/1/1");
+
+        public static DateTime Sqlize(this DateTime datetime)
+        {
+            return datetime < SqlDateTimeMinValue ? SqlDateTimeMinValue : datetime;
+        }
     }
 }
