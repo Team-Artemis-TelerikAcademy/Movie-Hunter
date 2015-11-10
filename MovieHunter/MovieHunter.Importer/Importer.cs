@@ -79,6 +79,8 @@
 
                 if (currentMovie.actors != null)
                 {
+                    var addedActorsCount = 0;
+
                     foreach (var currentActor in currentMovie.actors)
                     {
                         var currentActorNames = currentActor.actorName.Split(' ');
@@ -96,9 +98,15 @@
 
                             actors.Add(actorToAdd.FirstName + " " + actorToAdd.LastName, actorToAdd);
                             this.db.Actors.Add(actorToAdd);
+                            addedActorsCount++;
                         }
 
                         movieToAdd.Actors.Add(actors[firstname + " " + lastname]);
+
+                        if(addedActorsCount == 4)
+                        {
+                            break;
+                        }
                     }
                 }
 
@@ -112,11 +120,12 @@
                         };
 
                         genres.Add(currentGenre, newGenre);
+                        this.db.Genres.Add(genres[currentGenre]);
                     }
 
                     movieToAdd.Genres.Add(genres[currentGenre]);
                     genres[currentGenre].Movies.Add(movieToAdd);
-                    this.db.Genres.Add(genres[currentGenre]);
+                    
                 }
 
                 movieToAdd.Trailers.Add(trailer);
