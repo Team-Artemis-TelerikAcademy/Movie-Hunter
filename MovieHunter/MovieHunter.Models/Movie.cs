@@ -42,7 +42,7 @@
         public Restrictions Restriction { get; set; }
 
         [Required]
-        [MaxLength(1000)]
+        [MaxLength(2000)]
         [Column(TypeName = "ntext")]
         public string Description { get; set; }
 
