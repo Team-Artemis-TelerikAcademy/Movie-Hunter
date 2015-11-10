@@ -68,7 +68,7 @@
                     ImageUrl = currentMovie.urlPoster,
                     Rating = result,
                     ReleaseDate = currentMovie.releaseDate.ToDateTime(),
-                    TrailerUrl = trailerUrl,
+                    Restriction = RestrictionMapping.ContainsKey(currentMovie.rated.ToLower()) ? RestrictionMapping[currentMovie.rated.ToLower()] : Restrictions.NotRestricted,
                     Duration = currentMovie.runtime == null || currentMovie.runtime.Length == 0 ? 90 : int.Parse(currentMovie.runtime[0].Split(' ')[0])
                 };
 
@@ -105,8 +105,7 @@
                     {
                         var newGenre = new Genre()
                         {
-                            Name = currentGenre,
-                            Restriction = RestrictionMapping.ContainsKey(currentMovie.rated.ToLower()) ? RestrictionMapping[currentMovie.rated.ToLower()] : Restrictions.NotRestricted
+                            Name = currentGenre
                         };
 
                         genres.Add(currentGenre, newGenre);
