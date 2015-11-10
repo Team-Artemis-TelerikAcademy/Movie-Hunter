@@ -47,6 +47,7 @@
         public string Description { get; set; }
 
         [Required]
+        [Column(TypeName = "datetime2")]
         public DateTime ReleaseDate { get; set; }
 
         public virtual ICollection<Genre> Genres
