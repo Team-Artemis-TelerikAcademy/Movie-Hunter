@@ -33,7 +33,7 @@ namespace MovieHunter.Api.Controllers
             return this.Ok(this.service.GetAllMovies()
                 .Skip((page-1)*PageSize)
                 .Take(PageSize)
-                .Select(MovieViewModel.FromMovie));
+                .Select(MovieDetailViewModel.FromMovie));
         }
    
 
@@ -53,7 +53,7 @@ namespace MovieHunter.Api.Controllers
             return this.Ok(this.service.GetMoviesByGenre(genre)
                 .Skip((page - 1)*PageSize)
                 .Take(PageSize)
-                .Select(MovieViewModel.FromMovie));
+                .Select(MovieDetailViewModel.FromMovie));
         }
 
         //api/movies/released

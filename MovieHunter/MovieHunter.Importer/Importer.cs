@@ -91,7 +91,8 @@
                             var actorToAdd = new Models.Actor()
                             {
                                 FirstName = firstname,
-                                LastName = lastname
+                                LastName = lastname,
+                                FullName = currentActor.actorName
                             };
 
                             actors.Add(actorToAdd.FirstName + " " + actorToAdd.LastName, actorToAdd);
