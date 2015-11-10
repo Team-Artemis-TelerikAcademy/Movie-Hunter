@@ -73,6 +73,8 @@
                 };
                 Console.WriteLine("Movie added");
 
+                trailer.ReleaseDate = movieToAdd.ReleaseDate.AddMonths(-6);
+
                 this.db.Movies.Add(movieToAdd);
 
                 if (currentMovie.actors != null)

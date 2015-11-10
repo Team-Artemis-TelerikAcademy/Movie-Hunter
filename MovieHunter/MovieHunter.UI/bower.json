@@ -1,0 +1,22 @@
+{
+  "name": "MovieHunter.UI",
+  "homepage": "https://github.com/Team-Artemis-TelerikAcademy/Movie-Hunter",
+  "authors": [
+    "emilti <emilti1986@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sammy": "~0.7.6",
+    "jquery": "~2.1.4"
+  }
+}
