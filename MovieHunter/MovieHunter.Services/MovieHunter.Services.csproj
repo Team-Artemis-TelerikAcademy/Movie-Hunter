@@ -51,9 +51,11 @@
   <ItemGroup>
     <Compile Include="Contracts\IMoviesService.cs" />
     <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="Contracts\ITrailersService.cs" />
     <Compile Include="EfRepository.cs" />
     <Compile Include="MoviesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrailersService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MovieHunter.Models\MovieHunter.Models.csproj">
