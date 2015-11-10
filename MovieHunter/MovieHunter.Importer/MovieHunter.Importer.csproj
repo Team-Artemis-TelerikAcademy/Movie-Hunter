@@ -69,14 +69,8 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="SampleData\movies1.json" />
-    <None Include="SampleData\movies2.json" />
-    <None Include="SampleData\movies3.json" />
-    <None Include="SampleData\movies4.json" />
-    <None Include="SampleData\trailers1.json" />
-    <None Include="SampleData\trailers2.json" />
-    <None Include="SampleData\trailers3.json" />
-    <None Include="SampleData\trailers4.json" />
+    <None Include="SampleData\movies.json" />
+    <None Include="SampleData\trailers.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MovieHunter.Data\MovieHunter.Data.csproj">
