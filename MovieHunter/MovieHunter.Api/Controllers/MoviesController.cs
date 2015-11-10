@@ -26,7 +26,7 @@ namespace MovieHunter.Api.Controllers
         public IHttpActionResult GetAll()
         {
             return this.GetAll(1);
-        }
+        }   
 
         public IHttpActionResult GetAll(int page)
         {   
@@ -39,7 +39,7 @@ namespace MovieHunter.Api.Controllers
 
         public IHttpActionResult GetById(int id)
         {
-            return this.Ok(MovieViewModel.FromMovie.Compile().Invoke(this.service.GetById(id)));
+            return this.Ok(MovieDetailViewModel.FromMovie.Compile().Invoke(this.service.GetById(id)));
         }
 
         //api/movies?genre=value
@@ -68,7 +68,7 @@ namespace MovieHunter.Api.Controllers
             return this.Ok(this.service.GetAllMovies()
                                         .Where(movie => movie.ReleaseDate <= DateTime.Today)
                                         .Skip((page-1)*PageSize)
-                                        .Take(PageSize).Select(MovieViewModel.FromMovie));
+                                        .Take(PageSize).Select(MovieDetailViewModel.FromMovie));
         }
         //api/movies/comming-soon
         [Route("api/movies/comming-soon")]
@@ -82,7 +82,7 @@ namespace MovieHunter.Api.Controllers
             return this.Ok(this.service.GetAllMovies()
                                         .Where(movie => movie.ReleaseDate > DateTime.Now)
                                         .Skip((page-1)*PageSize)
-                                        .Take(PageSize).Select(MovieViewModel.FromMovie));
+                                        .Take(PageSize).Select(MovieDetailViewModel.FromMovie));
         }
     }
 }

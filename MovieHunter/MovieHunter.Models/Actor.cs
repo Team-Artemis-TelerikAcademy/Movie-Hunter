@@ -23,7 +23,12 @@
         [Required]
         [MaxLength(20)]
         public string LastName { get; set; }
-        
+
+        [NotMapped]
+        public string FullName {
+            get { return string.Format("{0} {1}", this.FirstName, this.LastName); }
+        }
+
         [Column(TypeName = "ntext")]
         public string PersonalInfo { get; set; }
 

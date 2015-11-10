@@ -18,10 +18,16 @@ namespace MovieHunter.Api.Models
                     Title = movie.Title,
                     ReleaseDate = movie.ReleaseDate,
                     Rating  = movie.Rating,
-                    Genres = movie.Genres.Select((g=>g.Name))
+                    Image = movie.ImageUrl,
+                    Actors = movie.Actors.Select(a => a.FullName),
+                    Genres = movie.Genres.Select((g=>g.Name)).ToList()
                 };
             }
         }
+
+        public IEnumerable<string> Actors { get; set; }
+
+        public string Image { get; set; }
 
         public decimal Rating { get; set; }
 

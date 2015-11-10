@@ -33,13 +33,13 @@
 
         public string ImageUrl { get; set; }
 
-        public string TrailerUrl { get; set; }
-
         public virtual ICollection<Trailer> Trailers
         {
             get { return this.trailers; }
             set { this.trailers = value; }
         }
+
+        public Restrictions Restriction { get; set; }
 
         [Required]
         [MaxLength(1000)]
