@@ -1,6 +1,7 @@
 ﻿namespace MovieHunter.Data
 {
     using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
     using System.Data.Entity.ModelConfiguration.Conventions;
     using Models;
 
@@ -20,6 +21,18 @@
         public IDbSet<Movie> Movies { get; set; }
 
         public IDbSet<User> Users { get; set; }
+
+        public IDbSet<Trailer> Trailers { get; set; }
+
+        public IDbSet<Actor> Actors { get; set; }
+
+        public new DbContextConfiguration Configuration
+        {
+            get
+            {
+                return base.Configuration;
+            }
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
