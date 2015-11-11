@@ -8,5 +8,6 @@ namespace MovieHunter.Services.Contracts
     {
         IQueryable<Genre> GetAllGenres();
         Genre GetGenreById(int id);
+        Genre GetGenreByName(string name);
     }
 }

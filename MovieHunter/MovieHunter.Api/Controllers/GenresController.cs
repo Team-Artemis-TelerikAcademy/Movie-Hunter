@@ -42,6 +42,22 @@ namespace MovieHunter.Api.Controllers
                 Movies = genre.Movies.AsQueryable().Select(MovieViewModel.FromMovie)
             };
             return this.Ok(viewModel);
+            // return this.Ok(GenreViewModel.FromGenre.Compile().Invoke(this.service.GetGenreById(id)));
+        }
+
+        [Route("api/genres/{name}")]
+        public IHttpActionResult GetByName(string name)
+        {
+            var genre = this.service.GetGenreByName(name);
+
+            var viewModel = new
+            {
+                Id = genre.Id,
+                Name = genre.Name,
+                Movies = genre.Movies.AsQueryable().Select(MovieViewModel.FromMovie)
+            };
+
+            return this.Ok(viewModel);
         }
     }
 }

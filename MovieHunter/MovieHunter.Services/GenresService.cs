@@ -23,5 +23,10 @@ namespace MovieHunter.Services
         {
             return this.genres.Find(id);
         }
+
+        public Genre GetGenreByName(string name)
+        {
+            return this.genres.All().FirstOrDefault(g => g.Name.ToLower() == name.ToLower());
+        }
     }
 }
