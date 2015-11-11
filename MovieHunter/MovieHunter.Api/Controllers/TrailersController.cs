@@ -14,7 +14,7 @@ using System.Web.Http.Cors;
 
 namespace MovieHunter.Api.Controllers
 {
-    [EnableCors(origins: "http://localhost:8889", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:63342", headers: "*", methods: "*")]
     public class TrailersController : ApiController
     {
         private ITrailersService service;

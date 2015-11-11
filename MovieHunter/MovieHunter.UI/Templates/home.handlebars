@@ -1,5 +1,7 @@
 ﻿<div class="trailers-container" >
-    {{#each trailer}}
-       <a href="this.url"></a>
+    {{#each this}}
+       <div>
+           <a href="{{this.Url}}">{{this.Movie}}</a>
+        </div>
     {{/each}}
 </div>
