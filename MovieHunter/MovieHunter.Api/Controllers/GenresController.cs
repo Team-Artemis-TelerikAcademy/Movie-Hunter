@@ -45,7 +45,6 @@ namespace MovieHunter.Api.Controllers
             // return this.Ok(GenreViewModel.FromGenre.Compile().Invoke(this.service.GetGenreById(id)));
         }
 
-        [Route("api/genres/{name}")]
         public IHttpActionResult GetByName(string name)
         {
             var genre = this.service.GetGenreByName(name);

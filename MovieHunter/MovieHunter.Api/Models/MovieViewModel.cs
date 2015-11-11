@@ -19,7 +19,7 @@ namespace MovieHunter.Api.Models
                     ReleaseDate = movie.ReleaseDate,
                     Rating  = movie.Rating,
                     Image = movie.ImageUrl,
-                    Actors = movie.Actors.Select(a => a.FullName),
+                    Actors = movie.Actors.Select(a => a.FullName).ToList(),
                     Genres = movie.Genres.Select((g=>g.Name)).ToList()
                 };
             }

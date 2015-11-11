@@ -77,6 +77,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActorsService.cs" />
+    <Compile Include="Contracts\IActorsService.cs" />
     <Compile Include="Contracts\IGenresService.cs" />
     <Compile Include="Contracts\IMoviesService.cs" />
     <Compile Include="Contracts\IRepository.cs" />
