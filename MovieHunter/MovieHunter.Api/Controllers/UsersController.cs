@@ -38,7 +38,20 @@
                 return this.Created(this.Url.ToString(), username);
             }
 
-            return this.BadRequest("password do not match");
+            return this.BadRequest("passwords do not match");
+        }
+
+        [HttpGet]
+        public IHttpActionResult Login(string username, string password = "")
+        {
+            var all = this.users.All().ToList();
+            if (this.users.All().Any(x => x.Username == username))
+            {
+                
+                return this.Ok("ok");
+            }
+
+            return this.BadRequest(";(");
         }
     }
 }

@@ -8,19 +8,19 @@
 
     public class DataRequester
     {
-        public string Get(string url, ICollection<string> headers = null)
-        {
-            if(headers == null)
-            {
+        //public string Get(string url, ICollection<string> headers = null)
+        //{
+        //    if(headers == null)
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
         public string Request(string url, ICollection<string> headers = null)
         {
             var request = WebRequest.CreateHttp(url);
 
-            if(headers != null && headers.Count > 0)
+            if (headers != null && headers.Count > 0)
             {
                 headers.ForEach(h => request.Headers.Add(h));
             }

@@ -26,6 +26,11 @@ namespace ChatTest
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            if(!this.Login(this.Username.Text, ""))
+            {
+                return;
+            }
+
             var view = new MessengerWindow(this.Username.Text);
 
             view.Show();
@@ -35,8 +40,12 @@ namespace ChatTest
 
         private bool Login(string username, string password)
         {
-            // TODO: implement
-            throw new NotImplementedException();
+            var h = new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("method", "get") };
+            var requester = new DataRequester();
+            
+            var response = requester.Request("http://localhost:52189/api/Users?username=" + username);
+
+            return response == "\"ok\"";
         }
     }
 }

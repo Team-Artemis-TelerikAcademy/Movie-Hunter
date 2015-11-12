@@ -17,7 +17,7 @@ namespace ChatTest
         {
             var login = new LoginWindow();
 
-            login.ShowDialog();
+            login.Show();
 
             
 
