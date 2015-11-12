@@ -1,0 +1,5 @@
+version: 1.0.{build}
+before_build:
+- nuget restore MovieHunter\MovieHunter.sln
+build:
+  verbosity: minimal
