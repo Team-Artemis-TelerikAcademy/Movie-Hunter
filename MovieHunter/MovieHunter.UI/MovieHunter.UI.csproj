@@ -460,6 +460,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <None Include="Templates\home.handlebars" />
+    <Content Include="Templates\movies.handlebars" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
