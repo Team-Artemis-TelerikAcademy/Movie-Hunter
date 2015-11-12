@@ -9,9 +9,11 @@ using MovieHunter.Data;
 using MovieHunter.Models;
 using MovieHunter.Services;
 using MovieHunter.Services.Contracts;
+using System.Web.Http.Cors;
 
 namespace MovieHunter.Api.Controllers
 {
+    [EnableCors(origins: "http://localhost:63342", headers: "*", methods: "*")]
     public class MoviesController : ApiController
     {
         private IMoviesService service;
