@@ -402,6 +402,7 @@
     <Content Include="bower_components\sammy\Rakefile" />
     <Content Include="bower_components\sammy\README.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Chat.js" />
     <Content Include="Scripts\handlebars.amd.js" />
     <Content Include="Scripts\handlebars.amd.min.js" />
     <Content Include="Scripts\handlebars.js" />
@@ -458,7 +459,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Templates\home.handlebars" />
+    <None Include="Templates\home.handlebars" />
+    <Content Include="Templates\movies.handlebars" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
