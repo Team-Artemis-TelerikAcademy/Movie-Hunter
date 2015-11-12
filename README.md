@@ -1,6 +1,8 @@
 # Movie-Hunter
 + Movie gallery application, (which will be) built using ASP.NET Web API and client-side javascript.
 
+[![Build status](https://ci.appveyor.com/api/projects/status/t7di070vb4tl8ohk?svg=true)](https://ci.appveyor.com/project/KonstantinSimeonov/movie-hunter)
+
 ## Task-list (feel free to assign yourself to a task/tasks of your choice or add other tasks):
  + **database modeling** with EF(code first/db first)
  + **server-side code** (routing, web services, etc)
