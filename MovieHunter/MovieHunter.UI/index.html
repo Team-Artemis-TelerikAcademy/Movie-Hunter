@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>Movie Hunter</title>
     <!--<link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">-->  
-    <link rel="stylesheet" href="Content/bootstrap.css">   
-   </head>
+    <link rel="stylesheet" href="Content/bootstrap.css">
+    <link rel="stylesheet" href="Content/custom-styles.css">
+</head>
 <body>
 
 <nav class="navbar navbar-default">
@@ -20,9 +21,9 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#Movies">Movies</a></li>
-                <li><a href="#Add Movie">Add Movie</a></li>
+                <li class="active"><a href="#/home">Home</a></li>
+                <li><a href="#/movies">Movies</a></li>
+                <li><a href="#/addmovie">Add Movie</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -36,9 +37,10 @@
     <script src="lib/handlebars.js"></script>
 
     <!--Controllers-->
-    <script src="Controllers/HomeController.js"></script> 
+    <script src="Controllers/HomeController.js"></script>
+    <script src="Controllers/MovieController.js"></script>
 
-    <!--Setup-->
+<!--Setup-->
     <script src="App/jsonRequester.js"></script>
     <script src="App/templates.js"></script>
     <script src="App.js"></script>    
