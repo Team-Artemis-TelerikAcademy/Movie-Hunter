@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using MovieHunter.Api.Models;
 using MovieHunter.Data;
 using MovieHunter.Models;
@@ -13,6 +14,7 @@ using MovieHunter.Services.Contracts;
 
 namespace MovieHunter.Api.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ActorsController : ApiController
     {
         private IActorsService service;
