@@ -40,12 +40,12 @@
                                 <li class ="home" class="active"><a href="#/home">Home</a></li>
                                 <li class="movies-menu"><p>Movies</p>
                                     <ul >
-                                        <li id="test" class="movie-children"><a href="#/movies">All</a></li>
+                                        <li class="movie-children"><a href="#/movies">All</a></li>
                                         <li class="movie-children"><a href="#/movies/released">Released</a></li>
                                         <li class="movie-children"><a href="#/movies/coming-soon">Coming-soon</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#/addmovie">Add Movie</a></li>
+                                <li><a href="#/genres">Genres</a></li>
                             </ul>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                     <ul id="downMenu">
                         <li class="active"><a href="#/home">Home</a></li>
                         <li><a href="#/movies">Movies</a></li>
-                        <li><a href="#/addmovie">Add Movie</a></li>
+                        <li><a href="#/genres">genres</a></li>
                     </ul>
                 </div>
             </div>
@@ -127,29 +127,11 @@
 <!--Controllers-->
 <script src="Controllers/HomeController.js"></script>
 <script src="Controllers/MovieController.js"></script>
+<script src="Controllers/GenreController.js"></script>
+<script src="Controllers/menuController.js"></script>
 
 <!--Setup-->
-<script>
 
-        $('#menu .movies-menu p').on('click', function () {
-            var $target = $(event.target);
-            $target.parent().siblings().removeClass('active');
-            $target.parent().addClass('active');
-            $('#menu .movies-menu ul').css('display', 'block');
-            $('#menu .movies-menu ul .movie-children').css('display', 'block');
-            $('#menu .movies-menu ul .movie-children').css('padding', '0');
-            $('#menu .movies-menu ul .movie-children a').css('margin', '0');
-            $('#menu .movies-menu ul .movie-children a').css('padding', '0');
-        });
-
-        $('#menu .home a').on('click', function () {
-            var $target = $(event.target);
-            $target.parent().siblings().removeClass('active');
-            $target.parent().addClass('active');
-            $('#menu .movies-menu ul .movie-children').css('display', 'none')
-        });
-
-</script>
 <script src="App/jsonRequester.js"></script>
 <script src="App/templates.js"></script>
 <script src="App.js"></script>
