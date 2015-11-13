@@ -17,7 +17,7 @@ namespace MovieHunter.Api
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
-            Factory.Get<IMovieDbContext>();
+            ModuleFactory.Get<IMovieDbContext>();
         }
     }
 }

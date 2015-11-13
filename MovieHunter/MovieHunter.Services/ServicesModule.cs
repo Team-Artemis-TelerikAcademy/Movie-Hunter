@@ -1,12 +1,9 @@
 ﻿namespace MovieHunter.Services
 {
-    using System;
-    using MovieHunter.Common.Contracts;
+    using Common.Contracts;
     using Contracts;
     using Models;
     using Ninject;
-    using MovieHunter.Data;
-    using System.Data.Entity;
 
     public class ServicesModule : IModule
     {
@@ -18,6 +15,8 @@
             kernel.Bind<IGenresService>().ToMethod(c => new GenresService(kernel.Get<IRepository<Genre>>()));
             kernel.Bind<IMoviesService>().ToMethod(c => new MoviesService(kernel.Get<IRepository<Movie>>()));
             kernel.Bind<ITrailersService>().ToMethod(c => new TrailersService(kernel.Get<IRepository<Trailer>>()));
+
+            // TODO: implement binding using reflection
         }
     }
 }

@@ -65,7 +65,7 @@ namespace MovieHunter.Api.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-
+            // custom bindings here
             var appModules = new List<IModule>()
             {
                 new DataModule(),
@@ -77,7 +77,8 @@ namespace MovieHunter.Api.App_Start
                 module.RegisterBindings(kernel);
             }
 
-            Factory.Initialize(kernel);
+            // initialize object factory with the kernel
+            ModuleFactory.Initialize(kernel);
         }        
     }
 }

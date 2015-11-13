@@ -1,14 +1,9 @@
 ﻿namespace MovieHunter.DependancyProvider
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using MovieHunter.Common.Contracts;
     using Ninject;
 
-    public static class Factory // : IDependencyProvider
+    public static class ModuleFactory
     {
         private static IKernel appKernel;
 
