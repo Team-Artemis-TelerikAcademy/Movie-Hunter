@@ -98,7 +98,7 @@ border: none;
 	outline: none;
 border: none;
 }
-#menu li{
+#menu>li{
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
 	border-right:1px solid #000;
