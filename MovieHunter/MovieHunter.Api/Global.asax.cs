@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
+using MovieHunter.Data;
+using MovieHunter.DependancyProvider;
+
+using Ninject.Web;
 
 namespace MovieHunter.Api
 {
@@ -12,6 +16,8 @@ namespace MovieHunter.Api
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+
+            ModuleFactory.Get<IMovieDbContext>();
         }
     }
 }

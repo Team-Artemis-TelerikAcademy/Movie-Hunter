@@ -50,6 +50,14 @@
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -87,9 +95,18 @@
     <Compile Include="GenresService.cs" />
     <Compile Include="MoviesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicesModule.cs" />
     <Compile Include="TrailersService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MovieHunter.Common\MovieHunter.Common.csproj">
+      <Project>{87bf3dbd-5bc2-436a-aead-02a1d5c389e9}</Project>
+      <Name>MovieHunter.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MovieHunter.Data\MovieHunter.Data.csproj">
+      <Project>{02eaee4a-bfbe-4e8b-a352-2567128a9cec}</Project>
+      <Name>MovieHunter.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MovieHunter.Models\MovieHunter.Models.csproj">
       <Project>{DA702F70-50E5-4A8C-8A8D-8EC1ECF54706}</Project>
       <Name>MovieHunter.Models</Name>

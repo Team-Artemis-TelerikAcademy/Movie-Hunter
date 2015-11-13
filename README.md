@@ -9,10 +9,11 @@
  + **client-side**, **graphical interface** (js/html/css or wpf/c#)
  + **unit testing**
  + **chatting with** [PubNub](https://www.pubnub.com/developers/tutorials/publish-subscribe/)
- + **CI** with (AppVeyor)[http://www.appveyor.com/] or something else
+ + ~~**CI** with (AppVeyor)[http://www.appveyor.com] or something else~~
  + **documentation** (who am i kidding :D)
  + occasionally run **stylecop** and fix warnings
- + **repository** pattern
+ + ~~**repository** pattern~~
+ + ~~**ninject** integration~~
 
 ## Planned functionality(client-side):
  + **chatting**
