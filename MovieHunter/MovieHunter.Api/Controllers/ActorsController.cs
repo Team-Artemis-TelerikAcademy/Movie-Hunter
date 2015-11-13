@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Security.Cryptography.X509Certificates;
+﻿using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using MovieHunter.Api.Models;
-using MovieHunter.Data;
-using MovieHunter.Models;
-using MovieHunter.Services;
 using MovieHunter.Services.Contracts;
 
 namespace MovieHunter.Api.Controllers
@@ -20,10 +12,15 @@ namespace MovieHunter.Api.Controllers
         private IActorsService service;
         private int PageSize = 10;
 
-        public ActorsController()
+        //public ActorsController()
+        //{
+        //    var db = new MovieDbContext();
+        //    this.service = new ActorsService(new EfRepository<Actor>(db));
+        //}
+
+        public ActorsController(IActorsService actorsService)
         {
-            var db = new MovieDbContext();
-            this.service = new ActorsService(new EfRepository<Actor>(db));
+            this.service = actorsService;
         }
 
         public IHttpActionResult GetAll()

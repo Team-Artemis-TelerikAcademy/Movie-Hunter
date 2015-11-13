@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using MovieHunter.Models;
 using MovieHunter.Services.Contracts;
 
@@ -7,9 +6,9 @@ namespace MovieHunter.Services
 {
     public class GenresService :IGenresService
     {
-        private EfRepository<Genre> genres;
+        private IRepository<Genre> genres;
 
-        public GenresService(EfRepository<Genre> genresRepo)
+        public GenresService(IRepository<Genre> genresRepo)
         {
             this.genres = genresRepo;
         }

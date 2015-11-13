@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieHunter.Importer", "Mov
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieHunter.UI", "MovieHunter.UI\MovieHunter.UI.csproj", "{D643B2D2-A476-402F-97F1-D1971485EE03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieHunter.DependancyProvider", "MovieHunter.DependancyProvider\MovieHunter.DependancyProvider.csproj", "{55C9F600-53AB-4EF1-AE70-199D5F81AC8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieHunter.Common", "MovieHunter.Common\MovieHunter.Common.csproj", "{87BF3DBD-5BC2-436A-AEAD-02A1D5C389E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{D643B2D2-A476-402F-97F1-D1971485EE03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D643B2D2-A476-402F-97F1-D1971485EE03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D643B2D2-A476-402F-97F1-D1971485EE03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55C9F600-53AB-4EF1-AE70-199D5F81AC8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55C9F600-53AB-4EF1-AE70-199D5F81AC8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55C9F600-53AB-4EF1-AE70-199D5F81AC8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55C9F600-53AB-4EF1-AE70-199D5F81AC8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87BF3DBD-5BC2-436A-AEAD-02A1D5C389E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87BF3DBD-5BC2-436A-AEAD-02A1D5C389E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87BF3DBD-5BC2-436A-AEAD-02A1D5C389E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87BF3DBD-5BC2-436A-AEAD-02A1D5C389E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,9 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using MovieHunter.Api.Models;
+using MovieHunter.Common.Contracts;
 using MovieHunter.Data;
+using MovieHunter.DependancyProvider;
 using MovieHunter.Models;
 using MovieHunter.Services;
 using MovieHunter.Services.Contracts;
@@ -18,10 +20,15 @@ namespace MovieHunter.Api.Controllers
     {
         private IGenresService service;
 
-        public GenresController()
+        //public GenresController()
+        //{
+        //    // var dbContext = new MovieDbContext();
+        //    this.service = Factory.Get<IGenresService>();// new GenresService(new EfRepository<Genre>(dbContext));
+        //}
+
+        public GenresController(IGenresService genresService)
         {
-            var dbContext = new MovieDbContext();
-            this.service = new GenresService(new EfRepository<Genre>(dbContext));
+            this.service = genresService;
         }
 
         public IHttpActionResult GetAll()
