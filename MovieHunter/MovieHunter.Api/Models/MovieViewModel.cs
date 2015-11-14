@@ -17,10 +17,10 @@ namespace MovieHunter.Api.Models
                 {
                     Title = movie.Title,
                     ReleaseDate = movie.ReleaseDate,
-                    Rating  = movie.Rating,
+                    Rating = movie.Rating,
                     Image = movie.ImageUrl,
                     Actors = movie.Actors.Select(a => a.FullName).ToList(),
-                    Genres = movie.Genres.Select((g=>g.Name)).ToList()
+                    Genres = movie.Genres.Select((g => g.Name)).ToList()
                 };
             }
         }
