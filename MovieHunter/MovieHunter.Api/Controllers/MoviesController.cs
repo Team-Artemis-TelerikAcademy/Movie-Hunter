@@ -19,22 +19,18 @@ namespace MovieHunter.Api.Controllers
         private const int PageSize = 10;
         private IMoviesService service;
 
-        //public MoviesController()
-        //{
-        //    var dbContext = new MovieDbContext();
-        //    this.service = new MoviesService(new EfRepository<Movie>(dbContext));
-        //}
+        public MoviesController()
+        {
+            var dbContext = new MovieDbContext();
+            this.service = new MoviesService(new EfRepository<Movie>(dbContext));
+        }
 
         public MoviesController(IMoviesService moviesService)
         {
             this.service = moviesService;
         }
 
-        public MoviesController(IMoviesService service)
-        {
-            this.service = service;
-        }
-
+        
         public IHttpActionResult GetAll()
         {
             return this.GetAll(1);

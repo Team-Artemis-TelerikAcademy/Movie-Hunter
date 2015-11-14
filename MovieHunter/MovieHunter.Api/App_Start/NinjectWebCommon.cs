@@ -7,7 +7,7 @@ namespace MovieHunter.Api.App_Start
     using System.Web;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-    using DependancyProvider;
+    //using DependancyProvider;
     using Ninject;
     using Ninject.Web.Common;
     using Data;
@@ -78,7 +78,7 @@ namespace MovieHunter.Api.App_Start
             }
 
             // initialize object factory with the kernel
-            ModuleFactory.Initialize(kernel);
+            //ModuleFactory.Initialize(kernel);
         }        
     }
 }

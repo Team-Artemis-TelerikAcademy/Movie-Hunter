@@ -112,14 +112,6 @@
       <Project>{da702f70-50e5-4a8c-8a8d-8ec1ecf54706}</Project>
       <Name>MovieHunter.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MovieHunter.Services\MovieHunter.Services.csproj">
-      <Project>{cacdb967-8401-4458-b94e-79e728915f93}</Project>
-      <Name>MovieHunter.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MovieHunter.UI\MovieHunter.UI.csproj">
-      <Project>{d643b2d2-a476-402f-97f1-d1971485ee03}</Project>
-      <Name>MovieHunter.UI</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

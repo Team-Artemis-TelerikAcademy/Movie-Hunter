@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using MovieHunter.Api.Models;
 using MovieHunter.Data;
 using MovieHunter.Models;
@@ -11,13 +10,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-=======
-﻿using System.Linq;
-using System.Web.Http;
-using System.Web.Http.Cors;
-using MovieHunter.Api.Models;
-using MovieHunter.Services.Contracts;
->>>>>>> 78f6d2e53bd2111795470e7915644f7cdbb7c1b9
 
 namespace MovieHunter.Api.Controllers
 {
@@ -27,21 +19,18 @@ namespace MovieHunter.Api.Controllers
         private const int PageSize = 10;
         private IActorsService service;
 
-        //public ActorsController()
-        //{
-        //    var db = new MovieDbContext();
-        //    this.service = new ActorsService(new EfRepository<Actor>(db));
-        //}
+        public ActorsController()
+        {
+            var db = new MovieDbContext();
+            this.service = new ActorsService(new EfRepository<Actor>(db));
+        }
 
         public ActorsController(IActorsService actorsService)
         {
             this.service = actorsService;
         }
 
-        public ActorsController(IActorsService service)
-        {
-            this.service = service;
-        }
+        
         public IHttpActionResult GetAll()
         {
             return this.GetAll(1);

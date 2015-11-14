@@ -116,7 +116,7 @@
       <Name>MovieHunter.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\MovieHunter.Models\MovieHunter.Models.csproj">
-      <Project>{DA702F70-50E5-4A8C-8A8D-8EC1ECF54706}</Project>
+      <Project>{da702f70-50e5-4a8c-8a8d-8ec1ecf54706}</Project>
       <Name>MovieHunter.Models</Name>
     </ProjectReference>
   </ItemGroup>
