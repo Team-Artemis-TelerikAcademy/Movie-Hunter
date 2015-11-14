@@ -30,6 +30,7 @@ namespace MovieHunter.Api.Controllers
             this.service = service;
         }
 
+        [HttpGet]
         public IHttpActionResult GetAll()
         {
             return this.GetAll(1);

@@ -105,6 +105,14 @@
     <None Include="SampleData\trailers.json" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MovieHunter.Data\MovieHunter.Data.csproj">
+      <Project>{02eaee4a-bfbe-4e8b-a352-2567128a9cec}</Project>
+      <Name>MovieHunter.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MovieHunter.Models\MovieHunter.Models.csproj">
+      <Project>{da702f70-50e5-4a8c-8a8d-8ec1ecf54706}</Project>
+      <Name>MovieHunter.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MovieHunter.Services\MovieHunter.Services.csproj">
       <Project>{cacdb967-8401-4458-b94e-79e728915f93}</Project>
       <Name>MovieHunter.Services</Name>

@@ -472,8 +472,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <None Include="Templates\home.handlebars" />
-    <Content Include="Templates\movies.handlebars" />
+    <Content Include="Templates\home.html" />
+    <Content Include="Templates\movies.html" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
