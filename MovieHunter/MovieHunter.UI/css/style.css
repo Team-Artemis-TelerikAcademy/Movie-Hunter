@@ -78,7 +78,7 @@ color:#1fcdff;
 display: none;
 }
 
-#menu .active a {
+#menu .active .top-menu {
 border:0;
 color:#1fcdff;
 }
@@ -121,11 +121,16 @@ border: none;
 	margin-top: 74px;
 	float: right;
 }
-#menu li a{
+#menu>li>a{
 	color:#fff;
 	text-decoration:none;
 }
-#menu li a:hover{
+#menu>li>a:hover{
+	border:none;
+	outline:none;
+	color:#1fcdff;
+}
+#menu>li>p:hover{
 	border:none;
 	outline:none;
 	color:#1fcdff;
