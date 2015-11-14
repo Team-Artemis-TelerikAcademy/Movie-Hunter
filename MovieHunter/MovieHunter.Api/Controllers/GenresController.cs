@@ -10,6 +10,16 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+<<<<<<< HEAD
+=======
+using MovieHunter.Api.Models;
+using MovieHunter.Common.Contracts;
+using MovieHunter.Data;
+using MovieHunter.DependancyProvider;
+using MovieHunter.Models;
+using MovieHunter.Services;
+using MovieHunter.Services.Contracts;
+>>>>>>> 78f6d2e53bd2111795470e7915644f7cdbb7c1b9
 
 namespace MovieHunter.Api.Controllers
 {
@@ -19,10 +29,15 @@ namespace MovieHunter.Api.Controllers
         private const int PageSize = 10;
         private IGenresService service;
 
-        public GenresController()
+        //public GenresController()
+        //{
+        //    // var dbContext = new MovieDbContext();
+        //    this.service = Factory.Get<IGenresService>();// new GenresService(new EfRepository<Genre>(dbContext));
+        //}
+
+        public GenresController(IGenresService genresService)
         {
-            var dbContext = new MovieDbContext();
-            this.service = new GenresService(new EfRepository<Genre>(dbContext));
+            this.service = genresService;
         }
 
         public GenresController(IGenresService service)

@@ -19,10 +19,14 @@ namespace MovieHunter.Api.Controllers
         private const int PageSize = 10;
         private ITrailersService service;
 
+<<<<<<< HEAD
         public TrailersController()
+=======
+        public TrailersController(ITrailersService service)
+>>>>>>> 78f6d2e53bd2111795470e7915644f7cdbb7c1b9
         {
-            var dbContext = new MovieDbContext();
-            this.service = new TrailersService(new EfRepository<Trailer>(dbContext));
+            // var dbContext = new MovieDbContext();
+            this.service = service;// new TrailersService(new EfRepository<Trailer>(dbContext));
         }
 
         public TrailersController(ITrailersService service)

@@ -11,6 +11,7 @@
                 url: url,
                 method: method,
                 contentType: 'application/json',
+                "Access-Control-Allow-Origin": '*',
                 headers: headers,
                 data: JSON.stringify(data),
                 success: function (res) {
