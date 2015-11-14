@@ -16,5 +16,12 @@
         $target.parent().addClass('active');
         $('#menu .movies-menu ul .movie-children').css('display', 'none')
     });
+
+    $('#menu .genres a').on('click', function () {
+        var $target = $(event.target);
+        $target.parent().siblings().removeClass('active');
+        $target.parent().addClass('active');
+        $('#menu .movies-menu ul .movie-children').css('display', 'none')
+    });
 }())
 
