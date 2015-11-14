@@ -1,0 +1,26 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 project">
+            <h3 id="counter">0</h3>
+            <h4>Happy Users</h4>
+        </div>
+        <div class="col-md-4 project">
+            <h3 id="counter1">0</h3>
+            <h4>Awesome Movies</h4>
+        </div>
+        <div class="col-md-4 project">
+            <h3 id="counter2" style="margin-left: 20px;">0</h3>
+            <h4 style="margin-left: 20px;">Different Categories</h4>
+        </div>
+    </div>
+</div>
+
+<div class="genres-container" >
+    {{#each this}}
+        <div>
+            <a href="api/genres={{this}}">{{this}}</a>
+        </div>
+    {{/each}}
+</div>
+<h1>HOME</h1>

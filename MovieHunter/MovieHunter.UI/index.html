@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
 
     <!-- Used for response menu -->
-    <link rel="stylesheet" type="text/css" href="css/slicknav.css">
+    <link rel="stylesheet" type="text/css" href="css/custom-styles.css">
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -22,7 +22,6 @@
 
 </head>
 <body>
-
 <div id="home">
     <div class="headerLine">
         <div id="menuF" class="default">
@@ -38,9 +37,15 @@
                     <div class="col-md-8">
                         <div class="navmenu"style="text-align: center;">
                             <ul id="menu">
-                                <li class="active"><a href="#/home">Home</a></li>
-                                <li><a href="#/movies">Movies</a></li>
-                                <li><a href="#/addmovie">Add Movie</a></li>
+                                <li class ="home" class="active"><a href="#/home" class="top-menu">Home</a></li>
+                                <li class="movies-menu"><p class="top-menu">Movies</p>
+                                    <ul >
+                                        <li class="movie-children"><a href="#/movies">All</a></li>
+                                        <li class="movie-children"><a href="#/movies/released">Released</a></li>
+                                        <li class="movie-children"><a href="#/movies/coming-soon">Coming-soon</a></li>
+                                    </ul>
+                                </li>
+                                <li class ="genres"><a href="#/genres" class="top-menu">Genres</a></li>
                             </ul>
                         </div>
                     </div>
@@ -86,7 +91,7 @@
                     <ul id="downMenu">
                         <li class="active"><a href="#/home">Home</a></li>
                         <li><a href="#/movies">Movies</a></li>
-                        <li><a href="#/addmovie">Add Movie</a></li>
+                        <li><a href="#/genres">genres</a></li>
                     </ul>
                 </div>
             </div>
@@ -122,8 +127,11 @@
 <!--Controllers-->
 <script src="Controllers/HomeController.js"></script>
 <script src="Controllers/MovieController.js"></script>
+<script src="Controllers/GenreController.js"></script>
+<script src="Controllers/menuController.js"></script>
 
 <!--Setup-->
+
 <script src="App/jsonRequester.js"></script>
 <script src="App/templates.js"></script>
 <script src="App.js"></script>

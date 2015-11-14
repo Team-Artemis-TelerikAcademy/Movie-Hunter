@@ -1,29 +1,30 @@
 ﻿namespace MovieHunter.Models
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
 
-    public class User
+    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
+    public class User : IdentityUser
     {
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
+            // Add custom user claims here
+            return userIdentity;
+        }
+    
         private ICollection<UserMovies> userMovies;
 
         public User()
         {
             this.UserMovies = new HashSet<UserMovies>();
         }
-
-        // TODO: Web API ClaimsIdentity for authentication
-
-        public int Id { get; set; }
-
-        [Required]
-        [Index(IsUnique = true)]
-        [MaxLength(50)]
-        [MinLength(4)]
-        public string Username { get; set; }
-
-        public bool IsAdmin { get; set; }
 
         public virtual ICollection<UserMovies> UserMovies { get; set; }
     }
