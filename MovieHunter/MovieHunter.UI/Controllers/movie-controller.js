@@ -12,13 +12,14 @@ var movieController = function(){
     }
 
     function getById(context){
-        console.log(context);
+        console.log(this.params.id);
+        var id = this.params.id.substr(1);
         var movie;
-        jsonRequester.get('http://localhost:52189/api/Movies'+this.params.id)
+        jsonRequester.get('http://localhost:52189/api/Movies/' + id)
              .then(function(res) {
                 console.log(res);
                 movie = res;
-                 return templates.get('moviesById');
+                 return templates.get('movieById');
             }).then(function(template){
                 console.log(movie);
                 context.$element().html(template(movie));
@@ -50,8 +51,22 @@ var movieController = function(){
             });
     }
 
+    function getMoviesByGenre(context){
+        var movies;
+        console.log(this.params);
+        jsonRequester.get('http://localhost:52189/api/Movies/'+this.params.genre)
+            .then(function (resp) {
+                movies = resp;
+                console.log(movies)
+                return templates.get('movies')
+            }).then(function(template){
+                context.$element().html(template(movies));
+            });
+    }
+
     return {
         all: all,
+        getMoviesByGenre:getMoviesByGenre,
         getById: getById,
         released: released,
         comingSoon: comingSoon

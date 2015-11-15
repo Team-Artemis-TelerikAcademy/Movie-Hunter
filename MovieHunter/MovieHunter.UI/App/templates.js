@@ -9,7 +9,7 @@
                 resolve(cache[name]);
                 return;
             }
-            var url = `Templates/${name}.handlebars`;
+            var url = `Templates/${name}.html`;
             $.get(url, function (html) {
                 var template = handlebars.compile(html);
                 cache[name] = template;

@@ -19,11 +19,11 @@ namespace MovieHunter.Api.Controllers
         private const int PageSize = 10;
         private IActorsService service;
 
-        public ActorsController()
-        {
-            var db = new MovieDbContext();
-            this.service = new ActorsService(new EfRepository<Actor>(db));
-        }
+        //public ActorsController()
+        //{
+        //    var db = new MovieDbContext();
+        //    this.service = new ActorsService(new EfRepository<Actor>(db));
+        //}
 
         public ActorsController(IActorsService actorsService)
         {

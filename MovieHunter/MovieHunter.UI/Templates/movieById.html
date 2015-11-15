@@ -1,0 +1,20 @@
+<div class="movie-container">
+    <div class="caption">
+        <h3>{{this.Title}}</h3>
+        Duration: {{this.Duration}} min
+        {{#each this.Genres}}
+        |&nbsp<a href="#/movies?genre:{{this}}">{{this}}</a>&nbsp
+        {{/each}}
+        <p>Release date:&nbsp{{ReleaseDate}}</p>
+    </div>
+<img src="{{this.Image}}" class="img-responsive movie-picture" />
+
+    <p class="description-outline">{{this.Description}}</p>
+    Stars:{{#each this.Actors}}
+    <a href="#/actors?name={{this}}">{{this}}</a>&nbsp
+    {{/each}}
+
+    {{#each this.Trailers}}
+    <p><a href="{{this}}" class="btn btn-primary">Watch Trailer</a>
+    {{/each}}
+</div>
