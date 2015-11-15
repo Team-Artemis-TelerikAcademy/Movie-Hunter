@@ -10,11 +10,11 @@
     this.get('#/movies:id', movieController.getById);
     this.get('#/movies/released', movieController.released);
     this.get('#/movies/coming-soon', movieController.comingSoon);
-    this.get('#/movies?genre=genre', movieController.getMoviesByGenre);
+    this.get('#/movies/genre/:genre', movieController.getMoviesByGenre);
 
     this.get('#/genres', genreController.all);
 
-    this.get('#/actors?name=name', actorsController.getActorByName);
+    this.get('#/actors/name/:name', actorsController.getActorByName);
 });
 
 app.run('#/');
