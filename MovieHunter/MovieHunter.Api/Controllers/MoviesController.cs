@@ -71,6 +71,7 @@ namespace MovieHunter.Api.Controllers
             return this.GetAllReleasedMovies(1);
         }
 
+        [Route("api/movies/released")]
         public IHttpActionResult GetAllReleasedMovies(int page)
         {
             return this.Ok(this.service.GetAllMovies()
@@ -87,6 +88,7 @@ namespace MovieHunter.Api.Controllers
             return this.GetAllCommingSoonMovies(1);
         }
 
+        [Route("api/movies/comming-soon")]
         public IHttpActionResult GetAllCommingSoonMovies(int page)
         {
             return this.Ok(this.service.GetAllMovies()
