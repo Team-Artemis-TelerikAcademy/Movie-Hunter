@@ -11,7 +11,7 @@
 
     <p class="description-outline">{{this.Description}}</p>
     Stars:{{#each this.Actors}}
-    {{this}}&nbsp
+    <a href="#/actors?name={{this}}">{{this}}</a>&nbsp
     {{/each}}
 
     {{#each this.Trailers}}
