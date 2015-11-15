@@ -1,8 +1,20 @@
-    <img src="{{this.Image}}" class="img-responsive" />
+<div class="movie-container">
     <div class="caption">
         <h3>{{this.Title}}</h3>
-        <p class="description">{{this.Description}}</p>
+        Duration: {{this.Duration}} min
+        {{#each this.Genres}}
+        |&nbsp<a href="#/movies?genre:{{this}}">{{this}}</a>&nbsp
+        {{/each}}
+        <p>Release date:&nbsp{{ReleaseDate}}</p>
     </div>
-    {{#each this.genres}}
-        <p>{{this.genres}}</p>
+<img src="{{this.Image}}" class="img-responsive movie-picture" />
+
+    <p class="description-outline">{{this.Description}}</p>
+    Stars:{{#each this.Actors}}
+    {{this}}&nbsp
     {{/each}}
+
+    {{#each this.Trailers}}
+    <p><a href="{{this}}" class="btn btn-primary">Watch Trailer</a>
+    {{/each}}
+</div>
