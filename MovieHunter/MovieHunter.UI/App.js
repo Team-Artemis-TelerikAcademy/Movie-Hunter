@@ -6,6 +6,8 @@
 
     this.get('#/home', homeController.all);
 
+    this.get('#/register', userController.register);
+
     this.get('#/movies', movieController.all);
     this.get('#/movies:id', movieController.getById);
     this.get('#/movies/released', movieController.released);

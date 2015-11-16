@@ -3,7 +3,7 @@
         <h3>{{this.Title}}</h3>
         Duration: {{this.Duration}} min
         {{#each this.Genres}}
-        |&nbsp<a href="#/movies?genre:{{this}}">{{this}}</a>&nbsp
+        |&nbsp<a href="#/movies/genre/:{{this}}">{{this}}</a>&nbsp
         {{/each}}
         <p>Release date:&nbsp{{ReleaseDate}}</p>
     </div>
