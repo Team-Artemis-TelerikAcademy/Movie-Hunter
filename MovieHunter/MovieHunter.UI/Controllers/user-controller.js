@@ -29,21 +29,27 @@ var userController = function() {
         templates.get('register').then(function(template){
                 context.$element().html(template());
             $('#btn-already-registered').on('click', function(){
-                context.redirect('#/users/login');
+                context.redirect('#/login');
             });
 
             $('#btn-register').on('click', function() {
+                var email =  $('#tb-register-email').val();
+                var password =  $('#tb-register-password-initial').val();
+                var confirmPassword = $('#tb-register-password-confirmed').val();
+                var username = $('#tb-register-username').val()
+
                 var userData = {
-                    Email: $('#tb-register-email').val(),
-                    Password: $('#tb-register-password-initial').val(),
-                    ConfirmPassword: $('#tb-register-password-confirmed').val(),
-                    Username: $('#tb-register-username').val()
-                };
+                    Email:email,
+                    Password: password,
+                    ConfirmPassword: confirmPassword,
+                    UserName: username };
+
+                var headers = { "Access-Control-Allow-Origin": '*'}
 
                 if (userData.Password ===  $('#tb-register-password-confirmed').val()){
-                    event.preventDefault();
+                   // event.preventDefault();
 
-                    jsonRequester.post('http://localhost:52189/api/Account/Register', userData)
+                    jsonRequester.post('http://localhost:52189/api/account/register', { data: userData })
                         .then(function(resp){
                             console.log("here " + resp)
                             context.redirect('#/');

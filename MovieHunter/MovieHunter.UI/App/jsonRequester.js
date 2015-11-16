@@ -4,16 +4,18 @@
         options = options || {};
 
         var headers = options.headers || {},
-          data = options.data || undefined;
-
+          data = options.data|| undefined;
+        data = JSON.stringify(data)
+        console.log("here " +data);
+        console.log("method "+method);
+        console.log("url " + url)
         var promise = new Promise(function (resolve, reject) {
             $.ajax({
                 url: url,
                 method: method,
                 contentType: 'application/json',
-                "Access-Control-Allow-Origin": '*',
                 headers: headers,
-                data: JSON.stringify(data),
+                data: data,
                 success: function (res) {
                     resolve(res);
                 },
