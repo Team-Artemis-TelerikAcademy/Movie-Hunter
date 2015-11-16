@@ -97,14 +97,18 @@
     <Compile Include="Contracts\IActorsService.cs" />
     <Compile Include="Contracts\IGenresService.cs" />
     <Compile Include="Contracts\IMoviesService.cs" />
+    <Compile Include="Contracts\IMyMoviesService.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\ITrailersService.cs" />
+    <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="EfRepository.cs" />
     <Compile Include="GenresService.cs" />
     <Compile Include="MoviesService.cs" />
+    <Compile Include="MyMoviesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicesModule.cs" />
     <Compile Include="TrailersService.cs" />
+    <Compile Include="UsersService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MovieHunter.Common\MovieHunter.Common.csproj">
