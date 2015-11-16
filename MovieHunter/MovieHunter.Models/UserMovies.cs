@@ -17,10 +17,11 @@ namespace MovieHunter.Models
         [Key, Column(Order = 2)]
         public string UserId { get; set; }
 
-
         public virtual Movie Movie { get; set; }
         public int? Rating { get; set; }
 
         public State State { get; set; }
+
+        public DateTime DateAdded { get; set; }
     }
 }

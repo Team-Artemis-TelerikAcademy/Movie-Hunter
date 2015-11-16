@@ -18,14 +18,12 @@ namespace MovieHunter.Api.Controllers
         private IMyMoviesService myMovieService;
         private IUsersService usersService;
         private const int PageSize = 10;
-        private IMoviesService moviesService;
 
         public MyMoviesController()
         {
             var dbContext = new MovieDbContext();
             this.myMovieService = new MyMoviesService(new EfRepository<UserMovies>(dbContext));
             this.usersService = new UsersService(new EfRepository<User>(dbContext));
-            this.moviesService = new MoviesService(new EfRepository<Movie>(dbContext));
         }
 
         public MyMoviesController(IMyMoviesService service)
@@ -44,45 +42,46 @@ namespace MovieHunter.Api.Controllers
         {
             var username = this.User.Identity.Name;
             var user = usersService.GetByName(username);
-            var movies = myMovieService.GetAllWachedMoviesByUser(user);
+            var movies = myMovieService.GetAllMoviesByUser(user);
             return this.Ok(movies.Skip((page-1)*PageSize).Take(PageSize).Select(UserMovieViewModel.FromUserMovie));
         }
 
         [Authorize]
         [Route("want-to-watch")]
-        public IHttpActionResult GetWantToWachMovies()
+        public IHttpActionResult GetWantToWatchMovies()
         {
-            return this.GetWantToWachMovies(1);
+            return this.GetWantToWatchMovies(1);
         }
 
         [Authorize]
         [Route("want-to-watch")]
-        public IHttpActionResult GetWantToWachMovies(int page)
+        public IHttpActionResult GetWantToWatchMovies(int page)
         {
             var username = this.User.Identity.Name;
             var user = usersService.GetByName(username);
-            var movies = myMovieService.GetAllWachedMoviesByUser(user);
+            var movies = myMovieService.GetAllWantToWatchMoviesByUser(user);
             return this.Ok(movies.Skip((page-1)*PageSize).Take(PageSize).Select(UserMovieViewModel.FromUserMovie));
         }
 
         [Authorize]
         [Route("watched")]
-        public IHttpActionResult GetWachedMovies()
+        public IHttpActionResult GetWatchedMovies()
         {
-            return this.GetWachedMovies(1);
+            return this.GetWatchedMovies(1);
         }
 
         [Authorize]
-        [Route("want-to-watch")]
-        public IHttpActionResult GetWachedMovies(int page)
+        [Route("watched")]
+        public IHttpActionResult GetWatchedMovies(int page)
         {
             var username = this.User.Identity.Name;
             var user = usersService.GetByName(username);
-            var movies = myMovieService.GetAllWachedMoviesByUser(user);
+            var movies = myMovieService.GetAllWatchedMoviesByUser(user);
             return this.Ok(movies.Skip((page-1)*PageSize).Take(PageSize).Select(UserMovieViewModel.FromUserMovie));
         }
 
         [Authorize]
+        [Route("")]
         public IHttpActionResult PostMyMovie(MovieBindingModel movie)
         {
             if (!ModelState.IsValid)
@@ -92,8 +91,8 @@ namespace MovieHunter.Api.Controllers
 
             var username = this.User.Identity.Name;
             var user = usersService.GetByName(username);
-            var movieToAdd = moviesService.GetById(movie.MovieId);
-            this.myMovieService.Add(user, movie.MovieId, movie.State, movieToAdd);
+           
+            this.myMovieService.Add(user, movie.MovieId, movie.State);
 
             //api/movies/{id}
             return this.Created("api/movies/"+movie.MovieId, movie);

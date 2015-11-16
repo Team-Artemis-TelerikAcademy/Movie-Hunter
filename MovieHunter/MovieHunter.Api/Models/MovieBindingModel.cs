@@ -16,6 +16,5 @@ namespace MovieHunter.Api.Models
         [Required]
         public State State { get; set; }
 
-        public Movie Movie { get; set; }
     }
 }

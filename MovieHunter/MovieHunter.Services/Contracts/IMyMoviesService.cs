@@ -9,7 +9,9 @@ namespace MovieHunter.Services.Contracts
 {
     public interface IMyMoviesService
     {
-        IQueryable<UserMovies> GetAllWachedMoviesByUser(User user);
-        void Add(User user, int movieId, State state, Movie movieToAdd);
+        IQueryable<UserMovies> GetAllWantToWatchMoviesByUser(User user);
+        void Add(User user, int movieId, State state);
+        IQueryable<UserMovies> GetAllWatchedMoviesByUser(User user);
+        IQueryable<UserMovies> GetAllMoviesByUser(User user);
     }
 }
