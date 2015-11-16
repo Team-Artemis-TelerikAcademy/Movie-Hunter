@@ -320,6 +320,8 @@ namespace MovieHunter.Api.Controllers
         }
 
         // POST api/Account/Register
+        [System.Web.Http.AcceptVerbs("GET", "POST")]
+        [System.Web.Http.HttpGet]
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
