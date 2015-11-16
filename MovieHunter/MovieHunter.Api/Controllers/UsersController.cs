@@ -10,48 +10,23 @@
     using MovieHunter.Models;
     using MovieHunter.Services;
     using MovieHunter.Services.Contracts;
+    using System.Linq;
+    using Models;
 
     public class UsersController : ApiController
     {
         private IRepository<User> users;
 
-        public UsersController()
+        public UsersController(IRepository<User> users)
         {
-            this.users = new EfRepository<User>(new MovieDbContext());
-        }
-
-        [HttpPost]
-        public IHttpActionResult Register(string username, string pass = "", string passConfirmation = "")
-        {
-            // TODO: validation and fix this abomination
-
-            if (pass == passConfirmation)
-            {
-                var newUser = new User()
-                {
-                    IsAdmin = false,
-                    Username = username
-                };
-
-                this.users.Add(newUser);
-                this.users.SaveChanges();
-                return this.Created(this.Url.ToString(), username);
-            }
-
-            return this.BadRequest("passwords do not match");
+            this.users = users;
         }
 
         [HttpGet]
-        public IHttpActionResult Login(string username, string password = "")
+        public IHttpActionResult GetByName(string username)
         {
-            var all = this.users.All().ToList();
-            if (this.users.All().Any(x => x.Username == username))
-            {
-                
-                return this.Ok("ok");
-            }
-
-            return this.BadRequest(";(");
+            var res = this.users.All().Where(x => x.UserName.Contains(username)).Select(x => x.UserName);
+            return this.Ok(res);
         }
     }
 }

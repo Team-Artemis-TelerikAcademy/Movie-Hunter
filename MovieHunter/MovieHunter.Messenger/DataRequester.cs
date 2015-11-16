@@ -1,4 +1,4 @@
-﻿namespace ChatTest
+﻿namespace MovieHunter.Messenger
 {
     using System.Collections.Generic;
     using System.IO;
@@ -8,22 +8,14 @@
 
     public class DataRequester
     {
-        //public string Get(string url, ICollection<string> headers = null)
-        //{
-        //    if(headers == null)
-        //    {
-
-        //    }
-        //}
-
-        public string Request(string url, ICollection<string> headers = null)
+        public string Request(string url, ICollection<KeyValuePair<string, string>> headers = null)
         {
             var request = WebRequest.CreateHttp(url);
 
             if (headers != null && headers.Count > 0)
             {
-                headers.ForEach(h => request.Headers.Add(h));
-            }
+                headers.ForEach(h => request.Headers.Add(h.Key, h.Value));
+            }      
 
             request.Credentials = CredentialCache.DefaultCredentials;
 
@@ -38,6 +30,34 @@
             readStream.Close();
 
             return json;
+        }
+
+        public string Request(string url, string postData)
+        {
+            // string URL = "http://localhost:52189//api/Account/Token";
+            var webRequest = WebRequest.Create(url);
+            webRequest.Method = "POST";
+            webRequest.ContentType = "application/x-www-form-urlencoded";
+
+            var reqStream = webRequest.GetRequestStream();
+
+            var postArray = Encoding.ASCII.GetBytes(postData);
+
+            reqStream.Write(postArray, 0, postArray.Length);
+            reqStream.Close();
+            string result;
+            try
+            {
+                var sr = new StreamReader(webRequest.GetResponse().GetResponseStream());
+                result = sr.ReadToEnd();
+                sr.Close();
+            }
+            catch (WebException wex)
+            {
+                result = "{ \"access_token\": \"\" }";
+            }
+
+            return result;
         }
     }
 }

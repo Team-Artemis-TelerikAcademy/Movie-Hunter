@@ -1,9 +1,9 @@
-﻿<Window x:Class="ChatTest.MessengerWindow"
+﻿<Window x:Class="MovieHunter.Messenger.MessengerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ChatTest"
+        xmlns:local="clr-namespace:MovieHunter.Messenger"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="825">
     <Grid>
@@ -14,8 +14,10 @@
         <Label x:Name="ChatBoxLabel" Content="type here :" HorizontalAlignment="Left" Margin="365,46,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.649,-0.353" Width="69" Grid.Row="1"/>
         <TextBox x:Name="ChatBox" HorizontalAlignment="Left" Height="56" Margin="365,77,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="319" Grid.Row="1"/>
         <Button x:Name="SendButton" Content="Send" HorizontalAlignment="Left" Margin="699,77,0,0" VerticalAlignment="Top" Width="75" Height="56" Grid.Row="1" Click="button_Click"/>
-        <TextBlock x:Name="ChatContent" HorizontalAlignment="Left" Margin="365,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="238" Width="409" Grid.RowSpan="2"/>
-        <StackPanel HorizontalAlignment="Left" Height="330" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Grid.RowSpan="2"/>
+        <TextBlock x:Name="ChatContent" HorizontalAlignment="Left" Margin="365,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="204" Width="409" Grid.RowSpan="2"/>
+        <StackPanel x:Name="Users" HorizontalAlignment="Left" Height="296" Margin="10,44,0,0" VerticalAlignment="Top" Width="280" Grid.RowSpan="2"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="30,10,0,168" TextWrapping="Wrap" Width="260" RenderTransformOrigin="0.508,6.103" TextChanged="textBox_TextChanged"/>
+        <StackPanel x:Name="OpenChats" HorizontalAlignment="Left" Height="34" Margin="362,5,0,0" VerticalAlignment="Top" Width="322"/>
 
     </Grid>
 </Window>

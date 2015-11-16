@@ -1,4 +1,4 @@
-﻿namespace ChatTest
+﻿namespace MovieHunter.Messenger
 {
     using System;
 

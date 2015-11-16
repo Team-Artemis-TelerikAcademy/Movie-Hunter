@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieHunter.UI", "MovieHunt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieHunter.Messenger", "MovieHunter.Messenger\MovieHunter.Messenger.csproj", "{9B9778C9-2E11-437B-85AF-1ACB290CA55B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieHunter.PubNub", "MovieHunter.PubNub\MovieHunter.PubNub.csproj", "{FF29F44E-467A-45F6-9E13-D669377CC79F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{9B9778C9-2E11-437B-85AF-1ACB290CA55B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B9778C9-2E11-437B-85AF-1ACB290CA55B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B9778C9-2E11-437B-85AF-1ACB290CA55B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF29F44E-467A-45F6-9E13-D669377CC79F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF29F44E-467A-45F6-9E13-D669377CC79F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF29F44E-467A-45F6-9E13-D669377CC79F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF29F44E-467A-45F6-9E13-D669377CC79F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
