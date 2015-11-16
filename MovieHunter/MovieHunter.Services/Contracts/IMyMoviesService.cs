@@ -13,5 +13,7 @@ namespace MovieHunter.Services.Contracts
         void Add(User user, int movieId, State state);
         IQueryable<UserMovies> GetAllWatchedMoviesByUser(User user);
         IQueryable<UserMovies> GetAllMoviesByUser(User user);
+        void UpdateMovieStatus(User user, int movieId, State state);
+        void UpdateMovieRating(User user, int movieId, int rating);
     }
 }

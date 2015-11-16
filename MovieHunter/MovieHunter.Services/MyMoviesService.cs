@@ -21,6 +21,7 @@ namespace MovieHunter.Services
 
         public void Add(User user, int movieId, State state)
         {
+            //validation if user already has this movie
             var newUserMovie = new UserMovies()
             {
                 MovieId = movieId,
@@ -50,5 +51,22 @@ namespace MovieHunter.Services
             return this.GetAllMoviesByUser(user)
                     .Where(userMovie => userMovie.State == State.Watched);
         }
+
+        public void UpdateMovieRating(User user, int movieId, int rating)
+        {
+            var userMovie = user.UserMovies.FirstOrDefault(um => um.MovieId == movieId);
+            userMovie.Rating = rating;
+            this.userMoviesRepository.Update(userMovie);
+            this.userMoviesRepository.SaveChanges();
+        }
+
+        public void UpdateMovieStatus(User user, int movieId, State state)
+        {
+            var userMovie = user.UserMovies.FirstOrDefault(um => um.MovieId == movieId);
+            userMovie.State = state;
+            this.userMoviesRepository.Update(userMovie);
+            this.userMoviesRepository.SaveChanges();
+        }
+
     }
 }
