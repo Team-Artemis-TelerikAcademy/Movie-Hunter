@@ -16,5 +16,10 @@ namespace MovieHunter.Services
         {
             this.efRepository = efRepository;
         }
+
+        public User GetByName(string username)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

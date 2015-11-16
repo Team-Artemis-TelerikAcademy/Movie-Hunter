@@ -227,6 +227,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActorViewModel.cs" />
     <Compile Include="Models\GenreViewModel.cs" />
+    <Compile Include="Models\MovieBindingModel.cs" />
     <Compile Include="Models\MovieDetailViewModel.cs" />
     <Compile Include="Models\MovieViewModel.cs" />
     <Compile Include="Models\TrailerViewModel.cs" />

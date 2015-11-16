@@ -15,7 +15,7 @@ namespace MovieHunter.Api.Models
             {
                 return movie => new UserMovieViewModel()
                 {
-                    Title = movie.
+                    Title = movie.Movie.Title
                 };
             }
         }

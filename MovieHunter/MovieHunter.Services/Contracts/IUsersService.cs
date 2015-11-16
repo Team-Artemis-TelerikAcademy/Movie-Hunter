@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovieHunter.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace MovieHunter.Services.Contracts
 {
     public interface IUsersService
     {
-        object GetByName(string username);
+        User GetByName(string username);
     }
 }
