@@ -2,6 +2,14 @@
     display: none
 }
 
+.movie-container .movie-picture{
+    float:left;
+    margin: 1%
+}
+
+.description-outline{
+    margin-top: 2%
+}
 
 /*
 #menu li:hover #movies-menu {

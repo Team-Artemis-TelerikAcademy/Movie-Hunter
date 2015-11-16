@@ -14,6 +14,7 @@ namespace MovieHunter.Api.Models
             {
                 return movie => new MovieDetailViewModel()
                 {
+                    Id = movie.Id,
                     Title = movie.Title,
                     ReleaseDate = movie.ReleaseDate,
                     Rating = movie.Rating,

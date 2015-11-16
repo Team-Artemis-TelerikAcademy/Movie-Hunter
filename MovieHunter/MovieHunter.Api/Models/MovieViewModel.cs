@@ -15,6 +15,7 @@ namespace MovieHunter.Api.Models
             {
                 return movie => new MovieViewModel()
                 {
+                    Id = movie.Id,
                     Title = movie.Title,
                     ReleaseDate = movie.ReleaseDate,
                     Rating = movie.Rating,
@@ -24,6 +25,8 @@ namespace MovieHunter.Api.Models
                 };
             }
         }
+
+        public int Id { get; set; }
 
         public IEnumerable<string> Actors { get; set; }
 

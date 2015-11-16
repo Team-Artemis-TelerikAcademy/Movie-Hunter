@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
+using MovieHunter.Data;
+using MovieHunter.Data.Migrations;
 using Newtonsoft.Json.Serialization;
 
 namespace MovieHunter.Api
@@ -14,6 +17,9 @@ namespace MovieHunter.Api
         {
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
+
+            config.EnableCors();
+
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 

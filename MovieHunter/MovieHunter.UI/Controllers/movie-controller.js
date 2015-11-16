@@ -6,34 +6,48 @@ var movieController = function(){
                 movies = resp;
                 return templates.get('movies');
             }).then(function(template){
-                console.log(movies);
                 context.$element().html(template(movies));
             });
     }
 
     function getById(context){
-        console.log(context);
+        console.log(this.params.id);
+        var id = this.params.id.substr(1);
         var movie;
-        jsonRequester.get('http://localhost:52189/api/Movies'+this.params.id)
+        jsonRequester.get('http://localhost:52189/api/Movies/' + id)
              .then(function(res) {
-                console.log(res);
                 movie = res;
-                 return templates.get('moviesById');
+                 return templates.get('movieById');
             }).then(function(template){
-                console.log(movie);
                 context.$element().html(template(movie));
-             })
+             }).then(function(){
+
+               var links = $('.actor-link').get();
+
+                $('.actor-link').each(function(){
+                       console.log(this)
+                    var $attr = $(this).attr('href');
+                    var editedAttribute = '';
+                    for(i = 0; i < $attr.length; i++){
+                        if($attr[i]!== ' ') {
+                            editedAttribute = editedAttribute + $attr[i]
+                        } else{
+                            editedAttribute = editedAttribute + '%20'
+                        }
+                    }
+
+                    $(this).attr('href', editedAttribute);
+                })
+            })
     }
 
     function released(context){
         var movies;
         jsonRequester.get('http://localhost:52189/api/movies/released')
             .then(function (resp) {
-                console.log('resp ' + resp);
                 movies = resp;
                 return templates.get('movies');
             }).then(function(template){
-                console.log(movies);
                 context.$element().html(template(movies));
             });
     }
@@ -45,13 +59,26 @@ var movieController = function(){
                 movies = resp;
                 return templates.get('movies');
             }).then(function(template){
-                console.log(movies);
+                context.$element().html(template(movies));
+            });
+    }
+
+    function getMoviesByGenre(context){
+        var movies;
+        var genre = this.params.genre.substr(1);
+        console.log(this.params.genre);
+        jsonRequester.get('http://localhost:52189/api/Movies?genre='+genre)
+            .then(function (resp) {
+                movies = resp;
+                return templates.get('movies')
+            }).then(function(template){
                 context.$element().html(template(movies));
             });
     }
 
     return {
         all: all,
+        getMoviesByGenre:getMoviesByGenre,
         getById: getById,
         released: released,
         comingSoon: comingSoon

@@ -19,11 +19,11 @@ namespace MovieHunter.Api.Controllers
         private const int PageSize = 10;
         private IMoviesService service;
 
-        public MoviesController()
-        {
-            var dbContext = new MovieDbContext();
-            this.service = new MoviesService(new EfRepository<Movie>(dbContext));
-        }
+        //public MoviesController()
+        //{
+        //    var dbContext = new MovieDbContext();
+        //    this.service = new MoviesService(new EfRepository<Movie>(dbContext));
+        //}
 
         public MoviesController(IMoviesService moviesService)
         {
@@ -71,6 +71,7 @@ namespace MovieHunter.Api.Controllers
             return this.GetAllReleasedMovies(1);
         }
 
+        [Route("api/movies/released")]
         public IHttpActionResult GetAllReleasedMovies(int page)
         {
             return this.Ok(this.service.GetAllMovies()
@@ -87,6 +88,7 @@ namespace MovieHunter.Api.Controllers
             return this.GetAllCommingSoonMovies(1);
         }
 
+        [Route("api/movies/comming-soon")]
         public IHttpActionResult GetAllCommingSoonMovies(int page)
         {
             return this.Ok(this.service.GetAllMovies()

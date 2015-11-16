@@ -15,7 +15,8 @@ namespace MovieHunter.Services
 
         public IQueryable<Trailer> GetAllTrailers()
         {
-            return this.trailers.All().OrderByDescending(trailer => trailer.ReleaseDate);
+            var result = this.trailers.All();
+            return result.OrderByDescending(trailer => trailer.ReleaseDate);
         }
 
         public Trailer GetById(int id)
