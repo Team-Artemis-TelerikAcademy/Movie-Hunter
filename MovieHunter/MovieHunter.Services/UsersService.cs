@@ -10,16 +10,16 @@ namespace MovieHunter.Services
 {
     public class UsersService : IUsersService
     {
-        private EfRepository<User> efRepository;
+        private IRepository<User> usersRepository;
 
-        public UsersService(EfRepository<User> efRepository)
+        public UsersService(EfRepository<User> usersRepository)
         {
-            this.efRepository = efRepository;
+            this.usersRepository = usersRepository;
         }
 
         public User GetByName(string username)
         {
-            throw new NotImplementedException();
+            return this.usersRepository.All().FirstOrDefault(user => user.UserName.ToLower() == username.ToLower());
         }
     }
 }

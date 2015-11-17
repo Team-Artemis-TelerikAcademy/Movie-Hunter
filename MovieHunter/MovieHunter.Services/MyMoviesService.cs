@@ -15,28 +15,58 @@ namespace MovieHunter.Services
         public MyMoviesService(EfRepository<UserMovies> userMoviesRepo)
         {
             this.userMoviesRepository = userMoviesRepo;
-            
+
         }
 
 
-        public void Add(User user, int movieId, State state, Movie movieToAdd)
+        public void Add(User user, int movieId, State state)
         {
+            //validation if user already has this movie
             var newUserMovie = new UserMovies()
             {
                 MovieId = movieId,
                 State = state,
                 UserId = user.Id,
-                Movie = movieToAdd
-               
+                DateAdded = DateTime.Now
             };
 
             this.userMoviesRepository.Add(newUserMovie);
             this.userMoviesRepository.SaveChanges();
         }
 
-        public IQueryable<UserMovies> GetAllWachedMoviesByUser(User user)
+        public IQueryable<UserMovies> GetAllMoviesByUser(User user)
         {
-            throw new NotImplementedException();
+            return user.UserMovies.AsQueryable()
+                .OrderByDescending(userMovie => userMovie.DateAdded);
         }
+
+        public IQueryable<UserMovies> GetAllWantToWatchMoviesByUser(User user)
+        {
+            return this.GetAllMoviesByUser(user)
+                    .Where(userMovie => userMovie.State == State.WantToWatch);
+        }
+
+        public IQueryable<UserMovies> GetAllWatchedMoviesByUser(User user)
+        {
+            return this.GetAllMoviesByUser(user)
+                    .Where(userMovie => userMovie.State == State.Watched);
+        }
+
+        public void UpdateMovieRating(User user, int movieId, int rating)
+        {
+            var userMovie = user.UserMovies.FirstOrDefault(um => um.MovieId == movieId);
+            userMovie.Rating = rating;
+            this.userMoviesRepository.Update(userMovie);
+            this.userMoviesRepository.SaveChanges();
+        }
+
+        public void UpdateMovieStatus(User user, int movieId, State state)
+        {
+            var userMovie = user.UserMovies.FirstOrDefault(um => um.MovieId == movieId);
+            userMovie.State = state;
+            this.userMoviesRepository.Update(userMovie);
+            this.userMoviesRepository.SaveChanges();
+        }
+
     }
 }

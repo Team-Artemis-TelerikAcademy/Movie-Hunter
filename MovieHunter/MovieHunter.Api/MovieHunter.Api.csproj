@@ -226,6 +226,8 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActorViewModel.cs" />
+    <Compile Include="Models\ChangeUserMovieRatingBindingModel.cs" />
+    <Compile Include="Models\ChangeUserMovieStatusBindingModel.cs" />
     <Compile Include="Models\GenreViewModel.cs" />
     <Compile Include="Models\MovieBindingModel.cs" />
     <Compile Include="Models\MovieDetailViewModel.cs" />
