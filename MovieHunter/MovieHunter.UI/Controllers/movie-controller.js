@@ -20,12 +20,28 @@ var movieController = function(){
                  return templates.get('movieById');
             }).then(function(template){
                 context.$element().html(template(movie));
-             }).then(function(){
+                $('.btn-add-to-my-movies').on('click', function(){
+                    console.log(movie);
+                    var likedMovie =
+                    {
+                        MovieId: movie.Id,
+                        state: 0
+                    }
+
+
+
+                    var likedMovieStringified = JSON.stringify(likedMovie);
+                    var authorization = "Bearer " + localStorage.getItem("tokenKey");
+
+                    jsonRequester.post('http://localhost:52189/api/my-movies', {data:likedMovieStringified, contentType: 'application/json' , authorization: authorization})
+                        .then(function(){
+                            console.log("Movie added successfully");
+                        })
+                })
 
                var links = $('.actor-link').get();
 
                 $('.actor-link').each(function(){
-                       console.log(this)
                     var $attr = $(this).attr('href');
                     var editedAttribute = '';
                     for(i = 0; i < $attr.length; i++){

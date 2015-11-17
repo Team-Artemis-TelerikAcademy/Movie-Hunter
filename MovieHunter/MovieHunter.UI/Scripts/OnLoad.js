@@ -10,7 +10,7 @@ $(document).ready(function(){
 
         jsonRequester.post('http://localhost:52189/api/account/token', { data: loginData, contentType: 'application/x-www-form-urlencoded; charset=utf-8' })
             .then(function(data){
-                localStorage.setItem("key", data.access_token);
+                localStorage.setItem("tokenKey", data.access_token);
                 $('.register-link').css('display','none');
                 $('.login-link').css('display','none');
                 $('.logout-link').css('display','inline-block');

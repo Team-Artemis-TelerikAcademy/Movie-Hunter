@@ -68,7 +68,6 @@ var userController = function() {
                 }
             })
         })
-
     }
 
     return {

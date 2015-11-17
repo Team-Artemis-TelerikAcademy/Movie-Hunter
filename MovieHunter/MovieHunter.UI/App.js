@@ -15,7 +15,10 @@
     this.get('#/movies/coming-soon', movieController.comingSoon);
     this.get('#/movies/genre/:genre', movieController.getMoviesByGenre);
 
+    this.get('#/my-movies', myMoviesController.allMyMovies);
+
     this.get('#/genres', genreController.all);
+    this.get('#/my-movies:id', movieController.getById);
 
     this.get('#/actors/name/:name', actorsController.getActorByName);
 });
