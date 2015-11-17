@@ -1,4 +1,23 @@
 $(document).ready(function(){
+    $('#btn-login').on('click', function(){
+        event.preventDefault();
+
+        var loginData = {
+            grant_type: 'password',
+            username: $('#tb-login-username').val(),
+            password: $('#tb-login-password').val()
+        };
+
+        jsonRequester.post('http://localhost:52189/api/account/token', { data: loginData, contentType: 'application/x-www-form-urlencoded; charset=utf-8' })
+            .then(function(data){
+                localStorage.setItem("key", data.access_token);
+                $('.register-link').css('display','none');
+                $('.login-link').css('display','none');
+                $('.logout-link').css('display','inline-block');
+                window.location.href ='#/';
+                document.location.reload(true);
+            });
+    })
     $(".bhide").click(function(){
         $(".hideObj").slideDown();
         $(this).hide(); //.attr()
