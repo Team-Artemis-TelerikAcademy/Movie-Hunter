@@ -5,7 +5,7 @@
 
         var header = options.headers || {},
             data = options.data|| undefined;
-        data = JSON.stringify(data);
+       data = JSON.stringify(data);
         console.log("here " +data);
         console.log("method "+method);
         console.log("url " + url);
