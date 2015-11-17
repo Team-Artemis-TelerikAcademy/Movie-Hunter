@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MovieHunter.Messenger.DeserializationResults;
-using Newtonsoft.Json;
-
-namespace MovieHunter.Messenger
+﻿namespace MovieHunter.Messenger
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Shapes;
+    using MovieHunter.Messenger.DeserializationResults;
+    using Newtonsoft.Json;
+
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
@@ -57,11 +57,6 @@ namespace MovieHunter.Messenger
         private KeyValuePair<string, string> Header(string key, string value)
         {
             return new KeyValuePair<string, string>(key, value);
-        }
-
-        private void Username_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

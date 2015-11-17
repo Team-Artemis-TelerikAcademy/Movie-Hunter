@@ -9,6 +9,4 @@
         public string issued { get; set; }
         public string expires { get; set; }
     }
-
-    
 }
