@@ -52,6 +52,19 @@ namespace MovieHunter.Services
                     .Where(userMovie => userMovie.State == State.Watched);
         }
 
+        public Movie GetMovieById(int id, User user)
+        {
+            var userMovie = user.UserMovies.FirstOrDefault(um => um.MovieId == id);
+            return userMovie.Movie;
+        }
+
+        public void RemoveMovie(User user, int movieId)
+        {
+            var userMovie = user.UserMovies.FirstOrDefault(um => um.MovieId == movieId);
+            this.userMoviesRepository.Delete(userMovie);
+            this.userMoviesRepository.SaveChanges();
+        }
+
         public void UpdateMovieRating(User user, int movieId, int rating)
         {
             var userMovie = user.UserMovies.FirstOrDefault(um => um.MovieId == movieId);

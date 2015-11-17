@@ -4,17 +4,19 @@
         options = options || {};
 
         var header = options.headers || {},
-            data = options.data|| undefined;
-        data = JSON.stringify(data);
-        console.log("here " +data);
-        console.log("method "+method);
+            data = options.data || undefined,
+            contentType = options.contentType;
+
+        console.log("here " + data);
+        console.log("method " + method);
         console.log("url " + url);
+        console.log("contentType " + contentType);
         var promise = new Promise(function (resolve, reject) {
             $.ajax({
                 url: url,
                 method: method,
-                contentType: 'application/json',
-                header: header,
+                contentType: contentType,
+                crossDomain: true,
                 data: data,
                 success: function (res) {
                     resolve(res);

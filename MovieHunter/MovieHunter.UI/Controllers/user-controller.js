@@ -6,17 +6,24 @@ var userController = function() {
             .then(function(template){
                 context.$element().html(template());
                 $('#btn-go-to-register-button').on('click', function(){
-                    context.redirect('#/users/register');
+                    context.redirect('#/register');
                 })
 
                 $('#btn-login').on('click', function(){
                     event.preventDefault();
-                    var userData = {
+
+                    var loginData = {
+                        grant_type: 'password',
                         username: $('#tb-login-username').val(),
                         password: $('#tb-login-password').val()
                     };
-                    data.users.login(userData)
-                        .then(function(user){
+
+                    jsonRequester.post('http://localhost:52189/api/account/token', { data: loginData, contentType: 'application/x-www-form-urlencoded; charset=utf-8' })
+                        .then(function(data){
+                            localStorage.setItem("key", data.access_token);
+                            $('.register-link').css('display','none');
+                            $('.login-link').css('display','none');
+                            $('.logout-link').css('display','inline-block');
                             context.redirect('#/');
                             document.location.reload(true);
                         });
@@ -47,13 +54,16 @@ var userController = function() {
                 var headers = { "Access-Control-Allow-Origin": '*'}
 
                 if (userData.Password ===  $('#tb-register-password-confirmed').val()){
-                   // event.preventDefault();
+                   event.preventDefault();
 
-                    jsonRequester.post('http://localhost:52189/api/account/register', { data: userData })
+                    var dataStringified = JSON.stringify(userData);
+
+                    jsonRequester.post('http://localhost:52189/api/account/register', { data: dataStringified, contentType: 'application/json' })
                         .then(function(resp){
                             console.log("here " + resp)
-                            context.redirect('#/');
                             document.location.reload(true);
+                            context.redirect('#/');
+
                         });
                 }
             })

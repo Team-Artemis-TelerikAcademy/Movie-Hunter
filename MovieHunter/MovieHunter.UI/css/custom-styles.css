@@ -11,6 +11,10 @@
     margin-top: 2%
 }
 
+.logout-link{
+    display:none
+}
+
 /*
 #menu li:hover #movies-menu {
     display: block;
