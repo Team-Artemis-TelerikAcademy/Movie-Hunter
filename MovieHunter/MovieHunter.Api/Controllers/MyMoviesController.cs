@@ -39,6 +39,17 @@ namespace MovieHunter.Api.Controllers
         }
 
         [Authorize]
+        [Route("{id}")]
+        public IHttpActionResult GetById(int id)
+        {
+            var username = this.User.Identity.Name;
+            var user = usersService.GetByName(username);
+            return this.Ok(UserMovieViewModel.FromMovie.Compile()
+                                                         .Invoke(this.myMovieService
+                                                                       .GetMovieById(id, user)));
+        }
+
+        [Authorize]
         [Route("")]
         public IHttpActionResult GetAll(int page)
         {
@@ -137,12 +148,13 @@ namespace MovieHunter.Api.Controllers
         }
 
         [Authorize]
-        [Route("")]
-        public void DeleteMovie(int movieId)
+        [Route("{id}")]
+        [HttpDelete]
+        public void DeleteMovie(int id)
         {
             var username = this.User.Identity.Name;
             var user = usersService.GetByName(username);
-            this.myMovieService.RemoveMovie(user, movieId);
+            this.myMovieService.RemoveMovie(user, id);
         }
     }
 }
