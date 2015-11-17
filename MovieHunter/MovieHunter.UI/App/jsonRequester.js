@@ -3,18 +3,18 @@
     function send(method, url, options) {
         options = options || {};
 
-        var headers = options.headers || {},
-          data = options.data|| undefined;
-        data = JSON.stringify(data)
+        var header = options.headers || {},
+            data = options.data|| undefined;
+        data = JSON.stringify(data);
         console.log("here " +data);
         console.log("method "+method);
-        console.log("url " + url)
+        console.log("url " + url);
         var promise = new Promise(function (resolve, reject) {
             $.ajax({
                 url: url,
                 method: method,
                 contentType: 'application/json',
-                headers: headers,
+                header: header,
                 data: data,
                 success: function (res) {
                     resolve(res);

@@ -17,10 +17,12 @@ using MovieHunter.Api.Models;
 using MovieHunter.Api.Providers;
 using MovieHunter.Api.Results;
 using MovieHunter.Models;
+using System.Web.Http.Cors;
 
 namespace MovieHunter.Api.Controllers
 {
     [Authorize]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
@@ -320,8 +322,7 @@ namespace MovieHunter.Api.Controllers
         }
 
         // POST api/Account/Register
-        [System.Web.Http.AcceptVerbs("GET", "POST")]
-        [System.Web.Http.HttpGet]
+        [System.Web.Http.HttpPost]
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)

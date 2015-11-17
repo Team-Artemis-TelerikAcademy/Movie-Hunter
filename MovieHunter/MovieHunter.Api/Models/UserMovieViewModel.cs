@@ -13,11 +13,22 @@ namespace MovieHunter.Api.Models
         {
             get
             {
-                return movie => new UserMovieViewModel()
+                return userMovie => new UserMovieViewModel()
                 {
-                    Title = movie.
+                    Title = userMovie.Movie.Title,
+                    Id = userMovie.Movie.Id,
+                    Actors = userMovie.Movie.Actors.Select(a => a.FullName).ToList(),
+                    Image = userMovie.Movie.ImageUrl,
+                    Rating = userMovie.Movie.Rating,
+                    Genres = userMovie.Movie.Genres.Select(g => g.Name).ToList(),
+                    ReleaseDate = userMovie.Movie.ReleaseDate,
+                    DateAdded = userMovie.DateAdded,
+                    Trailers = userMovie.Movie.Trailers.Select(t => t.Url).ToList()
                 };
             }
         }
+
+        public DateTime DateAdded { get; private set; }
+        public List<string> Trailers { get; private set; }
     }
 }

@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace MovieHunter.Api.Models
 {
-    public class MovieBindingModel
+    public class ChangeUserMovieStatusBindingModel
     {
         [Required]
         public int MovieId { get; set; }
 
         [Required]
         public State State { get; set; }
-
     }
 }
