@@ -17,8 +17,9 @@ var userController = function() {
                         username: $('#tb-login-username').val(),
                         password: $('#tb-login-password').val()
                     };
+                    var encodedData = "username=" + $('#tb-login-username').val() + "&password=" + $('#tb-login-password').val() + "&grant_type=password";
 
-                    jsonRequester.post('http://localhost:52189/api/account/token', { data: loginData })
+                    jsonRequester.post('http://localhost:52189/api/account/token', { data: encodedData, contentType: 'application/x-www-form-urlencoded; charset=utf-8' })
                         .then(function(data){
                             localStorage.setItem(tokenKey, data.access_token);
                             $('.register-link').css('display','none');
@@ -56,7 +57,9 @@ var userController = function() {
                 if (userData.Password ===  $('#tb-register-password-confirmed').val()){
                    event.preventDefault();
 
-                    jsonRequester.post('http://localhost:52189/api/account/register', { data: userData })
+                    var dataStringified = JSON.stringify(userData);
+
+                    jsonRequester.post('http://localhost:52189/api/account/register', { data: dataStringified, contentType: 'application/json' })
                         .then(function(resp){
                             console.log("here " + resp)
                             document.location.reload(true);
