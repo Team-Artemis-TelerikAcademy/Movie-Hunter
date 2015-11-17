@@ -58,5 +58,10 @@ namespace MovieHunter.Messenger
         {
             return new KeyValuePair<string, string>(key, value);
         }
+
+        private void Username_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

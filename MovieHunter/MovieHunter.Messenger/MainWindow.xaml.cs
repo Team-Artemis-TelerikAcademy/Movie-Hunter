@@ -18,6 +18,7 @@ using FLExtensions.Common;
 using PubNubMessaging.Core;
 using System.Windows.Markup;
 using System.Xml;
+using System.Text.RegularExpressions;
 
 namespace MovieHunter.Messenger
 {
@@ -86,8 +87,14 @@ namespace MovieHunter.Messenger
                        try
                        {
                            // var m = message as Dictionary<string, object>;
-                           var stuffToAppend = m;// string.Format("{0} {1}:  {2}{3}", ((DateTime)m["Sent"]).ToShortTimeString(), m["Sender"], m["Content"], Environment.NewLine);
-                           this.Dispatcher.Invoke((Action)(() => this.ChatContent.Text += stuffToAppend));
+                           var match = Regex.Match(m, "{.+}").Value;
+                           var stuffToAppend = JsonConvert.DeserializeObject<Message>(match);// string.Format("{0} {1}:  {2}{3}", ((DateTime)m["Sent"]).ToShortTimeString(), m["Sender"], m["Content"], Environment.NewLine);
+                           this.Dispatcher.Invoke((Action)(() => this.ChatPanel(stuffToAppend)));
+                           this.Dispatcher.Invoke(() => 
+                           {
+                               this.ChatContent.Children.Clear();
+                               this.ChatContent.Children.Add(this.chatPanels[this.currentChannel]);
+                           });
                        }
                        catch (Exception e)
                        {
@@ -109,7 +116,7 @@ namespace MovieHunter.Messenger
                 Sent = DateTime.Now
             };
 
-            this.chat.Publish<string>(currentChannel, message.Content, x => { }, x => { });
+            this.chat.Publish<string>(currentChannel, message, x => { }, x => { });
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -157,14 +164,27 @@ namespace MovieHunter.Messenger
                 {
                     var usernames = new string[] { this.username, s.CastTo<Border>().Child.CastTo<TextBlock>().Text };
 
-                    string gridXaml = XamlWriter.Save(s);
-                    StringReader stringReader = new StringReader(gridXaml);
-                    XmlReader xmlReader = XmlReader.Create(stringReader);
-                    var el = XamlReader.Load(xmlReader);
+                    //string gridXaml = XamlWriter.Save(s);
+                    //StringReader stringReader = new StringReader(gridXaml);
+                    //XmlReader xmlReader = XmlReader.Create(stringReader);
+                    //var el = XamlReader.Load(xmlReader);
+
+                    var el = new Border()
+                    {
+                        BorderThickness = new Thickness(1),
+                        BorderBrush = new SolidColorBrush(Colors.DarkGoldenrod),
+                        Child = new TextBlock()
+                        {
+                            Text = usernames[1]
+                        }
+                    };
+
+
                     this.OpenChats.Children.Clear();
-                    this.OpenChats.Children.Add(el.CastTo<Border>());
+                    this.OpenChats.Children.Add(el);
                     
                     this.currentChannel = usernames.Min() + " " + usernames.Max();
+                    
                     this.Subscribe();
                 };
 
@@ -173,9 +193,28 @@ namespace MovieHunter.Messenger
 
         }
 
-        public StackPanel ChatPanel()
+        public void ChatPanel(Message msg)
         {
-            throw new NotImplementedException();
+            if (!this.chatPanels.ContainsKey(this.currentChannel))
+            {
+                this.chatPanels.Add(this.currentChannel, new StackPanel());
+            }
+
+            var userTemplate = new Border()
+            {
+                Background = new SolidColorBrush(Colors.CornflowerBlue),
+                CornerRadius = new CornerRadius(10),
+                Margin = new Thickness(0, 10, 0, 0),
+                Width = 200,
+                Child = new TextBlock()
+                {
+                    Text = string.Format("{0}  {1} : {2}", msg.Sent, msg.Sender, msg.Content),
+                    Height = 30,
+                    Padding = new Thickness(10)
+                }
+            };
+
+            this.chatPanels[this.currentChannel].Children.Add(userTemplate);
         }
     }
 }

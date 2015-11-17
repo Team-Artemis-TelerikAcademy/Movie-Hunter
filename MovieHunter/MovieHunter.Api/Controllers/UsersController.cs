@@ -1,17 +1,9 @@
 ﻿namespace MovieHunter.Api.Controllers
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Net.Http;
     using System.Web.Http;
-    using MovieHunter.Data;
     using MovieHunter.Models;
-    using MovieHunter.Services;
-    using MovieHunter.Services.Contracts;
-    using System.Linq;
-    using Models;
+    using Services.Contracts;
 
     public class UsersController : ApiController
     {
