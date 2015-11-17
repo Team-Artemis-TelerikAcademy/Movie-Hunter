@@ -45,7 +45,7 @@ namespace MovieHunter.Api.Controllers
             var username = this.User.Identity.Name;
             var user = usersService.GetByName(username);
             var movies = myMovieService.GetAllMoviesByUser(user);
-            return this.Ok(movies.Skip((page-1)*PageSize).Take(PageSize).Select(UserMovieViewModel.FromUserMovie));
+            return this.Ok(movies.Skip((page - 1) * PageSize).Take(PageSize).Select(UserMovieViewModel.FromUserMovie));
         }
 
         [Authorize]
@@ -62,7 +62,7 @@ namespace MovieHunter.Api.Controllers
             var username = this.User.Identity.Name;
             var user = usersService.GetByName(username);
             var movies = myMovieService.GetAllWantToWatchMoviesByUser(user);
-            return this.Ok(movies.Skip((page-1)*PageSize).Take(PageSize).Select(UserMovieViewModel.FromUserMovie));
+            return this.Ok(movies.Skip((page - 1) * PageSize).Take(PageSize).Select(UserMovieViewModel.FromUserMovie));
         }
 
         [Authorize]
@@ -79,7 +79,7 @@ namespace MovieHunter.Api.Controllers
             var username = this.User.Identity.Name;
             var user = usersService.GetByName(username);
             var movies = myMovieService.GetAllWatchedMoviesByUser(user);
-            return this.Ok(movies.Skip((page-1)*PageSize).Take(PageSize).Select(UserMovieViewModel.FromUserMovie));
+            return this.Ok(movies.Skip((page - 1) * PageSize).Take(PageSize).Select(UserMovieViewModel.FromUserMovie));
         }
 
         [Authorize]
@@ -93,11 +93,11 @@ namespace MovieHunter.Api.Controllers
 
             var username = this.User.Identity.Name;
             var user = usersService.GetByName(username);
-           
+
             this.myMovieService.Add(user, movie.MovieId, movie.State);
 
             //api/movies/{id}
-            return this.Created("api/movies/"+movie.MovieId, movie);
+            return this.Created("api/movies/" + movie.MovieId, movie);
         }
 
         [Authorize]
@@ -134,6 +134,15 @@ namespace MovieHunter.Api.Controllers
             this.myMovieService.UpdateMovieRating(user, movie.MovieId, movie.Rating);
 
             return this.Ok(movie);
+        }
+
+        [Authorize]
+        [Route("")]
+        public void DeleteMovie(int movieId)
+        {
+            var username = this.User.Identity.Name;
+            var user = usersService.GetByName(username);
+            this.myMovieService.RemoveMovie(user, movieId);
         }
     }
 }
