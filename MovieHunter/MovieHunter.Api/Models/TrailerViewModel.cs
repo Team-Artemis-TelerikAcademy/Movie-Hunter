@@ -17,6 +17,7 @@ namespace MovieHunter.Api.Models
                 {
                     Url = trailer.Url,
                     Movie = trailer.Movie.Title,
+                    Image = trailer.Movie.ImageUrl,
                     ReleaseDate = trailer.ReleaseDate
                 };
             }
@@ -25,6 +26,8 @@ namespace MovieHunter.Api.Models
         public DateTime ReleaseDate { get; set; }
 
         public string Movie { get; set; }
+
+        public string Image { get; set; }
 
         public string Url { get; set; }
     }
