@@ -104,6 +104,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MovieHunter.Common\MovieHunter.Common.csproj">
+      <Project>{87bf3dbd-5bc2-436a-aead-02a1d5c389e9}</Project>
+      <Name>MovieHunter.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MovieHunter.Data\MovieHunter.Data.csproj">
       <Project>{02eaee4a-bfbe-4e8b-a352-2567128a9cec}</Project>
       <Name>MovieHunter.Data</Name>
