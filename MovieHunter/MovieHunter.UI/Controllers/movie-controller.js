@@ -20,13 +20,13 @@ var movieController = function () {
                  return templates.get('movieById');
              }).then(function (template) {
                  context.$element().html(template(movie));
-                 $('.btn-add-to-my-movies').on('click', function () {
+                 $('#btn-add-to-want-to-watch').on('click', function () {
                      console.log(movie);
                      var likedMovie =
                      {
                          movieId: movie.Id,
-                         state: 1
-                     }
+                         state: 0
+                     };
 
                      var likedMovieStringified = JSON.stringify(likedMovie);
                      var authorization = "Bearer " + localStorage.getItem("tokenKey");
@@ -37,6 +37,23 @@ var movieController = function () {
                              toastr.success('Go to my movies', 'Movie added successfully');
                          })
                  });
+
+                $('#btn-add-to-watched').on('click', function () {
+                    console.log(movie);
+                    var likedMovie =
+                    {
+                        movieId: movie.Id,
+                        state: 1
+                    };
+
+                    var likedMovieStringified = JSON.stringify(likedMovie);
+                    var authorization = "Bearer " + localStorage.getItem("tokenKey");
+
+                    jsonRequester.post('http://localhost:52189/api/my-movies', { data: likedMovieStringified, contentType: 'application/json', headers: { Authorization: authorization } })
+                        .then(function () {
+                            toastr.success('Go to my movies', 'Movie added successfully');
+                        })
+                });
 
                  var links = $('.actor-link').get();
 
