@@ -18,6 +18,7 @@
     this.get('#/my-movies', myMoviesController.allMyMovies);
     this.get('#/my-movies/want-to-watch', myMoviesController.wantToWatch);
     this.get('#/my-movies/watched', myMoviesController.watched);
+    this.get('#/my-movies:id', myMoviesController.getById);
 
     this.get('#/genres', genreController.all);
     this.get('#/my-movies:id', movieController.getById);
