@@ -221,6 +221,7 @@
                             this.ChatContent.Children.Clear();
                             this.currentChannel = this.chatPanels.Keys.FirstOrDefault(ch => ch.Split(' ').Contains(o.CastTo<Border>().Child.CastTo<TextBlock>().Text));
                             this.ChatContent.Children.Add(this.chatPanels[this.currentChannel]);
+                            this.CurrentChat.Children[0].CastTo<TextBlock>().Text = "Currently chatting with: " + this.currentChannel.Split(' ')[1];
                         };
 
                         b.MouseEnter += (o, v) => 
