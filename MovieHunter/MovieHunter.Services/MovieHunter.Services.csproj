@@ -94,7 +94,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActorsService.cs" />
+    <Compile Include="CommentsService.cs" />
     <Compile Include="Contracts\IActorsService.cs" />
+    <Compile Include="Contracts\ICommentsService.cs" />
     <Compile Include="Contracts\IGenresService.cs" />
     <Compile Include="Contracts\IMoviesService.cs" />
     <Compile Include="Contracts\IMyMoviesService.cs" />

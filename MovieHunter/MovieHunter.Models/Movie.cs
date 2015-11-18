@@ -18,6 +18,7 @@
             this.Actors = new HashSet<Actor>();
             this.UserMovies = new HashSet<UserMovies>();
             this.Trailers = new HashSet<Trailer>();
+            this.Comments = new HashSet<Comment>();
         }
 
         public int Id { get; set; }
@@ -81,7 +82,8 @@
             get { return this.userMovies; }
             set { this.userMovies = value; }
         }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 
-    
 }
