@@ -33,9 +33,10 @@
         private string authKey;
         private string currentChannel;
 
+        private UIComponentProvider uiElements;
+
         private IDictionary<string, StackPanel> chatPanels;
         
-
         public MessengerWindow(string username, string authKey)
         {
             this.username = username;
@@ -43,6 +44,7 @@
             InitializeComponent();
             this.InitialiazePubNub();
             this.chatPanels = new Dictionary<string, StackPanel>();
+            this.uiElements = new UIComponentProvider();
             this.ChatBox.KeyDown += (s, e) => 
             {
                 if(e.Key == Key.Enter)
@@ -55,33 +57,6 @@
         private void InitialiazePubNub()
         {
             this.chat = new Pubnub("pub-c-25499a0d-31e9-468c-b4e4-e1940acb2e46", "sub-c-73f3014a-8793-11e5-8e17-02ee2ddab7fe");
-            //    "pub-c-25499a0d-31e9-468c-b4e4-e1940acb2e46",               // PUBLISH_KEY
-            //    "sub-c-73f3014a-8793-11e5-8e17-02ee2ddab7fe",               // SUBSCRIBE_KEY
-            //    "sec-c-NzBlZGI4OGYtZjkzNS00MjQ1LWI2NzItMTZlODNlOTdjNDEz",   // SECRET_KEY
-            //    true                                                        // SSL_ON?
-            //);
-            //this.currentChannel = "demo-channel";
-
-            //this.Subscribe();
-            //Task.Run(() =>
-            //{
-            //    this.chat.Subscribe(
-            //       channel,
-            //       delegate (object message)
-            //       {
-            //           try
-            //           {
-            //               var m = message as Dictionary<string, object>;
-            //               var stuffToAppend = string.Format("{0} {1}:  {2}{3}", ((DateTime)m["Sent"]).ToShortTimeString(), m["Sender"], m["Content"], Environment.NewLine);
-            //               this.Dispatcher.Invoke((Action)(() => this.ChatContent.Text += stuffToAppend));
-            //           }
-            //           catch (Exception e)
-            //           {
-            //               File.AppendAllText("../../huchuc.txt", e.Message + Environment.NewLine);
-            //           }
-            //           return true;
-            //       });
-            //});
         }
 
         private void Subscribe()
@@ -97,7 +72,7 @@
                            // var m = message as Dictionary<string, object>;
                            var match = Regex.Match(m, "{.+}").Value;
                            var stuffToAppend = JsonConvert.DeserializeObject<Message>(match);// string.Format("{0} {1}:  {2}{3}", ((DateTime)m["Sent"]).ToShortTimeString(), m["Sender"], m["Content"], Environment.NewLine);
-                           this.Dispatcher.Invoke((Action)(() => this.ChatPanel(stuffToAppend)));
+                           this.Dispatcher.Invoke(() => this.ChatPanel(stuffToAppend));
                            this.Dispatcher.Invoke(() =>
                            {
 
@@ -147,45 +122,25 @@
 
             users.ForEach(x =>
             {
-                var userTemplate = new Border()
-                {
-                    BorderThickness = new Thickness(2),
-                    BorderBrush = new SolidColorBrush(Colors.CornflowerBlue),
-                    CornerRadius = new CornerRadius(10),
-                    Margin = new Thickness(0, 10, 0, 0),
-                    Child = new TextBlock()
-                    {
-                        Text = x,
-                        Height = 30,
-                        Padding = new Thickness(10)
-                    }
-                };
+                var userTemplate = this.uiElements.ContactTemplate(x);
 
-                userTemplate.MouseEnter += (s, e) =>
-                {
-                    (s as Border).Background = new SolidColorBrush(Colors.DeepSkyBlue);
-                };
+                //userTemplate.MouseEnter += (s, e) =>
+                //{
+                //    (s as Border).Background = new SolidColorBrush(Colors.DeepSkyBlue);
+                //};
 
-                userTemplate.MouseLeave += (s, e) =>
-                {
-                    s.CastTo<Border>().Background = new SolidColorBrush(Colors.White);
-                    // this.activeChats.Enqueue(s.CastTo<Border>());
-                };
+                //userTemplate.MouseLeave += (s, e) =>
+                //{
+                //    s.CastTo<Border>().Background = new SolidColorBrush(Colors.White);
+                //};
+
+                SetHoverColor(userTemplate, Colors.DeepSkyBlue);
 
                 userTemplate.MouseDown += (s, e) =>
                 {
                     var usernames = new string[] { this.username, s.CastTo<Border>().Child.CastTo<TextBlock>().Text };
 
-                    //string gridXaml = XamlWriter.Save(s);
-                    //StringReader stringReader = new StringReader(gridXaml);
-                    //XmlReader xmlReader = XmlReader.Create(stringReader);
-                    //var el = XamlReader.Load(xmlReader);
-
-                    var el = new TextBlock()
-                    {
-                        Text = "Currently chatting with: " + usernames[1],
-                        Foreground = new SolidColorBrush(Colors.CadetBlue)
-                    };
+                    var el = this.uiElements.ChatLabel(usernames[1]);
 
                     this.CurrentChat.Children.Clear();
                     this.CurrentChat.Children.Add(el);
@@ -205,16 +160,7 @@
 
                     this.chatPanels.Keys.ForEach(k =>
                     {
-                        var b = new Border()
-                        {
-                            Child = new TextBlock()
-                            {
-                                Text = k.Split(' ').FirstOrDefault(h => h != this.username),
-                                Margin = new Thickness(2)
-                            },
-                            BorderBrush = new SolidColorBrush(Colors.AntiqueWhite),
-                            BorderThickness = new Thickness(1)
-                        };
+                        var b = this.uiElements.OpenChatLabel(k.Split(' ').FirstOrDefault(h => h != this.username));
 
                         b.MouseDown += (o, v) => 
                         {
@@ -224,15 +170,21 @@
                             this.CurrentChat.Children[0].CastTo<TextBlock>().Text = "Currently chatting with: " + this.currentChannel.Split(' ')[1];
                         };
 
-                        b.MouseEnter += (o, v) => 
-                        {
-                            o.CastTo<Border>().Child.CastTo<TextBlock>().Background = new SolidColorBrush(Colors.Aquamarine);
-                        };
+                        //b.MouseEnter += (o, v) => 
+                        //{
+                        //    o
+                        //     .CastTo<Border>()
+                        //     .Background = new SolidColorBrush(Colors.Aquamarine);
+                        //};
 
-                        b.MouseLeave += (o, v) => 
-                        {
-                            o.CastTo<Border>().Child.CastTo<TextBlock>().Background = new SolidColorBrush(Colors.White);
-                        };
+                        //b.MouseLeave += (o, v) => 
+                        //{
+                        //    o
+                        //     .CastTo<Border>()
+                        //     .Background = new SolidColorBrush(Colors.White);
+                        //};
+
+                        SetHoverColor(b, Colors.Aquamarine);
 
                         this.OpenChats.Children.Add(b);
                     });
@@ -253,25 +205,22 @@
                 this.chatPanels.Add(this.currentChannel, new StackPanel());
             }
 
-            var userTemplate = new Border()
-            {
-                Background = new SolidColorBrush(msg.Sender == this.username ? Colors.CornflowerBlue : Colors.Red),
-                CornerRadius = new CornerRadius(10),
-                Margin = new Thickness(0, 10, 0, 0),
-                Width = 200,
-                Child = new TextBlock()
-                {
-                    Text = msg.Content,
-                    Height = 30,
-                    Padding = new Thickness(10),
-                    HorizontalAlignment = msg.Sender == this.username ? HorizontalAlignment.Left : HorizontalAlignment.Right
-                },
-                HorizontalAlignment = msg.Sender == this.username ? HorizontalAlignment.Left : HorizontalAlignment.Right
-            };
+            var userTemplate = this.uiElements.MessageTemplate(msg.Sender == this.username, msg.Content);
 
             this.chatPanels[this.currentChannel].Children.Add(userTemplate);
-            //this.ChatContent.Children.Clear();
-            //this.ChatContent.Children.Add(this.chatPanels[this.currentChannel]);
+        }
+
+        private static void SetHoverColor(Border element, Color color)
+        {
+            element.MouseEnter += (o, v) =>
+            {
+                element.Background = new SolidColorBrush(color);
+            };
+
+            element.MouseLeave += (o, v) =>
+            {
+                element.Background = new SolidColorBrush(Colors.White);
+            };
         }
     }
 }
