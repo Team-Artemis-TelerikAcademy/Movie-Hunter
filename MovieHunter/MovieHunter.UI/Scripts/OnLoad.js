@@ -10,30 +10,23 @@ $(document).ready(function(){
 
         jsonRequester.post('http://localhost:52189/api/account/token', { data: loginData, contentType: 'application/x-www-form-urlencoded; charset=utf-8' })
             .then(function(data){
-                localStorage.setItem("key", data.access_token);
-                $('.register-link').css('display','none');
-                $('.login-link').css('display','none');
-                $('.logout-link').css('display','inline-block');
+                localStorage.setItem("tokenKey", data.access_token);
+                $('#my-movies').css('display','block');
+                $('#login').css('display','none');
+                $('#logout').css('display','block');
+                toastr.success('Enjoy our movies', 'Sucess, GO HUNT');
                 window.location.href ='#/';
-                document.location.reload(true);
             });
-    })
-    $(".bhide").click(function(){
-        $(".hideObj").slideDown();
-        $(this).hide(); //.attr()
-        return false;
-    });
-    $(".bhide2").click(function(){
-        $(".container.hideObj2").slideDown();
-        $(this).hide(); // .attr()
-        return false;
     });
 
-    $('.heart').mouseover(function(){
-        $(this).find('i').removeClass('fa-heart-o').addClass('fa-heart');
-    }).mouseout(function(){
-        $(this).find('i').removeClass('fa-heart').addClass('fa-heart-o');
+    $('#logout').on('click', function(){
+        $('#my-movies').css('display','none');
+        $('#login').css('display','block');
+        $('#logout').css('display','none');
+        toastr.success('Whay are you leaving, come back', 'Bye, Bye');
+        localStorage.clear();
     });
+
 
     function sdf_FTS(_number,_decimal,_separator)
     {
@@ -70,71 +63,4 @@ $(document).ready(function(){
         }, 2);
 
     }, 500);
-});
-
-/*menu*/
-function calculateScroll() {
-    var contentTop      =   [];
-    var contentBottom   =   [];
-    var winTop      =   $(window).scrollTop();
-    var rangeTop    =   200;
-    var rangeBottom =   500;
-    $('.navmenu').find('a').each(function(){
-        contentTop.push( $( $(this).attr('href') ).offset().top );
-        contentBottom.push( $( $(this).attr('href') ).offset().top + $( $(this).attr('href') ).height() );
-    })
-    $.each( contentTop, function(i){
-        if ( winTop > contentTop[i] - rangeTop && winTop < contentBottom[i] - rangeBottom ){
-            $('.navmenu li')
-                .removeClass('active')
-                .eq(i).addClass('active');
-        }
-    })
-};
-jQuery(function(){
-    jQuery('#camera_wrap_1').camera({
-        transPeriod: 500,
-        time: 3000,
-        height: '490px',
-        thumbnails: false,
-        pagination: true,
-        playPause: false,
-        loader: false,
-        navigation: false,
-        hover: false
-    });
-});
-jQuery(document).ready(function(){
-
-    jQuery('#menu').slicknav();
-
-    var $menu = $("#menuF");
-
-    $(window).scroll(function(){
-        if ( $(this).scrollTop() > 100 && $menu.hasClass("default") ){
-            $menu.fadeOut('fast',function(){
-                $(this).removeClass("default")
-                    .addClass("fixed transbg")
-                    .fadeIn('fast');
-            });
-        } else if($(this).scrollTop() <= 100 && $menu.hasClass("fixed")) {
-            $menu.fadeOut('fast',function(){
-                $(this).removeClass("fixed transbg")
-                    .addClass("default")
-                    .fadeIn('fast');
-            });
-        }
-    });
-
-    calculateScroll();
-    $(window).scroll(function(event) {
-        calculateScroll();
-    });
-    $('.navmenu ul li a').click(function() {
-        $('html, body').animate({scrollTop: $(this.hash).offset().top - 80}, 800);
-        return false;
-    });
-
-    jQuery(".pretty a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true, social_tools: ''});
-
 });

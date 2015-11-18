@@ -224,6 +224,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActorsController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\GenresController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\MyMoviesController.cs" />
@@ -237,6 +238,8 @@
     <Compile Include="Models\ActorViewModel.cs" />
     <Compile Include="Models\ChangeUserMovieRatingBindingModel.cs" />
     <Compile Include="Models\ChangeUserMovieStatusBindingModel.cs" />
+    <Compile Include="Models\CommentsBindingModel.cs" />
+    <Compile Include="Models\CommentViewModel.cs" />
     <Compile Include="Models\GenreViewModel.cs" />
     <Compile Include="Models\MovieBindingModel.cs" />
     <Compile Include="Models\MovieDetailViewModel.cs" />

@@ -24,8 +24,10 @@
         public User()
         {
             this.UserMovies = new HashSet<UserMovies>();
+            this.Comments = new HashSet<Comment>();
         }
 
         public virtual ICollection<UserMovies> UserMovies { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
