@@ -34,7 +34,6 @@
 
         public string Request(string url, string postData)
         {
-            // string URL = "http://localhost:52189//api/Account/Token";
             var webRequest = WebRequest.Create(url);
             webRequest.Method = "POST";
             webRequest.ContentType = "application/x-www-form-urlencoded";

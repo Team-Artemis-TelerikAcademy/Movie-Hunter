@@ -9,6 +9,7 @@
 
     using Data;
     using ImdbDownloader;
+    using Models;
 
     public static class Startup
     {

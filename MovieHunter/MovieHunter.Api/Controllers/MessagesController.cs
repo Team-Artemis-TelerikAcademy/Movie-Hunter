@@ -25,6 +25,14 @@
         {
             var msgs = this.messages.All()
                                     .Where(x => x.Author.UserName == username || x.Recipient.UserName == username)
+                                    .Select(x => new MessageViewModel()
+                                    {
+                                        Author = x.Author.UserName,
+                                        Recepient = x.Recipient.UserName,
+                                        Content = x.Content,
+                                        TimeSent = x.TimeSent,
+                                        Seen = x.Seen
+                                    })
                                     .ToList();
 
             return this.Ok(msgs);

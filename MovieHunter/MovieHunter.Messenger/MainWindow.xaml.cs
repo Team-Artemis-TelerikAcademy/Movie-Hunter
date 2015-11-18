@@ -27,38 +27,70 @@
     /// </summary>
     public partial class MessengerWindow : Window
     {
+        private const string PubnubPublishKey = "pub-c-1c7a2191-1e9e-4439-9249-b43dcba27922";
+        private const string PubnubSubstribeKey = "sub-c-f6b6aa8e-885e-11e5-84ee-0619f8945a4f";
+        private const string PubnubSecretKey = "sec-c-ODQyN2E2YjEtYWQ5Yy00YTJjLTgwOTEtY2IzNWRlYWUyMjI1";
+        private const string MessagesRequestUrl = "http://localhost:52189/api/Messages";
+        private const string UsersRequestUrl = "http://localhost:52189/api/Users?username=";
+
+        private static readonly Action<string> EmptyAction = parameter => { };
+        private static readonly Action<PubnubClientError> DefaultErrorHandler = error =>
+        {
+            var report = string.Format("{0}: The following error occured:{1}{2}{1}In channel{3}", DateTime.Now, Environment.NewLine, error.Message, error.Channel);
+            File.AppendAllText("../../error-log.txt", report);
+        };
+
         private Pubnub chat;
 
         private string username;
         private string authKey;
         private string currentChannel;
+        private KeyValuePair<string, string> authHeader;
 
         private UIComponentProvider uiElements;
         private DataRequester requester;
 
         private IDictionary<string, StackPanel> chatPanels;
+        private IDictionary<string, Border> chatLabels;
+        
 
-        public MessengerWindow(string username, string authKey)
+        public MessengerWindow(string username, string authKey, DataRequester requester, UIComponentProvider uiComponentProvider)
         {
             this.username = username;
             this.authKey = authKey;
-            InitializeComponent();
-            this.InitialiazePubNub();
+            this.authHeader = new KeyValuePair<string, string>("Authorization", "bearer " + this.authKey);
+
+            this.requester = requester;
+            this.uiElements = uiComponentProvider;
+
             this.chatPanels = new Dictionary<string, StackPanel>();
-            this.uiElements = new UIComponentProvider();
-            this.requester = new DataRequester();
+            this.chatLabels = new Dictionary<string, Border>();
+
+            this.InitializeComponent();
+            this.InitializeStyles();
+            this.InitialiazePubNub();
+            this.AttachEventsToKeys();
+        }
+
+        private void InitializeStyles()
+        {
+            SetHoverColor(this.ExitButton, Colors.CadetBlue, Colors.CornflowerBlue);
+        }
+
+        private void AttachEventsToKeys()
+        {
             this.ChatBox.KeyDown += (s, e) =>
             {
                 if (e.Key == Key.Enter)
                 {
-                    this.button_Click(s, e);
+                    this.SendMessage(s, e);
                 }
             };
         }
 
         private void InitialiazePubNub()
         {
-            this.chat = new Pubnub("pub-c-25499a0d-31e9-468c-b4e4-e1940acb2e46", "sub-c-73f3014a-8793-11e5-8e17-02ee2ddab7fe");
+            this.chat = new Pubnub(PubnubPublishKey, PubnubSubstribeKey, PubnubSecretKey);
         }
 
         private void Subscribe()
@@ -71,27 +103,25 @@
                    {
                        try
                        {
-                           // var m = message as Dictionary<string, object>;
-                           var match = Regex.Match(m, "{.+}").Value;
-                           var stuffToAppend = JsonConvert.DeserializeObject<Message>(match);// string.Format("{0} {1}:  {2}{3}", ((DateTime)m["Sent"]).ToShortTimeString(), m["Sender"], m["Content"], Environment.NewLine);
-                           this.Dispatcher.Invoke(() => this.ChatPanel(stuffToAppend));
-                           this.Dispatcher.Invoke(() =>
-                           {
+                           var json = Regex.Match(m, "{.+}").Value;
 
-                           });
+                           var messageToAppend = JsonConvert.DeserializeObject<Message>(json);
+                           this.Dispatcher.Invoke(() => this.UpdateChatPanels(messageToAppend));
                        }
                        catch (Exception e)
                        {
                            File.AppendAllText("../../huchuc.txt", e.Message + Environment.NewLine);
                        }
                    },
-                   k => { },
-                   k => { }
+                   EmptyAction,
+                   DefaultErrorHandler
                    );
             });
+
+
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void SendMessage(object sender, RoutedEventArgs e)
         {
             var message = new Message()
             {
@@ -108,15 +138,15 @@
                 Recepient = this.currentChannel.Split(' ')[1]
             };
 
-            var response = this.requester.RequestWithJsonBody("http://localhost:52189/api/Messages", JsonConvert.SerializeObject(msg), new List<KeyValuePair<string, string>>()
+            this.ChatContent.ScrollToEnd();
+
+            var response = this.requester.RequestWithJsonBody(MessagesRequestUrl, JsonConvert.SerializeObject(msg), new List<KeyValuePair<string, string>>()
             {
-                new KeyValuePair<string, string>("Authorization", "bearer " + this.authKey)
+                this.authHeader
             });
 
-            MessageBox.Show(response);
-
-            this.ChatBox.Text = "";
-            this.chat.Publish<string>(currentChannel, message, x => { }, x => { });
+            this.ChatBox.Text = string.Empty;
+            this.chat.Publish<string>(currentChannel, message, EmptyAction, DefaultErrorHandler);
 
         }
 
@@ -124,20 +154,26 @@
         {
             var match = sender.CastTo<TextBox>().Text;
 
-            var response = this.requester.Request("http://localhost:52189/api/Users?username=" + match);
+            var response = this.requester.Request(UsersRequestUrl + match);
 
-            this.Templatize(response);
-        }
-
-        private void Templatize(string response)
-        {
             var users = JsonConvert.DeserializeObject<string[]>(response);
 
+            this.Templatize(users);
+
+        }
+
+        private void Templatize(string[] users)
+        {
             this.Users.Children.Clear();
 
-            users.ForEach(x =>
+            users.ForEach(userNickname =>
             {
-                var userTemplate = this.uiElements.ContactTemplate(x);
+                if(userNickname == this.username)
+                {
+                    return;
+                }
+
+                var userTemplate = this.uiElements.ContactTemplate(userNickname);
 
                 SetHoverColor(userTemplate, Colors.DeepSkyBlue);
 
@@ -157,30 +193,11 @@
                         this.chatPanels.Add(this.currentChannel, new StackPanel());
                     }
 
-                    this.ChatContent.Children.Clear();
-                    this.ChatContent.Children.Add(this.chatPanels[this.currentChannel]);
+                    this.ChatContent.Content = this.chatPanels[this.currentChannel];
 
+                    this.UpdateChatLabels(userNickname);
 
-                    this.OpenChats.Children.Clear();
-
-                    this.chatPanels.Keys.ForEach(k =>
-                    {
-                        var b = this.uiElements.OpenChatLabel(k.Split(' ').FirstOrDefault(h => h != this.username));
-
-                        b.MouseDown += (o, v) =>
-                        {
-                            this.ChatContent.Children.Clear();
-                            this.currentChannel = this.chatPanels.Keys.FirstOrDefault(ch => ch.Split(' ').Contains(o.CastTo<Border>().Child.CastTo<TextBlock>().Text));
-                            this.ChatContent.Children.Add(this.chatPanels[this.currentChannel]);
-                            this.CurrentChat.Children[0].CastTo<TextBlock>().Text = "Currently chatting with: " + this.currentChannel.Split(' ')[1];
-                        };
-
-                        SetHoverColor(b, Colors.Aquamarine);
-
-                        this.OpenChats.Children.Add(b);
-                    });
-
-
+                    this.OpenHistory();
                     this.Subscribe();
                 };
 
@@ -189,7 +206,50 @@
 
         }
 
-        public void ChatPanel(Message msg)
+        private void UpdateChatLabels(string username)
+        {
+            if (!this.chatLabels.ContainsKey(username))
+            {
+                var label = this.uiElements.OpenChatLabel(username);
+
+                label.MouseDown += (s, e) =>
+                {
+                    this.UpdateChatLabel(s.CastTo<Border>().Child.CastTo<TextBlock>().Text);
+                };
+
+                SetHoverColor(label, Colors.DeepSkyBlue);
+
+                this.OpenChats.Children.Add(label);
+                this.chatLabels.Add(username, label);
+            }
+        }
+
+        private void OpenHistory()
+        {
+            this.chat.DetailedHistory<string>(
+                                              this.currentChannel,
+                                              1000,
+                                              x =>
+                                              {
+                                                  var match = Regex.Match(x, "\\[\\{.+\\}\\]");
+                                                  var messageArray = JsonConvert.DeserializeObject<Message[]>(match.Value);
+
+                                                  messageArray.ForEach(historyMessage =>
+                                                  {
+                                                      this.Dispatcher.Invoke(() => this.UpdateChatPanels(historyMessage));
+                                                  });
+                                              },
+                                              DefaultErrorHandler);
+        }
+
+        private void UpdateChatLabel(string other)
+        {
+            this.currentChannel = this.chatPanels.Keys.FirstOrDefault(ch => ch.Split(' ').Contains(other));
+            this.ChatContent.Content = this.chatPanels[this.currentChannel];
+            this.CurrentChat.Children[0].CastTo<TextBlock>().Text = "Currently chatting with: " + other;
+        }
+
+        public void UpdateChatPanels(Message msg)
         {
             if (!this.chatPanels.ContainsKey(this.currentChannel))
             {
@@ -201,7 +261,7 @@
             this.chatPanels[this.currentChannel].Children.Add(userTemplate);
         }
 
-        private static void SetHoverColor(Border element, Color color)
+        private static void SetHoverColor(Border element, Color color, Color? colorOnLeave = null)
         {
             element.MouseEnter += (o, v) =>
             {
@@ -210,8 +270,13 @@
 
             element.MouseLeave += (o, v) =>
             {
-                element.Background = new SolidColorBrush(Colors.White);
+                element.Background = new SolidColorBrush(colorOnLeave ?? Colors.White);
             };
+        }
+
+        private void Border_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.Shutdown(42);
         }
     }
 }

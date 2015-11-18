@@ -19,5 +19,7 @@
         
         [Required]
         public string Recepient { get; set; }
+
+        public bool Seen { get; set; }
     }
 }

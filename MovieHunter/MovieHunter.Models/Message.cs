@@ -23,5 +23,7 @@
 
         [ForeignKey("RecipientId")]
         public virtual User Recipient { get; set; }
+
+        public bool Seen { get; set; }
     }
 }

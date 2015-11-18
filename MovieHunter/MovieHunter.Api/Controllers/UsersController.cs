@@ -17,7 +17,7 @@
         [HttpGet]
         public IHttpActionResult GetByName(string username)
         {
-            var res = this.users.All().Where(x => x.UserName.Contains(username)).Select(x => x.UserName);
+            var res = this.users.All().Where(x => x.UserName.Contains(username)).Select(x => x.UserName).ToList();
             return this.Ok(res);
         }
     }

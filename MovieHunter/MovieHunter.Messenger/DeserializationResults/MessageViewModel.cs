@@ -14,5 +14,7 @@
         public string Author { get; set; }
         
         public string Recepient { get; set; }
+
+        public bool Seen { get; set; }
     }
 }

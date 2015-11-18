@@ -9,5 +9,7 @@
         public string Content { get; set; }
 
         public DateTime Sent { get; set; }
+
+        public bool Seen { get; set; }
     }
 }

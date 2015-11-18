@@ -61,9 +61,9 @@
         {
             var message = new Border()
             {
-                Background = new SolidColorBrush(sentByLocalUser ? Colors.CornflowerBlue : Colors.Red),
+                Background = new SolidColorBrush(sentByLocalUser ? Colors.CornflowerBlue : Colors.Gray),
                 CornerRadius = new CornerRadius(10),
-                Margin = new Thickness(0, 10, 0, 0),
+                Margin = new Thickness(5, 10, 5, 0),
                 Width = 200,
                 Child = new TextBlock()
                 {
