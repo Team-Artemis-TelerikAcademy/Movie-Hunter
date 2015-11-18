@@ -10,10 +10,10 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 
-    <link rel='stylesheet' id='camera-css'  href='css/camera.css' type='text/css' media='all'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700|Open+Sans:700' rel='stylesheet' type='text/css'>
 
     <script src="lib/jquery.js"></script>
+    <script src="lib/bootstrap.js"></script>
 </head>
 <body>
 <div id="home">
@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="logo col-md-4">
                         <div>
-                            <a href="#">
+                            <a href="#/home">
                                 <img src="images/logo.png">
                             </a>
                         </div>
@@ -32,17 +32,63 @@
                         <div class="navmenu">
                             <ul id="menu">
                                 <li class ="home" class="active"><a href="#/home" class="top-menu">Home</a></li>
-                                <li class="movies-menu"><p class="top-menu">Movies</p>
-                                    <ul >
-                                        <li class="movie-children"><a href="#/movies">All</a></li>
-                                        <li class="movie-children"><a href="#/movies/released">Released</a></li>
-                                        <li class="movie-children"><a href="#/movies/coming-soon">Coming-soon</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Movies <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#/movies">All</a></li>
+                                        <li><a href="#/movies/released">Released</a></li>
+                                        <li><a href="#/movies/coming-soon">Coming-soon</a></li>
                                     </ul>
                                 </li>
                                 <li class ="genres"><a href="#/genres" class="top-menu">Genres</a></li>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><p class="navbar-text">Already have an account?</p></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                                        <ul id="login-dp" class="dropdown-menu">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <!--Login via
+                                                        <div class="social-buttons">
+                                                            <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                                            <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                                        </div>
+                                                        or -->
+                                                        <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                                            <div class="form-group">
+                                                                <label class="sr-only" for="tb-login-username">Username</label>
+                                                                <input type="text" class="form-control login-username" id="tb-login-username" name="username" placeholder="Account name"
+                                                                       required/>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="sr-only" for="tb-login-password">Password</label>
+                                                                <input type="password" class="form-control" id="tb-login-password" name="password" placeholder="Password"
+                                                                       required/>
+                                                                <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <button class="btn btn-sm btn-primary form-control" id="btn-login" type="submit">Sign in</button>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> keep me logged-in
+                                                                </label>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="bottom text-center">
+                                                        New here ? <a href="#/register"><b>Join Us</b></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
                             </ul>
                         </div>
                     </div>
+
                     <div  class="col-md-2">
                         <div>
                         <a href="#/register" class="register-link">Register</a>&nbsp<a href="#/login" class="login-link">Login</a>&nbsp<a href="#/home" class="logout-link">Logout</a>
@@ -51,6 +97,7 @@
                 </div>
             </div>
         </div>
+
         <div class="container" id="headerContent">
             <div class="row wrap">
                 <div class="col-md-12 gallery">
