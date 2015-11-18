@@ -33,9 +33,10 @@ var movieController = function () {
 
                      jsonRequester.post('http://localhost:52189/api/my-movies', { data: likedMovieStringified, contentType: 'application/json', headers: { Authorization: authorization } })
                          .then(function () {
-                             console.log("Movie added successfully");
+
+                             toastr.success('Go to my movies', 'Movie added successfully');
                          })
-                 })
+                 });
 
                  var links = $('.actor-link').get();
 

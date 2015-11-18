@@ -14,6 +14,7 @@ $(document).ready(function(){
                 $('#my-movies').css('display','block');
                 $('#login').css('display','none');
                 $('#logout').css('display','block');
+                toastr.success('Enjoy our movies', 'Sucess, GO HUNT');
                 window.location.href ='#/';
             });
     });
@@ -22,6 +23,7 @@ $(document).ready(function(){
         $('#my-movies').css('display','none');
         $('#login').css('display','block');
         $('#logout').css('display','none');
+        toastr.success('Whay are you leaving, come back', 'Bye, Bye');
         localStorage.clear();
     });
 
