@@ -1,4 +1,13 @@
 $(document).ready(function(){
+    if(!(localStorage.getItem("tokenKey"))){
+        $('#my-movies').css('display','none');
+        $('#login').css('display','block');
+        $('#logout').css('display','none');
+    }else{
+        $('#my-movies').css('display','block');
+        $('#login').css('display','none');
+        $('#logout').css('display','block');
+    }
     $('#btn-login').on('click', function(){
         event.preventDefault();
 
