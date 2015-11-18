@@ -71,6 +71,7 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Message.cs" />
+    <Compile Include="MessageViewModel.cs" />
     <Compile Include="UIComponentProvider.cs" />
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>

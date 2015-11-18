@@ -226,6 +226,7 @@
     <Compile Include="Controllers\ActorsController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\GenresController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\MyMoviesController.cs" />
     <Compile Include="Controllers\TrailersController.cs" />
@@ -241,6 +242,7 @@
     <Compile Include="Models\CommentsBindingModel.cs" />
     <Compile Include="Models\CommentViewModel.cs" />
     <Compile Include="Models\GenreViewModel.cs" />
+    <Compile Include="Models\MessageViewModel.cs" />
     <Compile Include="Models\MovieBindingModel.cs" />
     <Compile Include="Models\MovieDetailViewModel.cs" />
     <Compile Include="Models\MovieViewModel.cs" />

@@ -34,9 +34,10 @@
         private string currentChannel;
 
         private UIComponentProvider uiElements;
+        private DataRequester requester;
 
         private IDictionary<string, StackPanel> chatPanels;
-        
+
         public MessengerWindow(string username, string authKey)
         {
             this.username = username;
@@ -45,9 +46,10 @@
             this.InitialiazePubNub();
             this.chatPanels = new Dictionary<string, StackPanel>();
             this.uiElements = new UIComponentProvider();
-            this.ChatBox.KeyDown += (s, e) => 
+            this.requester = new DataRequester();
+            this.ChatBox.KeyDown += (s, e) =>
             {
-                if(e.Key == Key.Enter)
+                if (e.Key == Key.Enter)
                 {
                     this.button_Click(s, e);
                 }
@@ -98,18 +100,31 @@
                 Sent = DateTime.Now
             };
 
+            var msg = new MessageViewModel()
+            {
+                Content = message.Content,
+                TimeSent = DateTime.Now,
+                Author = this.username,
+                Recepient = this.currentChannel.Split(' ')[1]
+            };
+
+            var response = this.requester.RequestWithJsonBody("http://localhost:52189/api/Messages", JsonConvert.SerializeObject(msg), new List<KeyValuePair<string, string>>()
+            {
+                new KeyValuePair<string, string>("Authorization", "bearer " + this.authKey)
+            });
+
+            MessageBox.Show(response);
+
             this.ChatBox.Text = "";
-            this.chat.Publish<string>(currentChannel, message, x => {
-                
-            }, x => { });
+            this.chat.Publish<string>(currentChannel, message, x => { }, x => { });
 
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var match = (sender as TextBox).Text;
+            var match = sender.CastTo<TextBox>().Text;
 
-            var response = new DataRequester().Request("http://localhost:52189/api/Users?username=" + match);
+            var response = this.requester.Request("http://localhost:52189/api/Users?username=" + match);
 
             this.Templatize(response);
         }
@@ -123,16 +138,6 @@
             users.ForEach(x =>
             {
                 var userTemplate = this.uiElements.ContactTemplate(x);
-
-                //userTemplate.MouseEnter += (s, e) =>
-                //{
-                //    (s as Border).Background = new SolidColorBrush(Colors.DeepSkyBlue);
-                //};
-
-                //userTemplate.MouseLeave += (s, e) =>
-                //{
-                //    s.CastTo<Border>().Background = new SolidColorBrush(Colors.White);
-                //};
 
                 SetHoverColor(userTemplate, Colors.DeepSkyBlue);
 
@@ -162,27 +167,13 @@
                     {
                         var b = this.uiElements.OpenChatLabel(k.Split(' ').FirstOrDefault(h => h != this.username));
 
-                        b.MouseDown += (o, v) => 
+                        b.MouseDown += (o, v) =>
                         {
                             this.ChatContent.Children.Clear();
                             this.currentChannel = this.chatPanels.Keys.FirstOrDefault(ch => ch.Split(' ').Contains(o.CastTo<Border>().Child.CastTo<TextBlock>().Text));
                             this.ChatContent.Children.Add(this.chatPanels[this.currentChannel]);
                             this.CurrentChat.Children[0].CastTo<TextBlock>().Text = "Currently chatting with: " + this.currentChannel.Split(' ')[1];
                         };
-
-                        //b.MouseEnter += (o, v) => 
-                        //{
-                        //    o
-                        //     .CastTo<Border>()
-                        //     .Background = new SolidColorBrush(Colors.Aquamarine);
-                        //};
-
-                        //b.MouseLeave += (o, v) => 
-                        //{
-                        //    o
-                        //     .CastTo<Border>()
-                        //     .Background = new SolidColorBrush(Colors.White);
-                        //};
 
                         SetHoverColor(b, Colors.Aquamarine);
 
