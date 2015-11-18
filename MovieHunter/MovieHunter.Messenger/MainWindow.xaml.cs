@@ -17,7 +17,7 @@
     using System.Windows.Shapes;
     using Newtonsoft.Json;
     using FLExtensions.Common;
-    using PubNubMessaging.Core;
+    using Common.PubNubMessaging.Core;
     using System.Windows.Markup;
     using System.Xml;
     using System.Text.RegularExpressions;

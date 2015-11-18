@@ -119,9 +119,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MovieHunter.PubNub\MovieHunter.PubNub.csproj">
-      <Project>{ff29f44e-467a-45f6-9e13-d669377cc79f}</Project>
-      <Name>MovieHunter.PubNub</Name>
+    <ProjectReference Include="..\MovieHunter.Common\MovieHunter.Common.csproj">
+      <Project>{87bf3dbd-5bc2-436a-aead-02a1d5c389e9}</Project>
+      <Name>MovieHunter.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
