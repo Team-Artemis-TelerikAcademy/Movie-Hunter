@@ -7,7 +7,7 @@
         {{/each}}
         <p>Release date:&nbsp{{ReleaseDate}}</p>
     </div>
-<img src="{{this.Image}}" class="img-responsive movie-picture" />
+    <img src="{{this.Image}}" class="img-responsive movie-picture" />
 
     <p class="description-outline">{{this.Description}}</p>
     Stars:{{#each this.Actors}}
@@ -16,9 +16,8 @@
 
     {{#each this.Trailers}}
     <p><a href="{{this}}" class="btn btn-primary">Watch Trailer</a>
-        <button class="btn btn-primary" id="btn-add-to-want-to-watch" type="submit">Want To Watch</button>
-        <button class="btn btn-primary" id="btn-add-to-watched" type="submit">Add to Watched</button>
-    {{/each}}
+        <button class="btn btn-primary" id="btn-move" type="submit">Move</button>
+        <button class="btn btn-danger" id="btn-remove" type="submit">Remove</button>
+        {{/each}}
 
 </div>
-
