@@ -9,7 +9,7 @@
         public int Id { get; set; }
 
         [Required]
-        [Column(TypeName = "ntext")]
+        [Column(TypeName = "nvarchar(MAX)")]
         public string Content { get; set; }
 
         public DateTime TimeSent { get; set; }
