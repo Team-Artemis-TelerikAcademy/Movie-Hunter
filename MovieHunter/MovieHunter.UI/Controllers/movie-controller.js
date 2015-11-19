@@ -16,11 +16,20 @@ var movieController = function () {
         var movie;
         jsonRequester.get('http://localhost:52189/api/Movies/' + id)
              .then(function (res) {
-                 movie = res;
+                movie = res;
                 console.log(movie);
                  return templates.get('movieById');
              }).then(function (template) {
                  context.$element().html(template(movie));
+                if(!(localStorage.getItem("tokenKey"))){
+                    $('#btn-add-to-watched').css('display', 'none');
+                    $('#btn-add-to-want-to-watch').css('display', 'none');
+                    $('.change-rating').css('display', 'none');
+                }else {
+                    $('#btn-add-to-watched').css('display', 'inline-block');
+                    $('#btn-add-to-want-to-watch').css('display', 'inline-block');
+                    $('.change-rating').css('display', 'inline-block');
+                }
                  $('#btn-add-to-want-to-watch').on('click', function () {
                      console.log(movie);
                      var likedMovie =
