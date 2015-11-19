@@ -1,87 +1,86 @@
 ﻿namespace MovieHunter.Messenger
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Net;
     using System.Text;
     using FLExtensions.Common;
+    using Contracts;
+    using Newtonsoft.Json;
 
-    public class DataRequester
+    public class DataRequester : IDataRequester
     {
-        public string Request(string url, ICollection<KeyValuePair<string, string>> headers = null)
+        public static readonly Func<HttpWebRequest, Exception, string> DefaultErrorHandling = (req, ex) => JsonConvert.SerializeObject(ex);
+        public static readonly Action<HttpWebRequest> DefaultModification = request => request.Credentials = CredentialCache.DefaultCredentials;
+
+        public string Request(string url, Action<HttpWebRequest> applyModifications, Func<HttpWebRequest, Exception, string> errorHandler = null)
         {
             var request = WebRequest.CreateHttp(url);
 
-            if (headers != null && headers.Count > 0)
-            {
-                headers.ForEach(h => request.Headers.Add(h.Key, h.Value));
-            }      
-
-            request.Credentials = CredentialCache.DefaultCredentials;
+            (applyModifications ?? DefaultModification)(request);
 
             var response = (HttpWebResponse)request.GetResponse();
 
-            var receiveStream = response.GetResponseStream();
+            try
+            {
+                using (var receiveStream = response.GetResponseStream())
+                {
+                    using (var rs = new StreamReader(receiveStream, Encoding.UTF8))
+                    {
+                        return rs.ReadToEnd();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return (errorHandler ?? DefaultErrorHandling)(request, ex);
+            }
+        }
 
-            var readStream = new StreamReader(receiveStream, Encoding.UTF8);
-            var json = readStream.ReadToEnd();
+        public string Request(string url, params KeyValuePair<string, string>[] headers)
+        {
+            return this.Request(url, request =>
+            {
+                if (headers != null && headers.Length > 0)
+                {
+                    headers.ForEach(h => request.Headers.Add(h.Key, h.Value));
+                }
 
-            receiveStream.Close();
-            readStream.Close();
-
-            return json;
+                request.Credentials = CredentialCache.DefaultCredentials;
+            });
         }
 
         public string Request(string url, string postData)
         {
-            var webRequest = WebRequest.Create(url);
-            webRequest.Method = "POST";
-            webRequest.ContentType = "application/x-www-form-urlencoded";
-
-            var reqStream = webRequest.GetRequestStream();
-
-            var postArray = Encoding.ASCII.GetBytes(postData);
-
-            reqStream.Write(postArray, 0, postArray.Length);
-            reqStream.Close();
-            string result;
-            try
+            return this.Request(url, request =>
             {
-                var sr = new StreamReader(webRequest.GetResponse().GetResponseStream());
-                result = sr.ReadToEnd();
-                sr.Close();
-            }
-            catch (WebException wex)
-            {
-                result = "{ \"access_token\": \"\" }";
-            }
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
 
-            return result;
+                using (var reqStream = request.GetRequestStream())
+                {
+                    var postArray = Encoding.ASCII.GetBytes(postData);
+
+                    reqStream.Write(postArray, 0, postArray.Length);
+                }
+            });
         }
 
-        public string RequestWithJsonBody(string url, string json, ICollection<KeyValuePair<string, string>> headers = null)
+        public string RequestWithJsonBody(string url, string json, params KeyValuePair<string, string>[] headers)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "POST";
-
-            headers.ForEach(h => httpWebRequest.Headers.Add(h.Key, h.Value));
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            return this.Request(url, request => 
             {
+                request.ContentType = "application/json";
+                request.Method = "POST";
 
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
+                headers.ForEach(h => request.Headers.Add(h.Key, h.Value));
 
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                return result;
-            }
+                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+                {
+                    streamWriter.Write(json);
+                }
+            });
         }
     }
 }

@@ -65,8 +65,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Contracts\IDataRequester.cs" />
     <Compile Include="DataRequester.cs" />
     <Compile Include="DeserializationResults\AuthInfo.cs" />
+    <Compile Include="Contracts\IMessengerUiComponentProvider.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>

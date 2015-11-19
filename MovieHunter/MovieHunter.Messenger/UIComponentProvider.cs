@@ -3,8 +3,9 @@
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
+    using Contracts;
 
-    public class UIComponentProvider
+    public class UIComponentProvider : IMessengerUiComponentProvider
     {
         public Border ContactTemplate(string username)
         {

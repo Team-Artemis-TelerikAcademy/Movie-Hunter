@@ -13,6 +13,7 @@
     using FLExtensions.Common;
     using Common.PubNubMessaging.Core;
     using System.Text.RegularExpressions;
+    using Contracts;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -39,14 +40,14 @@
         private string currentChannel;
         private KeyValuePair<string, string> authHeader;
 
-        private UIComponentProvider uiElements;
-        private DataRequester requester;
+        private IMessengerUiComponentProvider uiElements;
+        private IDataRequester requester;
 
         private IDictionary<string, StackPanel> chatPanels;
         private IDictionary<string, Border> chatLabels;
         
 
-        public MessengerWindow(string username, string authKey, DataRequester requester, UIComponentProvider uiComponentProvider)
+        public MessengerWindow(string username, string authKey, IDataRequester requester, IMessengerUiComponentProvider uiComponentProvider)
         {
             this.username = username;
             this.authKey = authKey;
@@ -132,10 +133,7 @@
 
             this.ChatContent.ScrollToEnd();
 
-            var response = this.requester.RequestWithJsonBody(MessagesRequestUrl, JsonConvert.SerializeObject(msg), new List<KeyValuePair<string, string>>()
-            {
-                this.authHeader
-            });
+            var response = this.requester.RequestWithJsonBody(MessagesRequestUrl, JsonConvert.SerializeObject(msg), this.authHeader);
 
             this.ChatBox.Text = string.Empty;
             this.chat.Publish<string>(currentChannel, message, EmptyAction, DefaultErrorHandler);
