@@ -9,7 +9,7 @@
     {
         public void RegisterBindings(IKernel kernel)
         {
-            kernel.Bind(typeof(IRepository<>)).To(typeof(EfRepository<>));
+            
 
             kernel.Bind<IActorsService>().ToMethod(c => new ActorsService(kernel.Get<IRepository<Actor>>()));
             kernel.Bind<IGenresService>().ToMethod(c => new GenresService(kernel.Get<IRepository<Genre>>()));
