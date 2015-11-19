@@ -25,7 +25,8 @@ namespace MovieHunter.Api.Models
                     Description = movie.Description,
                     Duration = movie.Duration,
                     Category = movie.Restriction,
-                    Comments = movie.Comments.Select(c => c.Text).ToList()
+                    Comments = movie.Comments.Select(c => c.Text).ToList(),
+                    State = movie.UserMovies.Select(s => s.State)
                 };
             }
         }
@@ -38,5 +39,6 @@ namespace MovieHunter.Api.Models
 
         public IEnumerable<string> Trailers { get; set; }
         public IEnumerable<string> Comments { get; private set; }
+        public IEnumerable<State> State { get; set; }
     }
 }
