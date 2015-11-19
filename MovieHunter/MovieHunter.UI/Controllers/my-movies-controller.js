@@ -43,13 +43,20 @@ var myMoviesController = function(){
         console.log(this.params.id);
         var id = this.params.id.substr(1);
         var movie;
+        var movieState;
         jsonRequester.get('http://localhost:52189/api/Movies/' + id)
             .then(function (res) {
                 movie = res;
-                console.log('movie' + movie);
+                movieState = movie.State[0];
                 return templates.get('my-movies-watched');
             }).then(function (template) {
+
                 context.$element().html(template(movie));
+                if(movieState === 0){
+                    $("#btn-move").html('Move to watched');
+                }else{
+                    $("#btn-move").html('Move to wanted');
+                }
                 $('#btn-remove').on('click', function () {
                         var movieToDelete =
                         {
@@ -66,7 +73,7 @@ var myMoviesController = function(){
                 });
 
                 $('#btn-move').on('click', function () {
-                    if(movie.state == 1){
+                    if(movie.State[0] == 1){
                         var likedMovie =
                         {
                             movieId: movie.Id,
@@ -86,6 +93,7 @@ var myMoviesController = function(){
                         .then(function () {
 
                             toastr.info('Movie State Changed', 'Movie moved successfully');
+                            window.location.href ='#/my-movies';
                         })
                 });
 

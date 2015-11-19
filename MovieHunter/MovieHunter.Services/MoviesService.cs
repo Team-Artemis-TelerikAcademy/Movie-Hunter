@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using MovieHunter.Models;
 using MovieHunter.Services.Contracts;
 
@@ -28,6 +29,17 @@ namespace MovieHunter.Services
         {
             return this.GetAllMovies()
                 .Where(movie => movie.Genres.Any(g => g.Name.ToLower() == genre.ToLower()));
+        }
+
+
+        public void UpdateMovieRating(User user, int movieId, int rating)
+        {
+            var movie = movies.Find(movieId);
+            var count = movie.CountRating + 1;
+            var currentRating = movie.Rating;
+            movie.Rating = (rating + currentRating) / count;
+            this.movies.Update(movie);
+            this.movies.SaveChanges();
         }
     }
 }

@@ -14,7 +14,6 @@ namespace MovieHunter.Services.Contracts
         IQueryable<UserMovies> GetAllWatchedMoviesByUser(User user);
         IQueryable<UserMovies> GetAllMoviesByUser(User user);
         void UpdateMovieStatus(User user, int movieId, State state);
-        void UpdateMovieRating(User user, int movieId, int rating);
         void RemoveMovie(User user, int movieId);
         Movie GetMovieById(int id, User user);
     }

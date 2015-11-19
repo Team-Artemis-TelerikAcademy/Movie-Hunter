@@ -129,23 +129,7 @@ namespace MovieHunter.Api.Controllers
             return this.Ok(movie);
         }
 
-        [Authorize]
-        [Route("rating")]
-        [HttpPut]
-        public IHttpActionResult ChangeRating(ChangeUserMovieRatingBindingModel movie)
-        {
-            if (!ModelState.IsValid)
-            {
-                throw new Exception();
-            }
-
-            var username = this.User.Identity.Name;
-            var user = usersService.GetByName(username);
-
-            this.myMovieService.UpdateMovieRating(user, movie.MovieId, movie.Rating);
-
-            return this.Ok(movie);
-        }
+        
 
         [Authorize]
         [Route("{id}")]

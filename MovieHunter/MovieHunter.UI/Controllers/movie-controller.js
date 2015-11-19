@@ -144,7 +144,6 @@ var movieController = function () {
     function getMoviesByGenre(context) {
         var movies;
         var genre = this.params.genre.substr(1);
-        console.log(this.params.genre);
         jsonRequester.get('http://localhost:52189/api/Movies?genre=' + genre)
             .then(function (resp) {
                 movies = resp;

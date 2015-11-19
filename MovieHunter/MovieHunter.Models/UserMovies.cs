@@ -18,7 +18,6 @@ namespace MovieHunter.Models
         public string UserId { get; set; }
 
         public virtual Movie Movie { get; set; }
-        public int? Rating { get; set; }
 
         public State State { get; set; }
 
