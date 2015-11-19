@@ -376,6 +376,13 @@
     <Content Include="bower_components\sammy\lib\plugins\sammy.title.js" />
     <Content Include="bower_components\sammy\lib\plugins\sammy.tmpl.js" />
     <Content Include="bower_components\sammy\lib\sammy.js" />
+    <Content Include="Controllers\actors-controller.js" />
+    <Content Include="Controllers\genre-controller.js" />
+    <Content Include="Controllers\home-controller.js" />
+    <Content Include="Controllers\menu-controller.js" />
+    <Content Include="Controllers\movie-controller.js" />
+    <Content Include="Controllers\my-movies-controller.js" />
+    <Content Include="Controllers\user-controller.js" />
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
