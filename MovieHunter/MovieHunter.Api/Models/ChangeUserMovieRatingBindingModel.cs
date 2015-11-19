@@ -10,10 +10,10 @@ namespace MovieHunter.Api.Models
     public class ChangeUserMovieRatingBindingModel
     {
         [Required]
-        public int MovieId { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        [Range(0,10)]
+        [Range(0,100)]
         public int Rating { get; set; }
     }
 }

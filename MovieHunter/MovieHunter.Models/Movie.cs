@@ -42,6 +42,8 @@
 
         public Restrictions Restriction { get; set; }
 
+        public int CountRating { get; set; }
+
         [Required]
         [MaxLength(2000)]
         [Column(TypeName = "ntext")]

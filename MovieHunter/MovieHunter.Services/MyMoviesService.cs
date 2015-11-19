@@ -65,13 +65,7 @@ namespace MovieHunter.Services
             this.userMoviesRepository.SaveChanges();
         }
 
-        public void UpdateMovieRating(User user, int movieId, int rating)
-        {
-            var userMovie = user.UserMovies.FirstOrDefault(um => um.MovieId == movieId);
-            userMovie.Rating = rating;
-            this.userMoviesRepository.Update(userMovie);
-            this.userMoviesRepository.SaveChanges();
-        }
+        
 
         public void UpdateMovieStatus(User user, int movieId, State state)
         {

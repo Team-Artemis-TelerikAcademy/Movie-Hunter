@@ -18,17 +18,20 @@ namespace MovieHunter.Api.Controllers
     {
         private const int PageSize = 10;
         private IMoviesService service;
+        private IUsersService usersService;
 
-        //public MoviesController()
-        //{
-        //    var dbContext = new MovieDbContext();
-        //    this.service = new MoviesService(new EfRepository<Movie>(dbContext));
-        //}
-
-        public MoviesController(IMoviesService moviesService)
+        public MoviesController()
         {
-            this.service = moviesService;
+            var dbContext = new MovieDbContext();
+            this.service = new MoviesService(new EfRepository<Movie>(dbContext));
+            this.usersService = new UsersService(new EfRepository<User>(dbContext));
         }
+
+        //public MoviesController(IMoviesService moviesService)
+        //{
+        //    this.service = moviesService;
+            
+        //}
 
         
         public IHttpActionResult GetAll()
@@ -63,6 +66,26 @@ namespace MovieHunter.Api.Controllers
                                         .Take(PageSize)
                                         .Select(MovieDetailViewModel.FromMovie));
         }
+
+        [Authorize]
+        [Route("api/movies/{id}/rating")]
+        [HttpPut]
+        public IHttpActionResult ChangeRating(ChangeUserMovieRatingBindingModel movie)
+        {
+            if (!ModelState.IsValid)
+            {
+                throw new Exception();
+            }
+
+            var username = this.User.Identity.Name;
+            var user = usersService.GetByName(username);
+
+            this.service.UpdateMovieRating(user, movie.Id, movie.Rating);
+
+            return this.Ok(movie);
+        }
+
+
 
         //api/movies/released
         [Route("api/movies/released")]
