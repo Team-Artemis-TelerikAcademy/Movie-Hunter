@@ -9,19 +9,21 @@
         public int Id { get; set; }
 
         [Required]
-        [Column(TypeName = "ntext")]
+        [Column(TypeName = "nvarchar(MAX)")]
         public string Content { get; set; }
 
         public DateTime TimeSent { get; set; }
 
-        public int AuthorId { get; set; }
+        public string AuthorId { get; set; }
 
         [ForeignKey("AuthorId")]
         public virtual User Author { get; set; }
 
-        public int RecipientId { get; set; }
+        public string RecipientId { get; set; }
 
         [ForeignKey("RecipientId")]
         public virtual User Recipient { get; set; }
+
+        public bool Seen { get; set; }
     }
 }

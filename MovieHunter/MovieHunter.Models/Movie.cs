@@ -9,11 +9,16 @@
     {
         private ICollection<Genre> genres;
         private ICollection<Actor> actors;
+        private ICollection<UserMovies> userMovies;
+        private ICollection<Trailer> trailers;
 
         public Movie()
         {
             this.Genres = new HashSet<Genre>();
             this.Actors = new HashSet<Actor>();
+            this.UserMovies = new HashSet<UserMovies>();
+            this.Trailers = new HashSet<Trailer>();
+            this.Comments = new HashSet<Comment>();
         }
 
         public int Id { get; set; }
@@ -29,14 +34,23 @@
 
         public string ImageUrl { get; set; }
 
-        public string TrailerUrl { get; set; }
+        public virtual ICollection<Trailer> Trailers
+        {
+            get { return this.trailers; }
+            set { this.trailers = value; }
+        }
+
+        public Restrictions Restriction { get; set; }
+
+        public int CountRating { get; set; }
 
         [Required]
-        [MaxLength(1000)]
+        [MaxLength(2000)]
         [Column(TypeName = "ntext")]
         public string Description { get; set; }
 
         [Required]
+        [Column(TypeName = "datetime2")]
         public DateTime ReleaseDate { get; set; }
 
         public virtual ICollection<Genre> Genres
@@ -64,5 +78,14 @@
                 this.actors = value;
             }
         }
+
+        public virtual ICollection<UserMovies> UserMovies
+        {
+            get { return this.userMovies; }
+            set { this.userMovies = value; }
+        }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
+
 }

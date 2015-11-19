@@ -1,0 +1,14 @@
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            {{#each this}}
+            <div class="col-md-3">
+                <div class="well">
+                    <h4><span class="label label-primary pull-right">{{this.Movies.length}} Movies</span><a href="#/movies/genre/:{{this.Name}}"  class="text-primary">{{this.Name}}</a></h4>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

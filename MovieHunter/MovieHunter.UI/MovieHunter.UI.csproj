@@ -49,15 +49,56 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+<<<<<<< HEAD
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+=======
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.WebApi, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.WebApi.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+>>>>>>> refs/remotes/origin/master
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+<<<<<<< HEAD
+=======
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+>>>>>>> refs/remotes/origin/master
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -112,9 +153,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+=======
+>>>>>>> refs/remotes/origin/master
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -166,6 +210,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.js" />
+<<<<<<< HEAD
+=======
+    <Content Include="App\jsonRequester.js" />
+>>>>>>> refs/remotes/origin/master
     <Content Include="App\templates.js" />
     <Content Include="bower_components\jquery\dist\jquery.js" />
     <Content Include="bower_components\jquery\dist\jquery.min.js" />
@@ -348,11 +396,53 @@
     <Content Include="bower_components\sammy\lib\sammy.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+<<<<<<< HEAD
     <Content Include="Controllers\HomeController.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Site.css" />
     <Content Include="index.html" />
+=======
+    <Content Include="Controllers\actors-controller.js" />
+    <Content Include="Controllers\genre-controller.js" />
+    <Content Include="Controllers\home-controller.js" />
+    <Content Include="Controllers\menu-controller.js" />
+    <Content Include="Controllers\movie-controller.js" />
+    <Content Include="Controllers\my-movies-controller.js" />
+    <Content Include="Controllers\user-controller.js" />
+    <Content Include="css\bootstrap-theme.css" />
+    <Content Include="css\bootstrap-theme.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\camera.css" />
+    <Content Include="css\custom-styles.css" />
+    <Content Include="css\normalize.css" />
+    <Content Include="css\slicknav.css" />
+    <Content Include="css\style.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\bgBeforFooter.png" />
+    <Content Include="images\bgFooter.png" />
+    <Content Include="images\bgTop.jpg" />
+    <Content Include="images\blank.gif" />
+    <Content Include="images\camera-loader.gif" />
+    <Content Include="images\camera_skins.png" />
+    <Content Include="images\cir.png" />
+    <Content Include="images\footer_black.png" />
+    <Content Include="images\horL.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\sliderL.png" />
+    <Content Include="images\slides\blank.gif" />
+    <Content Include="images\slides\thumbs\_notes\dwsync.xml" />
+    <Content Include="images\slides\_notes\dwsync.xml" />
+    <Content Include="images\socIcons.png" />
+    <Content Include="images\upBefor.png" />
+    <Content Include="index.html" />
+    <Content Include="lib\bootstrap.js" />
+    <Content Include="lib\handlebars.js" />
+    <Content Include="lib\jquery.js" />
+    <Content Include="lib\sammy.js" />
+>>>>>>> refs/remotes/origin/master
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="bower_components\jquery\.bower.json" />
@@ -379,7 +469,15 @@
     <Content Include="bower_components\sammy\package.json" />
     <Content Include="bower_components\sammy\Rakefile" />
     <Content Include="bower_components\sammy\README.md" />
+<<<<<<< HEAD
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+=======
+    <Content Include="css\bootstrap-theme.css.map" />
+    <Content Include="css\bootstrap.css.map" />
+    <Content Include="bower.json" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Chat.js" />
+>>>>>>> refs/remotes/origin/master
     <Content Include="Scripts\handlebars.amd.js" />
     <Content Include="Scripts\handlebars.amd.min.js" />
     <Content Include="Scripts\handlebars.js" />
@@ -391,6 +489,10 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+<<<<<<< HEAD
+=======
+    <Content Include="Scripts\jquery.js" />
+>>>>>>> refs/remotes/origin/master
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -435,7 +537,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+<<<<<<< HEAD
     <Content Include="Templates\home.handlebars" />
+=======
+    <Content Include="Templates\home.html" />
+    <Content Include="Templates\movies.html" />
+>>>>>>> refs/remotes/origin/master
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

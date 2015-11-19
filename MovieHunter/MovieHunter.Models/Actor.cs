@@ -23,7 +23,10 @@
         [Required]
         [MaxLength(20)]
         public string LastName { get; set; }
-        
+
+        [Required]
+        public string FullName { get; set; }
+
         [Column(TypeName = "ntext")]
         public string PersonalInfo { get; set; }
 

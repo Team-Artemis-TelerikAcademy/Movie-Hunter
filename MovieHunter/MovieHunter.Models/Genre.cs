@@ -17,7 +17,7 @@
         [Required]
         public string Name { get; set; }
 
-        public Restrictions Restriction { get; set; }
+       
 
         public virtual ICollection<Movie> Movies
         {

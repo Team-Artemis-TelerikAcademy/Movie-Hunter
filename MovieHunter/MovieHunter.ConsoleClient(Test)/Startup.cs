@@ -3,6 +3,9 @@
     using Data;
     using Models;
     using System;
+    using Data.Migrations;
+    using System.Data.Entity;
+    using System.Linq;
 
     public static class Startup
     {
@@ -22,6 +25,14 @@
 
                 db.SaveChanges();
             }
+
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MovieDbContext, Configuration>());
+            //using (IMovieDbContext db = new MovieDbContext())
+            //{
+            //    var e = db.Movies.FirstOrDefault();
+            //
+            //    Console.WriteLine(e.Duration);
+            //}
         }
     }
 }

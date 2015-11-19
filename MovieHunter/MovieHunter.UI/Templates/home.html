@@ -1,0 +1,32 @@
+﻿
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 project">
+            <h3 id="counter">0</h3>
+            <h4>Happy Users</h4>
+        </div>
+        <div class="col-md-4 project">
+            <h3 id="counter1">0</h3>
+            <h4>Awesome Movies</h4>
+        </div>
+        <div class="col-md-4 project">
+            <h3 id="counter2" style="margin-left: 20px;">0</h3>
+            <h4 style="margin-left: 20px;">Different Categories</h4>
+        </div>
+    </div>
+</div>
+<h1>Check out our trailers</h1>
+<div class="row">
+    <ul class="thumbnails">
+    {{#each this}}
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h5>{{this.Movie}}</h5>
+                </div>
+                <a href="{{this.Url}}"><img src="{{this.Image}}"></a>
+            </div>
+        </div>
+    {{/each}}
+        </ul>
+</div>

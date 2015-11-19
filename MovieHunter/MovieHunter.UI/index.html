@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+<<<<<<< HEAD
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -22,4 +23,194 @@
     <script src="App/templates.js"></script>
     <script src="App.js"></script>    
 </body>
+=======
+<html lang="en">
+<head>
+    <title>Movie Hunter</title>
+    <meta charset="utf-8" />
+
+    <!-- Used for response menu -->
+    <link rel="stylesheet" type="text/css" href="css/custom-styles.css">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/toastr.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700|Open+Sans:700' rel='stylesheet' type='text/css'>
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/bootstrap.js"></script>
+
+
+</head>
+<body>
+<div id="home">
+    <div class="headerLine">
+        <div id="menuF" class="default">
+            <div class="container">
+                <div class="row">
+                    <div class="logo col-md-4">
+                        <div>
+                            <a href="#/home">
+                                <img src="images/logo.png">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="navmenu">
+                            <ul id="menu">
+                                <li class ="home" class="active"><a href="#/home" class="top-menu">Home</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Movies <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#/movies">All</a></li>
+                                        <li><a href="#/movies/released">Released</a></li>
+                                        <li><a href="#/movies/coming-soon">Coming-soon</a></li>
+                                    </ul>
+                                </li>
+                                <li class ="genres"><a href="#/genres" class="top-menu">Genres</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="my-movies">My Movies<span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#/my-movies">All My Movies</a></li>
+                                        <li><a href="#/my-movies/want-to-watch">Want To Watch</a></li>
+                                        <li><a href="#/my-movies/watched">Watched</a></li>
+                                    </ul>
+                                </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="login"><b>Login</b> <span class="caret"></span></a>
+                                        <ul id="login-dp" class="dropdown-menu">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <!--Login via
+                                                        <div class="social-buttons">
+                                                            <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                                            <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                                        </div>
+                                                        or -->
+                                                        <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                                            <div class="form-group">
+                                                                <label class="sr-only" for="tb-login-username">Username</label>
+                                                                <input type="text" class="form-control login-username" id="tb-login-username" name="username" placeholder="Account name"
+                                                                       required/>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="sr-only" for="tb-login-password">Password</label>
+                                                                <input type="password" class="form-control" id="tb-login-password" name="password" placeholder="Password"
+                                                                       required/>
+                                                                <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <button class="btn btn-sm btn-primary form-control" id="btn-login" type="submit">Sign in</button>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> keep me logged-in
+                                                                </label>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="bottom text-center">
+                                                        New here ? <a href="#/register"><b>Join Us</b></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    </li>
+                                <li id="logout"><a href="#/home" class="top-menu">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-dialog modal-lg">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img class="img-responsive" src="images/blank-first.png" alt="...">
+                    </div>
+                    <div class="item">
+                        <img class="img-responsive" src="images/blank-second.png" alt="...">
+                    </div>
+                    <div class="item">
+                        <img class="img-responsive" src="images/blank-third.png" alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="content">
+    </div>
+</div>
+
+<div id="contact">
+    <div class="lineBlack">
+        <div class="container">
+            <div class="row downLine">
+                <div class="col-md-6 text-left copy">
+                    <p>Copyright &copy; Movie Hunter. Enjoy yourself.</p>
+                </div>
+                <div class="col-md-6 text-right dm">
+                    <ul id="downMenu">
+                        <li class="active"><a href="#/home">Home</a></li>
+                        <li><a href="#/movies">Movies</a></li>
+                        <li><a href="#/genres">genres</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+<iframe name="CHATBUTTON_CHATBOX" id="CHATBUTTON_CHATBOX" width="200" height="350" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"></iframe>
+<script type="text/javascript">
+    CHBT_channel="18373969";
+    CHBT_title="Movie+Hunter+Chat";
+    CHBT_titlecolor="FFFFFF";
+    CHBT_size="200x350";
+    CHBT_bgcolor="FFFFFF";
+    CHBT_textcolor="000000";
+    CHBT_textsize="12";
+    CHBT_nncolor="335599";
+    CHBT_cpcolor="660000";
+    CHBT_profanityfilter="1";
+    CHBT_position="bottom-right";
+</script>
+<script type="text/javascript" src="Scripts/Chat.js">
+</script>
+-->
+
+<script src="lib/jquery.slicknav.js"></script>
+<script src="Scripts/OnLoad.js"></script>
+<!--LIBS-->
+<script src="lib/sammy.js"></script>
+<script src="lib/handlebars.js"></script>
+<script src="lib/toastr.min.js"></script>
+
+
+<!--Controllers-->
+<script src="Controllers/home-controller.js"></script>
+<script src="Controllers/user-controller.js"></script>
+<script src="Controllers/movie-controller.js"></script>
+<script src="Controllers/genre-controller.js"></script>
+<script src="Controllers/menu-controller.js"></script>
+<script src="Controllers/actors-controller.js"></script>
+<script src="Controllers/my-movies-controller.js"></script>
+<script>
+
+
+</script>
+<!--Setup-->
+
+<script src="App/jsonRequester.js"></script>
+<script src="App/templates.js"></script>
+<script src="App.js"></script>
+</body>
+
+>>>>>>> refs/remotes/origin/master
 </html>
