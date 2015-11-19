@@ -46,6 +46,7 @@ var myMoviesController = function(){
         jsonRequester.get('http://localhost:52189/api/Movies/' + id)
             .then(function (res) {
                 movie = res;
+                console.log('movie' + movie);
                 return templates.get('my-movies-watched');
             }).then(function (template) {
                 context.$element().html(template(movie));

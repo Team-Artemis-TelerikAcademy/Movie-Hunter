@@ -20,5 +20,13 @@
         <button class="btn btn-primary" id="btn-add-to-watched" type="submit">Add to Watched</button>
     {{/each}}
 
+    <p>Rating: {{this.Rating}}</p>
+    <button class="btn btn-primary change-rating" type="submit">Change Rating</button>
+    <div class="slider-form">
+        <input type="text" name="chance" id="chance" class="text" value="5">
+        <input type="range" id="chanceSlider" class="vHorizon" min="0" max="10" step="1" style="background-color: #00aec8; width: 50%;">
+        <button class="btn btn-primary submit-new-rating" type="submit">Submit New Rating</button>
+    </div>
+
 </div>
 

@@ -16,10 +16,20 @@ var movieController = function () {
         var movie;
         jsonRequester.get('http://localhost:52189/api/Movies/' + id)
              .then(function (res) {
-                 movie = res;
+                movie = res;
+                console.log(movie);
                  return templates.get('movieById');
              }).then(function (template) {
                  context.$element().html(template(movie));
+                if(!(localStorage.getItem("tokenKey"))){
+                    $('#btn-add-to-watched').css('display', 'none');
+                    $('#btn-add-to-want-to-watch').css('display', 'none');
+                    $('.change-rating').css('display', 'none');
+                }else {
+                    $('#btn-add-to-watched').css('display', 'inline-block');
+                    $('#btn-add-to-want-to-watch').css('display', 'inline-block');
+                    $('.change-rating').css('display', 'inline-block');
+                }
                  $('#btn-add-to-want-to-watch').on('click', function () {
                      console.log(movie);
                      var likedMovie =
@@ -70,6 +80,42 @@ var movieController = function () {
 
                      $(this).attr('href', editedAttribute);
                  })
+
+
+
+                $('#chanceSlider').on('change', function(){
+                    $('#chance').val($('#chanceSlider').val());
+                });
+
+                $('#chance').on('keyup', function(){
+                    $('#chanceSlider').val($('#chance').val());
+                });
+
+                $('.change-rating').on('click', function(){
+                    $('.slider-form').css('display', 'inline-block');
+                    $('.change-rating').css('display', 'none')
+                })
+
+
+                $('.submit-new-rating').on('click', function(){
+                    var newMovieRatingModel =
+                    {
+                        movieId: movie.Id,
+                        Rating: $('#chance').val()
+                    };
+
+                    var newMovieRatingModelStringified = JSON.stringify(newMovieRatingModel);
+                    var authorization = "Bearer " + localStorage.getItem("tokenKey");
+
+                    jsonRequester.put('http://localhost:52189/api/my-movies/rating', { data: newMovieRatingModelStringified, contentType: 'application/json', headers: { Authorization: authorization } })
+                        .then(function () {
+                            toastr.success('Rating Successfully Changed');
+                            $('.slider-form').css('display','none');
+                            $('.change-rating').css('display', 'inline-block');
+                        })
+                })
+
+
              })
     }
 
@@ -115,23 +161,4 @@ var movieController = function () {
         released: released,
         comingSoon: comingSoon
     };
-
-
-
-
-
-    //         jsonRequester.get('http://localhost:52189/api/Movies:'+this.params.id)
-    //             .then(function(res) {
-    //                 item = res.result;
-    //                 return templates.get('item-details');
-    //             })
-    //             .then(function(html) {
-    //                 var template = handlebars.compile(html);
-    //                 $('#content').html(template(item));
-    //             });
-    //     });
-    //     return {
-    //         all: all
-    //     };
 }();
-//
