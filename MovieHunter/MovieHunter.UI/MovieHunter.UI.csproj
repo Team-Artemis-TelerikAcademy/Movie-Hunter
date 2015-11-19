@@ -376,8 +376,6 @@
     <Content Include="bower_components\sammy\lib\plugins\sammy.title.js" />
     <Content Include="bower_components\sammy\lib\plugins\sammy.tmpl.js" />
     <Content Include="bower_components\sammy\lib\sammy.js" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Controllers\actors-controller.js" />
     <Content Include="Controllers\genre-controller.js" />
     <Content Include="Controllers\home-controller.js" />
@@ -395,7 +393,6 @@
     <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\Site.css" />
     <Content Include="images\bgBeforFooter.png" />
     <Content Include="images\bgFooter.png" />
     <Content Include="images\bgTop.jpg" />
