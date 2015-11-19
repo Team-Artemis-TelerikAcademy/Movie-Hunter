@@ -56,12 +56,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MovieHunter.Common\MovieHunter.Common.csproj">
-      <Project>{87bf3dbd-5bc2-436a-aead-02a1d5c389e9}</Project>
-      <Name>MovieHunter.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
