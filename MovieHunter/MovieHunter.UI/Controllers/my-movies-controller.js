@@ -2,7 +2,7 @@ var myMoviesController = function(){
     function allMyMovies(context){
         var authorization = "Bearer " + localStorage.getItem("tokenKey");
         var movies;
-        jsonRequester.get('http://localhost:52189/api/my-movies',{ headers: { Authorization: authorization } })
+        jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/my-movies',{ headers: { Authorization: authorization } })
 
     .then(function (resp) {
                 movies = resp;
@@ -15,7 +15,7 @@ var myMoviesController = function(){
     function wantToWatch(context){
         var authorization = "Bearer " + localStorage.getItem("tokenKey");
         var movies;
-        jsonRequester.get('http://localhost:52189/api/my-movies/want-to-watch',{ headers: { Authorization: authorization } })
+        jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/my-movies/want-to-watch',{ headers: { Authorization: authorization } })
 
             .then(function (resp) {
                 movies = resp;
@@ -28,7 +28,7 @@ var myMoviesController = function(){
     function watched(context){
         var authorization = "Bearer " + localStorage.getItem("tokenKey");
         var movies;
-        jsonRequester.get('http://localhost:52189/api/my-movies/watched',{ headers: { Authorization: authorization } })
+        jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/my-movies/watched',{ headers: { Authorization: authorization } })
 
             .then(function (resp) {
                 movies = resp;
@@ -44,7 +44,7 @@ var myMoviesController = function(){
         var id = this.params.id.substr(1);
         var movie;
         var movieState;
-        jsonRequester.get('http://localhost:52189/api/Movies/' + id)
+        jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/Movies/' + id)
             .then(function (res) {
                 movie = res;
                 movieState = movie.State[0];
@@ -65,7 +65,7 @@ var myMoviesController = function(){
                     var movieToDeleteStringified = JSON.stringify(movieToDelete);
                     var authorization = "Bearer " + localStorage.getItem("tokenKey");
 
-                    jsonRequester.del('http://localhost:52189/api/my-movies/' + movieToDelete.movieId, { data: movieToDeleteStringified, contentType: 'application/json', headers: { Authorization: authorization } })
+                    jsonRequester.del('http://moviehunterproject.azurewebsites.net/api/my-movies/' + movieToDelete.movieId, { data: movieToDeleteStringified, contentType: 'application/json', headers: { Authorization: authorization } })
                         .then(function () {
                             toastr.info('You can add this movie from the menu again', 'Movie Deleted');
                             window.location.href ='#/my-movies';
@@ -89,7 +89,7 @@ var myMoviesController = function(){
                     var likedMovieStringified = JSON.stringify(likedMovie);
                     var authorization = "Bearer " + localStorage.getItem("tokenKey");
 
-                    jsonRequester.put('http://localhost:52189/api/my-movies', { data: likedMovieStringified, contentType: 'application/json', headers: { Authorization: authorization } })
+                    jsonRequester.put('http://moviehunterproject.azurewebsites.net/api/my-movies', { data: likedMovieStringified, contentType: 'application/json', headers: { Authorization: authorization } })
                         .then(function () {
 
                             toastr.info('Movie State Changed', 'Movie moved successfully');

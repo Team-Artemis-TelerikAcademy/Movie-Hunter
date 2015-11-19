@@ -1,7 +1,7 @@
 var genreController = function(){
     function all(context){
         var genres;
-        jsonRequester.get('http://localhost:52189/api/Genres')
+        jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/Genres')
             .then(function (resp) {
                 genres = resp;
                 console.log(genres.length);

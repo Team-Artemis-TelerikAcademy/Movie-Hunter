@@ -1,7 +1,7 @@
 ﻿var homeController = function(){
 function all(context){
     var trailers;
-    jsonRequester.get('http://localhost:52189/api/Trailers')
+    jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/Trailers')
             .then(function (resp) {
             trailers = resp;
             return templates.get('home')

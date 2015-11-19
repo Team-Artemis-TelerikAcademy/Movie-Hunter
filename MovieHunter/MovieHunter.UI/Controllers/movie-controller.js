@@ -1,7 +1,7 @@
 var movieController = function () {
     function all(context) {
         var movies;
-        jsonRequester.get('http://localhost:52189/api/Movies')
+        jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/Movies')
             .then(function (resp) {
                 movies = resp;
                 return templates.get('movies');
@@ -14,7 +14,7 @@ var movieController = function () {
         console.log(this.params.id);
         var id = this.params.id.substr(1);
         var movie;
-        jsonRequester.get('http://localhost:52189/api/Movies/' + id)
+        jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/Movies/' + id)
              .then(function (res) {
                 movie = res;
                 console.log(movie);
@@ -41,7 +41,7 @@ var movieController = function () {
                      var likedMovieStringified = JSON.stringify(likedMovie);
                      var authorization = "Bearer " + localStorage.getItem("tokenKey");
 
-                     jsonRequester.post('http://localhost:52189/api/my-movies', { data: likedMovieStringified, contentType: 'application/json', headers: { Authorization: authorization } })
+                     jsonRequester.post('http://moviehunterproject.azurewebsites.net/api/my-movies', { data: likedMovieStringified, contentType: 'application/json', headers: { Authorization: authorization } })
                          .then(function () {
 
                              toastr.success('Go to my movies', 'Movie added successfully');
@@ -59,7 +59,7 @@ var movieController = function () {
                     var likedMovieStringified = JSON.stringify(likedMovie);
                     var authorization = "Bearer " + localStorage.getItem("tokenKey");
 
-                    jsonRequester.post('http://localhost:52189/api/my-movies', { data: likedMovieStringified, contentType: 'application/json', headers: { Authorization: authorization } })
+                    jsonRequester.post('http://moviehunterproject.azurewebsites.net/api/my-movies', { data: likedMovieStringified, contentType: 'application/json', headers: { Authorization: authorization } })
                         .then(function () {
                             toastr.success('Go to my movies', 'Movie added successfully');
                         })
@@ -107,7 +107,7 @@ var movieController = function () {
                     var newMovieRatingModelStringified = JSON.stringify(newMovieRatingModel);
                     var authorization = "Bearer " + localStorage.getItem("tokenKey");
 
-                    jsonRequester.put('http://localhost:52189/api/my-movies/rating', { data: newMovieRatingModelStringified, contentType: 'application/json', headers: { Authorization: authorization } })
+                    jsonRequester.put('http://moviehunterproject.azurewebsites.net/api/my-movies/rating', { data: newMovieRatingModelStringified, contentType: 'application/json', headers: { Authorization: authorization } })
                         .then(function () {
                             toastr.success('Rating Successfully Changed');
                             $('.slider-form').css('display','none');
@@ -121,7 +121,7 @@ var movieController = function () {
 
     function released(context) {
         var movies;
-        jsonRequester.get('http://localhost:52189/api/movies/released')
+        jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/movies/released')
             .then(function (resp) {
                 movies = resp;
                 return templates.get('movies');
@@ -132,7 +132,7 @@ var movieController = function () {
 
     function comingSoon(context) {
         var movies;
-        jsonRequester.get('http://localhost:52189/api/movies/comming-soon')
+        jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/movies/comming-soon')
             .then(function (resp) {
                 movies = resp;
                 return templates.get('movies');
@@ -144,7 +144,7 @@ var movieController = function () {
     function getMoviesByGenre(context) {
         var movies;
         var genre = this.params.genre.substr(1);
-        jsonRequester.get('http://localhost:52189/api/Movies?genre=' + genre)
+        jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/Movies?genre=' + genre)
             .then(function (resp) {
                 movies = resp;
                 return templates.get('movies')

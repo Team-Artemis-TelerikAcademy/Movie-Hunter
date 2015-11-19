@@ -27,7 +27,7 @@ var userController = function() {
 
                     var dataStringified = JSON.stringify(userData);
 
-                    jsonRequester.post('http://localhost:52189/api/account/register', { data: dataStringified, contentType: 'application/json' })
+                    jsonRequester.post('http://moviehunterproject.azurewebsites.net/api/account/register', { data: dataStringified, contentType: 'application/json' })
                         .then(function(resp){
                             console.log("here " + resp)
                             document.location.reload(true);
