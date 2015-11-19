@@ -384,12 +384,17 @@
     <Content Include="css\normalize.css" />
     <Content Include="css\slicknav.css" />
     <Content Include="css\style.css" />
+    <Content Include="css\toastr.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="images\bgBeforFooter.png" />
     <Content Include="images\bgFooter.png" />
     <Content Include="images\bgTop.jpg" />
+    <Content Include="images\blank-first.png" />
+    <Content Include="images\blank-second.png" />
+    <Content Include="images\blank-third.png" />
     <Content Include="images\blank.gif" />
+    <Content Include="images\blank.png" />
     <Content Include="images\camera-loader.gif" />
     <Content Include="images\camera_skins.png" />
     <Content Include="images\cir.png" />
@@ -436,6 +441,13 @@
     <Content Include="bower.json" />
     <Content Include="Scripts\Chat.js" />
     <Content Include="Scripts\OnLoad.js" />
+    <Content Include="Templates\actor.html" />
+    <Content Include="Templates\genres.html" />
+    <Content Include="Templates\login.html" />
+    <Content Include="Templates\movieById.html" />
+    <Content Include="Templates\my-movies-watched.html" />
+    <Content Include="Templates\my-movies.html" />
+    <Content Include="Templates\register.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -443,37 +455,12 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Templates\home.html" />
     <Content Include="Templates\movies.html" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
