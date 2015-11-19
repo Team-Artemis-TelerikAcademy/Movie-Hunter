@@ -19,7 +19,7 @@ namespace MovieHunter.Services
 
         public User GetByName(string username)
         {
-            return this.usersRepository.All().FirstOrDefault(user => user.UserName.ToLower() == username.ToLower());
+            return this.usersRepository.All().FirstOrDefault(user => user.UserName.Equals(username, StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }
