@@ -1,12 +1,36 @@
 var movieController = function () {
     function all(context) {
         var movies;
+        var page = 1;
         jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/Movies')
             .then(function (resp) {
                 movies = resp;
                 return templates.get('movies');
             }).then(function (template) {
                 context.$element().html(template(movies));
+                $("#previous").on('click', function () {
+                    if (page > 1) {
+                        page = page - 1;
+                    }
+                    else {
+                        page = 1;
+                    }
+                });
+                $("#next").on('click', function () {
+                    if (page < 12) {
+                        page = page + 1;
+                    }
+                    else {
+                        page = 11;
+                    }
+                });
+                jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/Movies?page=' + page)
+                    .then(function (resp) {
+                        movies = resp;
+                        return templates.get('movies');
+                    }).then(function (template) {
+                        context.$element().html(template(movies));
+                    });
             });
     }
 
