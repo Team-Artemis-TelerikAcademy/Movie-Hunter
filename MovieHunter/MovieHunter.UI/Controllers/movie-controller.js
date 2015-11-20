@@ -100,13 +100,13 @@ var movieController = function () {
                 $('.submit-new-rating').on('click', function(){
                     var newMovieRatingModel =
                     {
-                        movieId: movie.Id,
-                        rating: $('#chance').val()
+                        Id: movie.Id,
+                        Rating: $('#chance').val()
                     };
 
                     var newMovieRatingModelStringified = JSON.stringify(newMovieRatingModel);
                     var authorization = "Bearer " + localStorage.getItem("tokenKey");
-                    console.log(newMovieRatingModel.rating);
+
                     jsonRequester.put('http://moviehunterproject.azurewebsites.net/api/movies/' + newMovieRatingModel.movieId + '/rating', { data: newMovieRatingModelStringified, contentType: 'application/json', headers: { Authorization: authorization } })
                         .then(function () {
                             toastr.success('Rating Successfully Changed');
