@@ -8,5 +8,6 @@ namespace MovieHunter.Services.Contracts
         IQueryable<Movie> GetAllMovies();
         Movie GetById(int id);
         IQueryable<Movie> GetMoviesByGenre(string genre);
+        void UpdateMovieRating(User user, int movieId, int rating);
     }
 }

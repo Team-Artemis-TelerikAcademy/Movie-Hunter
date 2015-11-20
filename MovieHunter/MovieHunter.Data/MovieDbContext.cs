@@ -1,18 +1,24 @@
 ﻿namespace MovieHunter.Data
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.ModelConfiguration.Conventions;
-    using Models;
-    using Microsoft.AspNet.Identity.EntityFramework;
 
     public class MovieDbContext : IdentityDbContext<User>, IMovieDbContext
     {
 
         public const string DefaultConnection = "MovieHunterConnection";
+        public const string TestConnection = "MovieHunterTestConnection";
 
         public MovieDbContext()
             : base(DefaultConnection)
+        {
+        }
+
+        public MovieDbContext(string connection)
+            : base(connection)
         {
         }
 

@@ -9,6 +9,7 @@
 
     using Data;
     using ImdbDownloader;
+    using Models;
 
     public static class Startup
     {
@@ -17,7 +18,7 @@
             // decimal separator problem
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
-            Database.SetInitializer(new DropCreateDatabaseAlways<MovieDbContext>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<MovieDbContext>());
 
             // uncomment to download sample data from imdb
             //Downloader.Download(1, 5);

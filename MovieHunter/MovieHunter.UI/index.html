@@ -9,11 +9,14 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/toastr.css">
 
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700|Open+Sans:700' rel='stylesheet' type='text/css'>
 
     <script src="lib/jquery.js"></script>
     <script src="lib/bootstrap.js"></script>
+
+
 </head>
 <body>
 <div id="home">
@@ -42,18 +45,15 @@
                                 </li>
                                 <li class ="genres"><a href="#/genres" class="top-menu">Genres</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Movies<span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="my-movies">My Movies<span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="#/my-movies">All My Movies</a></li>
                                         <li><a href="#/my-movies/want-to-watch">Want To Watch</a></li>
                                         <li><a href="#/my-movies/watched">Watched</a></li>
                                     </ul>
                                 </li>
-
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li><p class="navbar-text">Already have an account?</p></li>
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="login"><b>Login</b> <span class="caret"></span></a>
                                         <ul id="login-dp" class="dropdown-menu">
                                             <li>
                                                 <div class="row">
@@ -93,44 +93,31 @@
                                             </li>
                                         </ul>
                                     </li>
-                                </ul>
+                                    </li>
+                                <li id="logout"><a href="#/home" class="top-menu">Logout</a></li>
                             </ul>
-                        </div>
-                    </div>
-
-                    <div  class="col-md-2">
-                        <div>
-                        <a href="#/register" class="register-link">Register</a>&nbsp<a href="#/login" class="login-link">Login</a>&nbsp<a href="#/home" class="logout-link">Logout</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="container" id="headerContent">
-            <div class="row wrap">
-                <div class="col-md-12 gallery">
-                    <div class="camera_wrap camera_white_skin" id="camera_wrap_1">
-                        <div data-thumb="" data-src="images/slides/blank.gif">
-                            <div class="img-responsive camera_caption fadeFromBottom">
-                                <h2>They Make.</h2>
-                            </div>
-                        </div>
-                        <div data-thumb="" data-src="images/slides/blank.gif">
-                            <div class="img-responsive camera_caption fadeFromBottom">
-                                <h2>We provide.</h2>
-                            </div>
-                        </div>
-                        <div data-thumb="" data-src="images/slides/blank.gif">
-                            <div class="img-responsive camera_caption fadeFromBottom">
-                                <h2>You hunt.</h2>
-                            </div>
-                        </div>
-                    </div><!-- #camera_wrap_1 -->
+        <div class="modal-dialog modal-lg">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img class="img-responsive" src="images/blank-first.png" alt="...">
+                    </div>
+                    <div class="item">
+                        <img class="img-responsive" src="images/blank-second.png" alt="...">
+                    </div>
+                    <div class="item">
+                        <img class="img-responsive" src="images/blank-third.png" alt="...">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="container" id="content">
     </div>
 </div>
@@ -178,6 +165,8 @@
 <!--LIBS-->
 <script src="lib/sammy.js"></script>
 <script src="lib/handlebars.js"></script>
+<script src="lib/toastr.min.js"></script>
+
 
 <!--Controllers-->
 <script src="Controllers/home-controller.js"></script>

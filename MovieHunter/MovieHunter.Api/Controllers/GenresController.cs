@@ -39,7 +39,7 @@ namespace MovieHunter.Api.Controllers
         public IHttpActionResult GetAll(int page)
         {
             return this.Ok(this.service.GetAllGenres()
-                                       .Select(g => g.Name));
+                                       .Select(GenreViewModel.FromGenre));
         }
 
         public IHttpActionResult GetByName(string name)

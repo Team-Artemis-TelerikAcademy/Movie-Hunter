@@ -40,7 +40,7 @@ namespace MovieHunter.Api.Controllers
 
         public IHttpActionResult GetAll(int page)
         {
-            return this.Ok(this.service.GetAll().Skip((page - 1) * PageSize).Take(PageSize).Select(ActorViewModel.FromActor));
+            return this.Ok(this.service.GetAllActors().Skip((page - 1) * PageSize).Take(PageSize).Select(ActorViewModel.FromActor));
         }
 
         public IHttpActionResult GetById(int id)

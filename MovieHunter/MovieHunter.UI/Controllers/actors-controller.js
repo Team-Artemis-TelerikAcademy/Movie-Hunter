@@ -11,7 +11,7 @@ var actorsController = function(){
             }
         }
         console.log(editedActorName)
-        jsonRequester.get('http://localhost:52189/api/actors?name=' + editedActorName)
+        jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/actors?name=' + editedActorName)
             .then(function (resp) {
                 actor = resp;
                 console.log(actor.name)

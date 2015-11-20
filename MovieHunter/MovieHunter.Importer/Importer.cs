@@ -22,6 +22,7 @@
 
         private const string EmergencyTrailer = "http://www.youtube.com/watch?v=mMFqjVnCpCo";
 
+        private static Random rnd = new Random();
         private IMovieDbContext db;
 
         public Importer(IMovieDbContext db)
@@ -67,6 +68,7 @@
                     Title = currentMovie.title,
                     ImageUrl = currentMovie.urlPoster,
                     Rating = result,
+                    CountRating = rnd.Next(200, 1000),
                     ReleaseDate = currentMovie.releaseDate.ToDateTime().Sqlize(),
                     Restriction = RestrictionMapping.ContainsKey(currentMovie.rated.ToLower()) ? RestrictionMapping[currentMovie.rated.ToLower()] : Restrictions.NotRestricted,
                     Duration = currentMovie.runtime == null || currentMovie.runtime.Length == 0 ? 90 : int.Parse(currentMovie.runtime[0].Split(' ')[0])

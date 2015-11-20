@@ -19,19 +19,22 @@ namespace MovieHunter.Api.Controllers
     {
         private const int PageSize = 10;
         private IMoviesService service;
+        private IUsersService usersService;
 
         //public MoviesController()
         //{
         //    var dbContext = new MovieDbContext();
         //    this.service = new MoviesService(new EfRepository<Movie>(dbContext));
+        //    this.usersService = new UsersService(new EfRepository<User>(dbContext));
         //}
 
-        public MoviesController(IMoviesService moviesService)
+        public MoviesController(IMoviesService moviesService, IUsersService usersService)
         {
             this.service = moviesService;
+            this.usersService = usersService;
         }
 
-        
+
         public IHttpActionResult GetAll()
         {
             return this.GetAll(1);
@@ -47,9 +50,11 @@ namespace MovieHunter.Api.Controllers
 
         public IHttpActionResult GetById(int id)
         {
-            return this.Ok(MovieDetailViewModel.FromMovie.Compile()
-                                                         .Invoke(this.service
-                                                                       .GetById(id)));
+            var g = this.service
+                                                                       .GetById(id);
+            var result = this.Ok(MovieDetailViewModel.FromMovie.Compile()
+                                                         .Invoke(g));
+            return result;
         }
 
         public IHttpActionResult GetByGenre(string genre)
@@ -64,6 +69,26 @@ namespace MovieHunter.Api.Controllers
                                         .Take(PageSize)
                                         .Select(MovieDetailViewModel.FromMovie));
         }
+
+        [Authorize]
+        [Route("api/movies/{id}/rating")]
+        [HttpPut]
+        public IHttpActionResult ChangeRating(ChangeUserMovieRatingBindingModel movie)
+        {
+            if (!ModelState.IsValid)
+            {
+                throw new Exception();
+            }
+
+            var username = this.User.Identity.Name;
+            var user = usersService.GetByName(username);
+
+            this.service.UpdateMovieRating(user, movie.Id, movie.Rating);
+
+            return this.Ok(movie);
+        }
+
+
 
         //api/movies/released
         [Route("api/movies/released")]

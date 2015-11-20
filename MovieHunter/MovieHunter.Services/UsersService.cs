@@ -12,14 +12,14 @@ namespace MovieHunter.Services
     {
         private IRepository<User> usersRepository;
 
-        public UsersService(EfRepository<User> usersRepository)
+        public UsersService(IRepository<User> usersRepository)
         {
             this.usersRepository = usersRepository;
         }
 
         public User GetByName(string username)
         {
-            return this.usersRepository.All().FirstOrDefault(user => user.UserName.ToLower() == username.ToLower());
+            return this.usersRepository.All().FirstOrDefault(user => user.UserName.Equals(username, StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }

@@ -8,11 +8,11 @@
             contentType = options.contentType;
             //authorization = options.authorization || undefined
 
-        console.log("here " + data);
-        console.log("method " + method);
-        console.log("url " + url);
-        console.log("contentType " + contentType);
-        console.log("authorization " + header);
+        // console.log("here " + data);
+        // console.log("method " + method);
+        // console.log("url " + url);
+        // console.log("contentType " + contentType);
+        // console.log("authorization " + header);
         var promise = new Promise(function (resolve, reject) {
             $.ajax({
                 url: url,

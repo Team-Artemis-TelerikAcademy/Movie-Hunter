@@ -14,10 +14,16 @@ namespace MovieHunter.Api.App_Start
     using System.Collections.Generic;
     using Common.Contracts;
     using Services;
+    using Services.Contracts;
 
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
+
+        public static Action<IKernel> DbBindings = kernel => 
+        {
+            new DataModule().RegisterBindings(kernel);
+        };
 
         /// <summary>
         /// Starts the application
@@ -65,10 +71,14 @@ namespace MovieHunter.Api.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            DbBindings(kernel);
+
+            kernel.Bind(typeof(IRepository<>)).To(typeof(EfRepository<>));
+
             // custom bindings here
             var appModules = new List<IModule>()
             {
-                new DataModule(),
+                // new DataModule(),
                 new ServicesModule()
             };
 
