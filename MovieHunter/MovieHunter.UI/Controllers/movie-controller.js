@@ -100,7 +100,7 @@ var movieController = function () {
                          .then(function (resp) {
                              url = resp;
                              console.log(url);
-                             $('#link-to-dropbox').attr("href", "http://www.google.com/")
+                             $('#link-to-dropbox').attr("href", "url")
                              $('#link-to-dropbox').css('display', 'inline-block');
                          })
                 });
