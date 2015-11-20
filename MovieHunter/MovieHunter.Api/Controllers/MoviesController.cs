@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using MovieHunter.Common.Dropbox;
 
 namespace MovieHunter.Api.Controllers
 {
@@ -49,10 +50,8 @@ namespace MovieHunter.Api.Controllers
 
         public IHttpActionResult GetById(int id)
         {
-            var g = this.service
-                                                                       .GetById(id);
-            var result = this.Ok(MovieDetailViewModel.FromMovie.Compile()
-                                                         .Invoke(g));
+            var movieById = this.service.GetById(id);
+            var result = this.Ok(MovieDetailViewModel.FromMovie.Compile().Invoke(movieById));
             return result;
         }
 
@@ -121,6 +120,15 @@ namespace MovieHunter.Api.Controllers
                                         .Skip((page - 1) * PageSize)
                                         .Take(PageSize)
                                         .Select(MovieDetailViewModel.FromMovie));
+        }
+
+        [Route("api/movies/{id}/download-wallpaper")]
+        public IHttpActionResult GetImageUrlForDropbox(int id)
+        {
+            var movie = this.service.GetById(id);
+            var dropboxUrl = new DropboxService().GetRedirectionUrl(movie.ImageUrl, movie.Title + "-wallpaper");
+
+            return this.Redirect(dropboxUrl);
         }
     }
 }
