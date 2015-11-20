@@ -89,6 +89,22 @@ var movieController = function () {
                         })
                 });
 
+                $('#url-button').on('click', function () {
+                    var likedMovie =
+                    {
+                        Id: movie.Id,
+                        state: 0
+                    };
+
+                    var likedMovieStringified = JSON.stringify(likedMovie);
+
+                    jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/movies/' + likedMovie.Id + '/download-wallpaper', { data: likedMovieStringified, contentType: 'application/json'})
+                        .then(function () {
+
+                            toastr.success('Dropbox save', 'Save successful');
+                        })
+                });
+
                  var links = $('.actor-link').get();
 
                  $('.actor-link').each(function () {
