@@ -233,6 +233,7 @@
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\MyMoviesController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TrailersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -250,6 +251,7 @@
     <Compile Include="Models\MovieBindingModel.cs" />
     <Compile Include="Models\MovieDetailViewModel.cs" />
     <Compile Include="Models\MovieViewModel.cs" />
+    <Compile Include="Models\SearchResultResponseModel.cs" />
     <Compile Include="Models\TrailerViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\UserMovieViewModel.cs" />
