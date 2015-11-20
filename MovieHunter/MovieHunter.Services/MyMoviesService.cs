@@ -12,7 +12,7 @@ namespace MovieHunter.Services
     {
         private IRepository<UserMovies> userMoviesRepository;
 
-        public MyMoviesService(EfRepository<UserMovies> userMoviesRepo)
+        public MyMoviesService(IRepository<UserMovies> userMoviesRepo)
         {
             this.userMoviesRepository = userMoviesRepo;
 

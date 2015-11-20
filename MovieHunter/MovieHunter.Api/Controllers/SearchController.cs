@@ -18,15 +18,22 @@ namespace MovieHunter.Api.Controllers
         private IGenresService genresService;
         private IMoviesService moviesService;
 
-        public SearchController()
-        {
-            var dbContext = new MovieDbContext();
-            this.moviesService = new MoviesService(new EfRepository<Movie>(dbContext));
-            this.actorsService = new ActorsService(new EfRepository<Actor>(dbContext));
-            this.genresService = new GenresService(new EfRepository<Genre>(dbContext));
-        }
+        //public SearchController()
+        //{
+        //    var dbContext = new MovieDbContext();
+        //    this.moviesService = new MoviesService(new EfRepository<Movie>(dbContext));
+        //    this.actorsService = new ActorsService(new EfRepository<Actor>(dbContext));
+        //    this.genresService = new GenresService(new EfRepository<Genre>(dbContext));
+        //}
 
-        [Route("api/search")]
+        public SearchController(IActorsService actorsService, IGenresService genresService, IMoviesService moviesService)
+        {
+            this.actorsService = actorsService;
+            this.genresService = genresService;
+            this.moviesService = moviesService;
+        }
+                                
+        [Route("api/search")]   
         public IHttpActionResult GetResult(string pattern)
         {
             pattern = pattern.ToLower();

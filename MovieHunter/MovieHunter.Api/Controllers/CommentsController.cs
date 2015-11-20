@@ -18,17 +18,19 @@ namespace MovieHunter.Api.Controllers
         private ICommentsService service;
         private IUsersService usersService;
 
-        public CommentsController()
-        {
-            var db = new MovieDbContext();
-            this.service = new CommentsService(new EfRepository<Comment>(db));
-            this.movieService = new MoviesService(new EfRepository<Movie>(db));
-            this.usersService = new UsersService(new EfRepository<User>(db));
-        }
+        //public CommentsController()
+        //{
+        //    var db = new MovieDbContext();
+        //    this.service = new CommentsService(new EfRepository<Comment>(db));
+        //    this.movieService = new MoviesService(new EfRepository<Movie>(db));
+        //    this.usersService = new UsersService(new EfRepository<User>(db));
+        //}
 
-        public CommentsController(ICommentsService commentsService)
+        public CommentsController(ICommentsService commentsService, IMoviesService movies, IUsersService users)
         {
             this.service = commentsService;
+            this.movieService = movies;
+            this.usersService = users;
         }
 
         [Route("api/movies/{id}/comments")]

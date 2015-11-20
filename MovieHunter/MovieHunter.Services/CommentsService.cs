@@ -12,7 +12,7 @@ namespace MovieHunter.Services
     {
         private IRepository<Comment> commentsRepository;
 
-        public CommentsService(EfRepository<Comment> commentsRepo)
+        public CommentsService(IRepository<Comment> commentsRepo)
         {
             this.commentsRepository = commentsRepo;
         }

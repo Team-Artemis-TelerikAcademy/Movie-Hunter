@@ -16,6 +16,8 @@
             kernel.Bind<IMoviesService>().ToMethod(c => new MoviesService(kernel.Get<IRepository<Movie>>()));
             kernel.Bind<ITrailersService>().ToMethod(c => new TrailersService(kernel.Get<IRepository<Trailer>>()));
             kernel.Bind<IUsersService>().ToMethod(c => new UsersService(kernel.Get<IRepository<User>>()));
+            kernel.Bind<IMyMoviesService>().ToMethod(c => new MyMoviesService(kernel.Get<IRepository<UserMovies>>()));
+            kernel.Bind<ICommentsService>().ToMethod(c => new CommentsService(kernel.Get<IRepository<Comment>>()));
             // TODO: implement binding using reflection
         }
     }
