@@ -5,7 +5,6 @@ var movieController = function () {
         jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/Movies')
             .then(function (resp) {
                 movies = resp;
-                console.log(movies);
                 return templates.get('movies');
             }).then(function (template) {
                 context.$element().html(template(movies));
@@ -96,10 +95,12 @@ var movieController = function () {
                         Id: movie.Id,
                         state: 0
                     };
+
                     jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/movies/' + likedMovie.Id + '/download-wallpaper', { contentType: 'application/json'})
-                       .then(function (resp) {
-                           url = resp;
-                           console.log(url);
+                         .then(function (resp) {
+                             url = resp;
+                             console.log(url)
+                         })
                 });
 
                  var links = $('.actor-link').get();
