@@ -460,6 +460,7 @@
     <Content Include="Templates\my-movies-watched.html" />
     <Content Include="Templates\my-movies.html" />
     <Content Include="Templates\register.html" />
+    <Content Include="Templates\search.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

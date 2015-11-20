@@ -4,7 +4,10 @@ $(document).ready(function () {
         
         jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/search?pattern=' + value)
             .then(function (resp) {
-                
+                search = resp;
+                return templates.get('search');
+            }).then(function (template) {
+                context.$element().html(template(search));
             });
     })
 
