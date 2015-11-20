@@ -1,7 +1,11 @@
 $(document).ready(function () {
     $('#search-btn').on('click', function () {
         var value = $('#search-input').val();
-        console.log(value);
+        
+        jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/search?pattern=' + value)
+            .then(function (resp) {
+                console.log(resp);
+            });
     })
 
     if(!(localStorage.getItem("tokenKey"))){
