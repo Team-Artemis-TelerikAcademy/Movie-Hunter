@@ -1,4 +1,9 @@
-$(document).ready(function(){
+$(document).ready(function () {
+    $('#search-btn').on('click', function () {
+        var value = $('#search-input').val();
+        console.log(value);
+    })
+
     if(!(localStorage.getItem("tokenKey"))){
         $('#my-movies').css('display','none');
         $('#login').css('display','block');
