@@ -106,7 +106,6 @@ var movieController = function () {
 
                     var newMovieRatingModelStringified = JSON.stringify(newMovieRatingModel);
                     var authorization = "Bearer " + localStorage.getItem("tokenKey");
-                    console.log(authorization);
                     console.log(newMovieRatingModel.rating);
                     jsonRequester.put('http://moviehunterproject.azurewebsites.net/api/movies/' + newMovieRatingModel.movieId + '/rating', { data: newMovieRatingModelStringified, contentType: 'application/json', headers: { Authorization: authorization } })
                         .then(function () {
