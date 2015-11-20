@@ -99,7 +99,8 @@ var movieController = function () {
                     jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/movies/' + likedMovie.Id + '/download-wallpaper', { contentType: 'application/json'})
                          .then(function (resp) {
                              url = resp;
-                             console.log(url)
+                             $('#link-to-dropbox').attr("href", "url")
+                             $('#link-to-dropbox').css('display', 'inline-block');
                          })
                 });
 
