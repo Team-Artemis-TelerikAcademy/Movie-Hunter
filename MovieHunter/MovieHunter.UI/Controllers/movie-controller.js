@@ -98,7 +98,7 @@ var movieController = function () {
 
                     var likedMovieStringified = JSON.stringify(likedMovie);
 
-                    jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/movies/' + likedMovie.Id + '/download-wallpaper', { data: likedMovieStringified, contentType: 'application/json'})
+                    jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/movies/' + likedMovie.Id + '/download-wallpaper', { contentType: 'application/json'})
                         .then(function () {
 
                             toastr.success('Dropbox save', 'Save successful');
