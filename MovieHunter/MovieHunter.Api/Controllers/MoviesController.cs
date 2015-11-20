@@ -20,20 +20,20 @@ namespace MovieHunter.Api.Controllers
         private IMoviesService service;
         private IUsersService usersService;
 
-        public MoviesController()
-        {
-            var dbContext = new MovieDbContext();
-            this.service = new MoviesService(new EfRepository<Movie>(dbContext));
-            this.usersService = new UsersService(new EfRepository<User>(dbContext));
-        }
-
-        //public MoviesController(IMoviesService moviesService)
+        //public MoviesController()
         //{
-        //    this.service = moviesService;
-            
+        //    var dbContext = new MovieDbContext();
+        //    this.service = new MoviesService(new EfRepository<Movie>(dbContext));
+        //    this.usersService = new UsersService(new EfRepository<User>(dbContext));
         //}
 
-        
+        public MoviesController(IMoviesService moviesService, IUsersService usersService)
+        {
+            this.service = moviesService;
+            this.usersService = usersService;
+        }
+
+
         public IHttpActionResult GetAll()
         {
             return this.GetAll(1);
@@ -49,9 +49,11 @@ namespace MovieHunter.Api.Controllers
 
         public IHttpActionResult GetById(int id)
         {
-            return this.Ok(MovieDetailViewModel.FromMovie.Compile()
-                                                         .Invoke(this.service
-                                                                       .GetById(id)));
+            var g = this.service
+                                                                       .GetById(id);
+            var result = this.Ok(MovieDetailViewModel.FromMovie.Compile()
+                                                         .Invoke(g));
+            return result;
         }
 
         public IHttpActionResult GetByGenre(string genre)

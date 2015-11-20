@@ -121,6 +121,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Mocks\Repositories.cs" />
     <Compile Include="MoviesControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
