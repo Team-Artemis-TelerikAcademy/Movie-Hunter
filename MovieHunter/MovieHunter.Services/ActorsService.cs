@@ -16,7 +16,7 @@ namespace MovieHunter.Services
         }
 
 
-        public IQueryable<Actor> GetAll()
+        public IQueryable<Actor> GetAllActors()
         {
             return this.actors.All().OrderBy(a => a.FullName);
         }
