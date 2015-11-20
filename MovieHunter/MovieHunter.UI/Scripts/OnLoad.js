@@ -4,7 +4,7 @@ $(document).ready(function () {
         
         jsonRequester.get('http://moviehunterproject.azurewebsites.net/api/search?pattern=' + value)
             .then(function (resp) {
-                console.log(resp);
+                
             });
     })
 
