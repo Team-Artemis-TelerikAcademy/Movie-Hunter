@@ -128,7 +128,7 @@ namespace MovieHunter.Api.Controllers
             var movie = this.service.GetById(id);
             var dropboxUrl = new DropboxService().GetRedirectionUrl(movie.ImageUrl, movie.Title + "-wallpaper");
 
-            return this.Redirect(dropboxUrl);
+            return this.Ok(dropboxUrl);
         }
     }
 }
